@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: "Noto Sans JP", sans-serif;
+    width: 100%;
+    color: $black;
+}
+
+h2 {
+    font-weight: 500;
+}
+
+/*===============================
+  全体設定
+================================*/
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.header-image {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    z-index: 1;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media screen and (max-width: 1020px) {
+    .container {
+        max-width: 100%;
+    }
+}

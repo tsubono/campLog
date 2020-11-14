@@ -1,0 +1,481 @@
+@charset "UTF-8";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  width: 100%;
+  color: #1A1A1A;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+/*===============================
+  全体設定
+================================*/
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header-image {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  z-index: 1;
+}
+
+.header-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media screen and (max-width: 1020px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+/*===============================
+  自己紹介
+================================*/
+
+.profile {
+  display: flex;
+  padding: 0 30px;
+  margin: 0 0 30px;
+}
+
+.profile .avatar {
+  width: 167px;
+  margin-right: 16px;
+  position: relative;
+}
+
+.profile .avatar img {
+  position: absolute;
+  top: -40px;
+  z-index: 1;
+}
+
+.profile .text {
+  width: 80%;
+  padding: 0 20px;
+}
+
+.profile .name {
+  font-size: 20px;
+  margin: 20px 0 10px 0;
+}
+
+.profile .self-introduction {
+  height: 64px;
+  font-size: 14px;
+}
+
+.profile .self-introduction p {
+  margin: 0;
+}
+
+/*===============================
+  SNSリンク
+================================*/
+
+.sns-list {
+  overflow-x: scroll;
+  white-space: nowrap;
+  margin-top: 30px;
+  display: flex;
+  padding: 10px 30px;
+}
+
+.sns-list .sns-wrapper {
+  display: flex;
+}
+
+.sns-list .sns-wrapper .sns-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 150px;
+  padding: 15px 0;
+  margin-right: 16px;
+  border-radius: 4px;
+  background: #FFFFFF;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  color: #1a1a1a;
+  box-shadow: 0 0 8px gray;
+}
+
+.sns-list .sns-wrapper .sns-item img {
+  margin-right: auto;
+  margin-left: 15px;
+  width: 10%;
+}
+
+.sns-list .sns-wrapper .sns-item span {
+  width: 60%;
+}
+
+/*===============================
+  日数まとめ
+================================*/
+
+.summary {
+  overflow-x: scroll;
+  white-space: nowrap;
+  margin-top: 10px;
+  display: flex;
+  padding: 30px;
+}
+
+.summary .summary-title {
+  font-size: 20px;
+  position: relative;
+  padding: 15px 0;
+}
+
+.summary .summary-title:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 1px solid #ebebeb;
+  width: 85%;
+  left: 13%;
+}
+
+.summary .cards {
+  display: flex;
+  margin: 0 20px 0 0;
+}
+
+.summary .cards .card {
+  display: inline-block;
+  text-align: center;
+  width: 150px;
+  min-width: 150px;
+  font-size: 14px;
+  border-radius: 10px;
+  background: #799bd1;
+  color: #FFFFFF;
+  margin: 0 12px 0 0;
+}
+
+.summary .cards .card.long {
+  width: 200px;
+  min-width: 200px;
+}
+
+.summary .cards .card.yellow {
+  background: #f0b478;
+}
+
+.summary .cards .card.yellow .card-title {
+  background: #db9e60;
+}
+
+.summary .cards .card.yellow .card-title:before {
+  content: url("/img/icon_day.svg");
+}
+
+.summary .cards .card.red {
+  background: #e88b79;
+}
+
+.summary .cards .card.red .card-title {
+  background: #d57a6a;
+}
+
+.summary .cards .card.red .card-title:before {
+  content: url("/img/icon_camp_place.svg");
+}
+
+.summary .cards .card .card-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 0;
+  background: #6188c7;
+  border-radius: 10px 10px 0 0;
+}
+
+.summary .cards .card .card-title:before {
+  content: url("/img/icon_stay.svg");
+  width: 14px;
+  height: 14px;
+  margin-top: -4px;
+  margin-right: 5px;
+}
+
+.summary .cards .card .card-data {
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: 78px;
+  font-size: 60px;
+}
+
+.summary .cards .card .card-data .unit {
+  font-size: 18px;
+  margin-left: 7px;
+}
+
+.summary .cards .card .card-data .unit.place {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.summary .cards .card .card-data .unit.place span {
+  margin: -3px 0;
+}
+
+.summary .cards .monthly-list {
+  display: flex;
+  color: white;
+}
+
+.summary .cards .monthly-list .list-title {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px 0 0 10px;
+  background: #6188c7;
+  font-size: 14px;
+  padding: 0 25px;
+  position: relative;
+}
+
+.summary .cards .monthly-list .list-title.camping {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.summary .cards .monthly-list .list-title.camping img {
+  margin-bottom: 4px;
+}
+
+.summary .cards .monthly-list .list {
+  display: flex;
+  border-radius: 0 10px 10px 0;
+  background: #799bd1;
+}
+
+.summary .cards .monthly-list .list .item {
+  font-size: 14px;
+  width: 56px;
+  min-width: 56px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.summary .cards .monthly-list .list .item .stays {
+  font-size: 30px;
+}
+
+/*===============================
+	ログ
+================================*/
+
+.tab {
+  margin-top: 35px;
+}
+
+.tab .tab-menu {
+  display: flex;
+}
+
+.tab .tab-menu .tab-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 26px 0;
+  background-color: #ededed;
+  cursor: pointer;
+  color: #1a1a1a;
+}
+
+.tab .tab-menu .tab-item:before {
+  width: 25px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+.tab .tab-menu .tab-item.type-grid:before {
+  content: url("/img/icon_image_bk.svg");
+}
+
+.tab .tab-menu .tab-item.active {
+  background-color: #5c6066;
+  color: #ededed;
+}
+
+.tab .tab-menu .tab-item.active:before {
+  background-color: #5c6066;
+  color: #ededed;
+}
+
+.tab .tab-menu .tab-item.active.type-grid:before {
+  content: url("/img/icon_image_white.svg");
+}
+
+.tab .tab-menu .tab-item.active.type-list:before {
+  content: url("/img/icon_image_white.svg");
+}
+
+.tab .tab-menu .tab-item.type-list:before {
+  content: url("/img/icon_image_bk.svg");
+}
+
+.tab .grid-tab-content .list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tab .grid-tab-content .list .item {
+  width: calc(100% / 3);
+  position: relative;
+  cursor: pointer;
+}
+
+.tab .grid-tab-content .list .item .eye-catch {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.tab .grid-tab-content .date {
+  color: #FFFFFF;
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  font-size: 30px;
+}
+
+.tab .grid-tab-content .date .slash {
+  border: 1px solid #FFFFFF;
+  width: 40px;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 40px;
+  left: 24px;
+}
+
+.tab .grid-tab-content .date .day {
+  position: absolute;
+  top: 40px;
+  left: 48px;
+}
+
+.tab .list-tab-content {
+  margin-bottom: 30px;
+}
+
+.tab .list-tab-content .item {
+  padding: 30px;
+  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.tab .list-tab-content .item:first-child {
+  border-top: 1px solid #ddd;
+}
+
+.tab .list-tab-content .item .title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.tab .list-tab-content .item .date {
+  color: #5e5e5e;
+}
+
+.tab .tab-content {
+  display: none;
+}
+
+.tab .tab-content.show {
+  display: block;
+}
+
+@media screen and (max-width: 480px) {
+  .profile {
+    display: block;
+    padding: 0 10px;
+  }
+
+  .profile .avatar {
+    position: relative;
+    margin: 10px auto;
+  }
+
+  .profile .avatar img {
+    position: relative;
+    top: -40px;
+  }
+
+  .profile .text {
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: -40px;
+  }
+
+  .summary {
+    padding: 10px;
+  }
+
+  .sns-list {
+    margin-top: 50px;
+    margin-bottom: -20px;
+    padding: 10px;
+  }
+
+  .grid-tab-content .date {
+    top: 10px;
+    left: 5px;
+    font-size: 23px;
+  }
+
+  .grid-tab-content .date .slash {
+    width: 35px;
+    top: 35px;
+    left: 19px;
+  }
+
+  .grid-tab-content .date .day {
+    top: 35px;
+    left: 43px;
+  }
+}
+
