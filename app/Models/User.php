@@ -4,12 +4,18 @@ namespace App\Models;
 
 use App\Notifications\PasswordReset;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use SoftDeletes;
+
+    const GENDER_MALE = 1;
+    const GENDER_FEMALE = 2;
+    const GENDER_OTHER = 3;
 
     /**
      * @var string[]
@@ -47,7 +53,7 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function getAvatarPathAttribute(): string
+    public function getDisplayAvatarPathAttribute(): string
     {
         return $this->avatar_path ?? asset('img/default-avatar.png');
     }
@@ -57,9 +63,9 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function getBackgroundPathAttribute(): string
+    public function getDisplayBackgroundPathAttribute(): string
     {
-        return $this->background_path ?? asset('img/default-background.png');
+        return $this->background_path ?? asset('img/default-image.png');
     }
 
     /**

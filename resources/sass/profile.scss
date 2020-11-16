@@ -1,6 +1,19 @@
 /*===============================
   自己紹介
 ================================*/
+.header-image {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    z-index: 1;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
 .profile {
     display: flex;
     padding: 0 30px;
@@ -247,63 +260,8 @@
 	ログ
 ================================*/
 
-.tab {
+.camp-schedules {
     margin-top: 35px;
-
-    .tab-menu {
-        display: flex;
-
-        .tab-item {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 26px 0;
-            background-color: $gray;
-            cursor: pointer;
-            color: #1a1a1a;
-
-            &:before {
-                width: 25px;
-                height: 18px;
-                margin-right: 5px;
-            }
-
-            &.type-grid {
-                &:before {
-                    content: url("/img/icon_image_bk.svg");
-                }
-            }
-
-            &.active {
-                background-color: $gray-dark;
-                color: $gray;
-
-                &:before {
-                    background-color: $gray-dark;
-                    color: $gray;
-                }
-
-                &.type-grid {
-                    &:before {
-                        content: url("/img/icon_image_white.svg");
-                    }
-                }
-
-                &.type-list {
-                    &:before {
-                        content: url("/img/icon_image_white.svg");
-                    }
-                }
-            }
-
-            &.type-list {
-                &:before {
-                    content: url("/img/icon_image_bk.svg");
-                }
-            }
-        }
-    }
 
     .grid-tab-content {
         .list {

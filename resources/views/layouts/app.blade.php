@@ -10,38 +10,17 @@
     <title>キャンログ</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script>
-        $(function () {
-            $('.tab-item').click(function () {
-                //現在activeが付いているクラスからactiveを外す
-                $('.active').removeClass('active');
-
-                //クリックされたタブメニューにactiveクラスを付与。
-                $(this).addClass('active');
-
-                //一旦showクラスを外す
-                $('.show').removeClass('show');
-
-                //クリックしたタブのインデックス番号取得
-                const index = $(this).index();
-
-                //タブのインデックス番号と同じコンテンツにshowクラスをつけて表示する
-                $('.tab-content').eq(index).addClass('show');
-            });
-        });
-    </script>
+    @include('components.js')
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class="container">
-    <header class="header-image">
-        <img src="{{ asset('img/header.jpg') }}">
-    </header>
     <div id="app">
+        @if (empty($isNotHeaderNav))
+            @include('components.header-nav')
+        @endif
         @yield('content')
     </div>
 </div>

@@ -12,4 +12,12 @@ class CampPlace extends Model
      * @var array
      */
     protected $guarded = ['id'];
+
+    /**
+     * @return BelongsTo
+     */
+    public function prefecture(): BelongsTo
+    {
+        return $this->belongsTo(Prefecture::class, 'prefecture_code', 'code');
+    }
 }

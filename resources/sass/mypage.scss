@@ -1,0 +1,49 @@
+/*===============================
+  キャンプ予定
+================================*/
+.camp-schedule {
+    min-height: 500px;
+
+    .content {
+        padding: 10px;
+    }
+
+    .camp-schedule-list {
+        border: 1px solid $black;
+        padding: 10px;
+
+        .camp-schedule-item {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 10px auto;
+
+            .content-part {
+                margin-right: 10px;
+            }
+
+            .eye-catch-image {
+                width: 120px;
+                height: 120px;
+                object-fit: cover;
+            }
+
+            .buttons {
+                margin-left: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 30%;
+
+                .content-part {
+                    width: 50%;
+
+                    a {
+                        margin: 5px 0;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Repositories\User\UserRepositoryInterface;
 
 class ProfileController extends Controller
 {
+    private UserRepositoryInterface $userRepository;
+
     /**
-     * Create a new controller instance.
+     * ProfileController constructor.
      *
-     * @return void
+     * @param UserRepositoryInterface $userRepository
      */
-    public function __construct()
+    public function __construct(UserRepositoryInterface $userRepository)
     {
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -22,6 +25,16 @@ class ProfileController extends Controller
      */
     public function index(string $userName)
     {
-        return view('home');
+        $user = $this->userRepository->getByUserName($userName);
+        if (empty($user)) {
+            abort(404);
+        }
+
+        // 自身のプロフィールでない場合はアクセス数を更新する
+        if ($user->id !== auth()->user()->id) {
+            $this->userRepository->update($user->id, ['access_count' => $user->access_count + 1]);
+        }
+
+        return view('profile', compact('user'));
     }
 }

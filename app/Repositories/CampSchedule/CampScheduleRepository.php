@@ -69,12 +69,14 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
             // 予定登録
             $campSchedule = $this->campSchedule->create($data);
             // 画像登録
-            foreach ($data['images'] as $index => $image) {
-                if (!empty($image)) {
-                    $campSchedule->images()->create([
-                        'image_path' => $image,
-                        'sort' => $index
-                    ]);
+            if (isset($data['images'])) {
+                foreach ($data['images'] as $index => $image) {
+                    if (!empty($image)) {
+                        $campSchedule->images()->create([
+                            'image_path' => $image,
+                            'sort' => $index
+                        ]);
+                    }
                 }
             }
 

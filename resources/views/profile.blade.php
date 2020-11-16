@@ -1,39 +1,68 @@
+@php
+    $isNotHeaderNav = true;
+@endphp
+
 @extends('layouts.app')
 
 @section('content')
 <section>
+    <header class="header-image">
+        <img src="{{ $user->display_background_path }}">
+    </header>
     <div class="profile">
         <div class="avatar">
-            <img src="{{ asset('img/avatar.png') }}">
+            <img class="avatar-img" src="{{ $user->display_avatar_path }}">
         </div>
         <div class="text">
-            <h2 class="name">田中　太郎</h2>
+            <h2 class="name">{{ $user->handle_name }}</h2>
             <div class="self-introduction">
-                <p>性別／男♂　年齢／24歳　キャンプ歴／3年　拠点／埼玉　車／Jeep チェロキー(リバティ)　テント／パンダtc／ケシュアワンタッチテント　スタイル／基本ソロ</p>
-                <p>テキスト</p>
+                <p>
+                    @if (!empty($user->gender))性別／{{ $user->gender }}　@endif
+                    @if (!empty($user->gender))年齢／{{ $user->age }}　@endif
+                    @if (!empty($user->camp_history))キャンプ歴／{{ $user->camp_history }}年　@endif
+                    @if (!empty($user->location))拠点／{{ $user->location }}　@endif
+                </p>
+                <p>
+                    {!! nl2br(e($user->introduction)) !!}
+                </p>
             </div>
         </div>
     </div>
     <div class="sns-list">
         <div class="sns-wrapper">
-            <a class="sns-item" href="#">
-                <img src="{{ asset('img/icon_twitter.svg') }}" class="icon">
-                <span>Twitter</span>
-            </a>
-            <a class="sns-item" href="#"><img src="./img/icon_instagram.svg" class="icon">
-                <span>Instagram</span>
-            </a>
-            <a class="sns-item" href="#"><img src="./img/icon_facebook.svg" class="icon">
-                <span>Facebook</span>
-            </a>
-            <a class="sns-item" href="#"><img src="./img/icon_youtube.svg" class="icon">
-                <span>Youtube</span>
-            </a>
-            <a class="sns-item" href="#"><img src="./img/icon_blog.svg" class="icon">
-                <span>Blog</span>
-            </a>
+            @if (!empty($user->twitter_url))
+                <a class="sns-item" href="{{ $user->twitter_url }}">
+                    <img src="{{ asset('img/icon_twitter.svg') }}" class="icon">
+                    <span>Twitter</span>
+                </a>
+            @endif
+            @if (!empty($user->instagram_url))
+                 <a class="sns-item" href="{{ $user->instagram_url }}">
+                     <img src="./img/icon_instagram.svg" class="icon">
+                     <span>Instagram</span>
+                 </a>
+            @endif
+            @if (!empty($user->facebook_url))
+                 <a class="sns-item" href="{{ $user->facebook_url }}">
+                     <img src="./img/icon_facebook.svg" class="icon">
+                     <span>Facebook</span>
+                 </a>
+            @endif
+            @if (!empty($user->youtube_url))
+                 <a class="sns-item" href="{{ $user->youtube_url }}">
+                     <img src="./img/icon_youtube.svg" class="icon">
+                     <span>Youtube</span>
+                 </a>
+            @endif
+            @if (!empty($user->blog_url))
+                 <a class="sns-item" href="{{ $user->blog_url }}">
+                     <img src="./img/icon_blog.svg" class="icon">
+                     <span>Blog</span>
+                 </a>
+            @endif
         </div>
     </div>
+    <!-- TODO -->
     <div class="summary">
         <div class="summary-wrapper">
             <h2 class="summary-title">2020 ACTIVITY</h2>
@@ -133,10 +162,10 @@
             </div>
         </div>
     </div>
-    <div class="tab">
+    <div class="camp-schedules">
         <ul class="tab-menu">
-            <li class="tab-item type-grid active">GRID</li>
-            <li class="tab-item type-list ">LIST</li>
+            <li class="js-tab-item tab-item type-grid active">GRID</li>
+            <li class="js-tab-item tab-item type-list">LIST</li>
         </ul>
         <div class="grid-tab-content tab-content show">
             <div class="list">
