@@ -4,6 +4,20 @@
     <section class="profile-edit">
         @include('mypage._tab')
         <div class="content">
+
+            <div class="flex-right mx-10">
+                <div class="mx-5">
+                    {!! QrCode::generate(route('profile.index', ['userName' => auth()->user()->name])) !!}
+                </div>
+                <a href="https://twitter.com/share"
+                   target="_blank"
+                   class="twitter-share-button item mx-10"
+                   data-url="{{ route('profile.index', ['userName' => auth()->user()->name]) }}"
+                   data-size="large"
+                   data-text="キャンログでプロフィールを作成しました！">
+                    ツイートする
+                </a>
+            </div>
             <div class="profile-form">
                 <form method="POST">
                     @csrf
@@ -58,75 +72,138 @@
                             @enderror
                         </div>
 
+                        <div class="form-group form-label-group">
+                            <label class="form-label">性別</label>
+                        </div>
                         <div class="form-check-group">
                             <label class="radio-item form-label">
                                 <input type="radio" name="gender" value="{{ \App\Models\User::GENDER_MALE }}"
-                                    {{ old('gender', $user->gender) === \App\Models\User::GENDER_MALE ? 'checked' : '' }}>
+                                    {{ old('gender', $user->gender) == \App\Models\User::GENDER_MALE ? 'checked' : '' }}>
                                 <span>男性</span>
                             </label>
                             <label class="radio-item form-label">
                                 <input type="radio" name="gender" value="{{ \App\Models\User::GENDER_FEMALE }}"
-                                    {{ old('gender', $user->gender) === \App\Models\User::GENDER_FEMALE ? 'checked' : '' }}>
+                                    {{ old('gender', $user->gender) == \App\Models\User::GENDER_FEMALE ? 'checked' : '' }}>
                                 <span>女性</span>
                             </label>
                             <label class="radio-item form-label">
                                 <input type="radio" name="gender" value="{{ \App\Models\User::GENDER_OTHER }}"
-                                    {{ old('gender', $user->gender) === \App\Models\User::GENDER_OTHER ? 'checked' : '' }}>
+                                    {{ old('gender', $user->gender) == \App\Models\User::GENDER_OTHER ? 'checked' : '' }}>
                                 <span>その他</span>
                             </label>
+                        </div>
+                        <div class="form-check-group is-public">
+                            <input type="hidden" name="is_public_gender" value="1" />
+                            <input id="is_public_gender" type="checkbox" name="is_public_gender" value=""
+                                {{ old('is_public_gender', $user->is_public_gender) != 1 ? 'checked' : '' }}/>
+                            <label class="form-check-label" for="is_public_gender">非公開にする</label>
                         </div>
 
                         <div class="form-group">
                             <input id="age" type="number"
                                    name="age" value="{{ old('age', $user->age) }}">
                             <label class="form-label" for="age">年齢</label>
+                            <div class="form-check-group is-public">
+                                <input type="hidden" name="is_public_age" value="1" />
+                                <input id="is_public_age" type="checkbox" name="is_public_age" value=""
+                                    {{ old('is_public_age', $user->is_public_age) != 1 ? 'checked' : '' }}/>
+                                <label class="form-check-label" for="is_public_age">非公開にする</label>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <input id="camp_history" type="number"
                                    name="camp_history" value="{{ old('camp_history', $user->camp_history) }}">
                             <label class="form-label" for="camp_history">キャンプ歴</label>
+                            <div class="form-check-group is-public">
+                                <input type="hidden" name="is_public_camp_history" value="1" />
+                                <input id="is_public_camp_history" type="checkbox" name="is_public_camp_history" value=""
+                                    {{ old('is_public_camp_history', $user->is_public_camp_history) != 1 ? 'checked' : '' }}/>
+                                <label class="form-check-label" for="is_public_camp_history">非公開にする</label>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <input id="location" type="text"
                                    name="location" value="{{ old('location', $user->location) }}">
                             <label class="form-label" for="location">拠点</label>
+                            <div class="form-check-group is-public">
+                                <input type="hidden" name="is_public_location" value="1" />
+                                <input id="is_public_location" type="checkbox" name="is_public_location" value=""
+                                    {{ old('is_public_location', $user->is_public_location) != 1 ? 'checked' : '' }}/>
+                                <label class="form-check-label" for="is_public_location">非公開にする</label>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <textarea name="introduction">{{ old('introduction', $user->introduction) }}</textarea>
                             <label class="form-label" for="introduction">自己紹介</label>
+                            <div class="form-check-group is-public">
+                                <input type="hidden" name="is_public_introduction" value="1" />
+                                <input id="is_public_introduction" type="checkbox" name="is_public_introduction" value=""
+                                    {{ old('is_public_introduction', $user->is_public_introduction) != 1 ? 'checked' : '' }}/>
+                                <label class="form-check-label" for="is_public_introduction">非公開にする</label>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <input id="twitter_url" type="text"
                                    name="twitter_url" value="{{ old('twitter_url', $user->twitter_url) }}">
-                            <label class="form-label" for="twitter_url">Twitter</label>
+                            <label class="form-label" for="twitter_url">Twitter URL</label>
+                            <div class="form-check-group is-public">
+                                <input type="hidden" name="is_public_twitter_url" value="1" />
+                                <input id="is_public_twitter_url" type="checkbox" name="is_public_twitter_url" value=""
+                                    {{ old('is_public_twitter_url', $user->is_public_twitter_url) != 1 ? 'checked' : '' }}/>
+                                <label class="form-check-label" for="is_public_twitter_url">非公開にする</label>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <input id="instagram_url" type="text"
                                    name="instagram_url" value="{{ old('instagram_url', $user->instagram_url) }}">
-                            <label class="form-label" for="instagram_url">Instagram</label>
+                            <label class="form-label" for="instagram_url">Instagram URL</label>
+                            <div class="form-check-group is-public">
+                                <input type="hidden" name="is_public_instagram_url" value="1" />
+                                <input id="is_public_instagram_url" type="checkbox" name="is_public_instagram_url" value=""
+                                    {{ old('is_public_instagram_url', $user->is_public_instagram_url) != 1 ? 'checked' : '' }}/>
+                                <label class="form-check-label" for="is_public_instagram_url">非公開にする</label>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <input id="facebook_url" type="text"
                                    name="facebook_url" value="{{ old('facebook_url', $user->facebook_url) }}">
-                            <label class="form-label" for="facebook_url">Facebook</label>
+                            <label class="form-label" for="facebook_url">Facebook URL</label>
+                            <div class="form-check-group is-public">
+                                <input type="hidden" name="is_public_facebook_url" value="1" />
+                                <input id="is_public_facebook_url" type="checkbox" name="is_public_facebook_url" value=""
+                                    {{ old('is_public_facebook_url', $user->is_public_facebook_url) != 1 ? 'checked' : '' }}/>
+                                <label class="form-check-label" for="is_public_facebook_url">非公開にする</label>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <input id="youtube_url" type="text"
                                    name="youtube_url" value="{{ old('youtube_url', $user->youtube_url) }}">
-                            <label class="form-label" for="youtube_url">Youtube</label>
+                            <label class="form-label" for="youtube_url">Youtube URL</label>
+                            <div class="form-check-group is-public">
+                                <input type="hidden" name="is_public_youtube_url" value="1" />
+                                <input id="is_public_youtube_url" type="checkbox" name="is_public_youtube_url" value=""
+                                    {{ old('is_public_youtube_url', $user->is_public_youtube_url) != 1 ? 'checked' : '' }}/>
+                                <label class="form-check-label" for="is_public_youtube_url">非公開にする</label>
+                            </div>
                         </div>
 
                         <div class="form-group">
                             <input id="blog_url" type="text"
                                    name="blog_url" value="{{ old('blog_url', $user->blog_url) }}">
-                            <label class="form-label" for="blog_url">Blog</label>
+                            <label class="form-label" for="blog_url">Blog URL</label>
+                            <div class="form-check-group is-public">
+                                <input type="hidden" name="is_public_blog_url" value="1" />
+                                <input id="is_public_blog_url" type="checkbox" name="is_public_blog_url" value=""
+                                    {{ old('is_public_blog_url', $user->is_public_blog_url) != 1 ? 'checked' : '' }}/>
+                                <label class="form-check-label" for="is_public_blog_url">非公開にする</label>
+                            </div>
                         </div>
 
                         <div class="form-group">

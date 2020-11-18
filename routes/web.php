@@ -13,32 +13,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/**
- * 認証
- */
-Auth::routes();
+Route::middleware('access-code-check')->group(function() {
+    /**
+     * 認証
+     */
+    Auth::routes();
 
-/**
- * Twitter認証
- */
-Route::get('login/twitter', 'Auth\LoginController@redirectToTwitterProvider');
-Route::get('login/twitter/callback', 'Auth\LoginController@handleTwitterProviderCallback');
+    /**
+     * Twitter認証
+     */
+    Route::get('login/twitter', 'Auth\LoginController@redirectToTwitterProvider');
+    Route::get('login/twitter/callback', 'Auth\LoginController@handleTwitterProviderCallback');
 
-/**
- * ログイン後マイページ
- */
-Route::middleware('auth')->prefix('mypage')->namespace('Mypage')->as('mypage.')->group(function () {
-    // キャンプ予定CRUD
-    Route::resource('/camp-schedules', 'CampScheduleController', ['except' => ['show']]);
-    // プロフィール設定
-    Route::get('/profile', 'ProfileController@edit')->name('profile.edit');
-    Route::put('/profile', 'ProfileController@update')->name('profile.update');
-    // キャンプ場インポート
-    Route::get('/camp-places/import', 'CampPlaceController@import')->name('camp-places.import');
-    Route::post('/camp-places/import', 'CampPlaceController@postImport');
-    Route::get('/access-code', 'AccessCodeController@index');
-    Route::post('/access-code', 'AccessCodeController@create');
+    /**
+     * ログイン後マイページ
+     */
+    Route::middleware('auth')->prefix('mypage')->namespace('Mypage')->as('mypage.')->group(function () {
+        // キャンプ予定CRUD
+        Route::resource('/camp-schedules', 'CampScheduleController', ['except' => ['show']]);
+        // プロフィール設定
+        Route::get('/profile', 'ProfileController@edit')->name('profile.edit');
+        Route::put('/profile', 'ProfileController@update')->name('profile.update');
+        // キャンプ場インポート
+        Route::get('/camp-places/import', 'CampPlaceController@import')->name('camp-places.import');
+        Route::post('/camp-places/import', 'CampPlaceController@postImport');
+        Route::get('/access-code', 'AccessCodeController@index')->name('access-code.index');
+        Route::put('/access-code/{access_code}', 'AccessCodeController@update')->name('access-code.update');
+    });
 });
+
+/**
+ * アクセスコード入力
+ */
+Route::get('/access-code', 'AccessCodeController@index')->name('access-code.index');
+Route::post('/access-code', 'AccessCodeController@check')->name('access-code.check');
 
 /**
  * プロフィール

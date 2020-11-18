@@ -1,3 +1,5 @@
+$md-checkbox-size: 1.25em;
+
 .form-content {
     display: flex;
     flex-direction: column;
@@ -5,20 +7,20 @@
     justify-content: center;
     min-height: 300px;
 
+    .form-label {
+        position: absolute;
+        top: 8px;
+        font: 400 13px Roboto;
+        color: #A9A9A9;
+        cursor: text;
+        transition: 0.2s;
+        left: 0;
+    }
+
     .form-group {
         position: relative;
         width: 100%;
         margin: 10px auto;
-
-        .form-label {
-            position: absolute;
-            top: 8px;
-            font: 400 13px Roboto;
-            color: #A9A9A9;
-            cursor: text;
-            transition: 0.2s;
-            left: 0;
-        }
 
         input {
             background: linear-gradient(to bottom, transparent 92%, $yellow 8%) no-repeat;
@@ -194,6 +196,62 @@
                 }
             }
         }
+
+        .form-check-label {
+            vertical-align: top;
+            padding-left: 1px;
+            font-size: .8rem;
+
+            &:not(:empty) {
+                padding-left: .75em;
+            }
+
+            &:before, &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            &:before {
+                width: $md-checkbox-size;
+                height: $md-checkbox-size;
+                background: #fff;
+                border: 2px solid $green;
+                border-radius: 0.125em;
+                cursor: pointer;
+                transition: background .3s;
+            }
+        }
+
+        input[type="checkbox"] {
+            outline: 0;
+            visibility: hidden;
+            width: $md-checkbox-size;
+            margin: 0;
+            display: block;
+            float: left;
+            font-size: inherit;
+
+            &:checked {
+                + label:before{
+                    background: $green;
+                    border:none;
+                }
+                + label:after {
+
+                    $md-checkmark-size: $md-checkbox-size - 2 * .25em;
+
+                    transform: translate(0.2em, 0.3em) rotate(-45deg);
+                    width: $md-checkmark-size;
+                    height: $md-checkmark-size / 2;
+
+                    border: 0.125em solid $white;
+                    border-top-style: none;
+                    border-right-style: none;
+                }
+            }
+        }
     }
 
     .form-buttons {
@@ -211,12 +269,17 @@
     .file-area {
         margin-top: 35px;
     }
+
+    .is-public {
+        margin-left: 10px;
+    }
 }
 
 .login-form,
 .register-form,
 .profile-form,
-.camp-schedule-form {
+.camp-schedule-form,
+.access-code-form {
     width: 70%;
     min-height: 300px;
     margin: 0 auto;

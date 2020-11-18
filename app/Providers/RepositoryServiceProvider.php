@@ -29,8 +29,8 @@ class RepositoryServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-            \App\Repositories\AccessToken\AccessTokenRepositoryInterface::class,
-            \App\Repositories\AccessToken\AccessTokenRepository::class
+            \App\Repositories\AccessCode\AccessCodeRepositoryInterface::class,
+            \App\Repositories\AccessCode\AccessCodeRepository::class
         );
     }
 

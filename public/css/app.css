@@ -86,6 +86,7 @@ ul {
 
 .flex-right {
   display: flex;
+  justify-content: flex-end;
 }
 
 .flex-right .item {
@@ -138,6 +139,14 @@ ul {
 
 .my-5 {
   margin: 5px auto;
+}
+
+.mx-10 {
+  margin: auto 10px;
+}
+
+.mx-5 {
+  margin: auto 5px;
 }
 
 .tab-menu {
@@ -206,6 +215,10 @@ ul {
   color: #FFFFFF;
 }
 
+.flash-message .error {
+  background: #f0b478;
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -213,7 +226,7 @@ ul {
   align-items: center;
 }
 
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1024px) {
   .container {
     max-width: 100%;
   }
@@ -227,13 +240,7 @@ ul {
   min-height: 300px;
 }
 
-.form-content .form-group {
-  position: relative;
-  width: 100%;
-  margin: 10px auto;
-}
-
-.form-content .form-group .form-label {
+.form-content .form-label {
   position: absolute;
   top: 8px;
   font: 400 13px Roboto;
@@ -241,6 +248,12 @@ ul {
   cursor: text;
   transition: 0.2s;
   left: 0;
+}
+
+.form-content .form-group {
+  position: relative;
+  width: 100%;
+  margin: 10px auto;
 }
 
 .form-content .form-group input {
@@ -424,6 +437,58 @@ ul {
   transition: transform 0.2s;
 }
 
+.form-content .form-check-group .form-check-label {
+  vertical-align: top;
+  padding-left: 1px;
+  font-size: 0.8rem;
+}
+
+.form-content .form-check-group .form-check-label:not(:empty) {
+  padding-left: 0.75em;
+}
+
+.form-content .form-check-group .form-check-label:before,
+.form-content .form-check-group .form-check-label:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.form-content .form-check-group .form-check-label:before {
+  width: 1.25em;
+  height: 1.25em;
+  background: #fff;
+  border: 2px solid #62b882;
+  border-radius: 0.125em;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.form-content .form-check-group input[type=checkbox] {
+  outline: 0;
+  visibility: hidden;
+  width: 1.25em;
+  margin: 0;
+  display: block;
+  float: left;
+  font-size: inherit;
+}
+
+.form-content .form-check-group input[type=checkbox]:checked + label:before {
+  background: #62b882;
+  border: none;
+}
+
+.form-content .form-check-group input[type=checkbox]:checked + label:after {
+  transform: translate(0.2em, 0.3em) rotate(-45deg);
+  width: 0.75em;
+  height: 0.375em;
+  border: 0.125em solid #FFFFFF;
+  border-top-style: none;
+  border-right-style: none;
+}
+
 .form-content .form-buttons {
   display: flex;
   flex-direction: column;
@@ -445,10 +510,15 @@ ul {
   margin-top: 35px;
 }
 
+.form-content .is-public {
+  margin-left: 10px;
+}
+
 .login-form,
 .register-form,
 .profile-form,
-.camp-schedule-form {
+.camp-schedule-form,
+.access-code-form {
   width: 70%;
   min-height: 300px;
   margin: 0 auto;
@@ -501,7 +571,6 @@ ul {
 }
 
 .profile .self-introduction {
-  height: 64px;
   font-size: 14px;
 }
 
@@ -734,12 +803,23 @@ ul {
   cursor: pointer;
 }
 
+.camp-schedules .grid-tab-content .list .item:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
 .camp-schedules .grid-tab-content .list .item .eye-catch {
+  position: absolute;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .camp-schedules .grid-tab-content .date {
@@ -763,10 +843,6 @@ ul {
   position: absolute;
   top: 40px;
   left: 48px;
-}
-
-.camp-schedules .list-tab-content {
-  margin-bottom: 30px;
 }
 
 .camp-schedules .list-tab-content .item {
@@ -831,19 +907,19 @@ ul {
     padding: 10px;
   }
 
-  .grid-tab-content .date {
+  .camp-schedules .grid-tab-content .date {
     top: 10px;
     left: 5px;
     font-size: 23px;
   }
 
-  .grid-tab-content .date .slash {
+  .camp-schedules .grid-tab-content .date .slash {
     width: 35px;
     top: 35px;
     left: 19px;
   }
 
-  .grid-tab-content .date .day {
+  .camp-schedules .grid-tab-content .date .day {
     top: 35px;
     left: 43px;
   }
@@ -899,6 +975,21 @@ ul {
 
 .camp-schedule .camp-schedule-list .camp-schedule-item .buttons .content-part a {
   margin: 5px 0;
+}
+
+/*===============================
+  アクセスコード
+================================*/
+
+.access-code {
+  color: #62b882;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.copy {
+  margin: 15px;
+  width: 80%;
 }
 
 .popup {

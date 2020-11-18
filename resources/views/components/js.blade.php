@@ -33,5 +33,20 @@
             $(this).parents('.js-popup').fadeOut();
             return false;
         });
+
+        /**
+         * Twitter
+         */
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
     });
+
+    function copyToClipboard(id) {
+        let range = document.createRange();
+        let text = document.getElementById(id);
+        range.selectNodeContents(text);
+        let selection = document.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand("Copy");
+    }
 </script>

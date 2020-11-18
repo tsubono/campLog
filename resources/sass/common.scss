@@ -84,6 +84,8 @@ ul {
 
 .flex-right {
     display: flex;
+    justify-content: flex-end;
+
     .item {
         margin: 20px 0 20px auto;
         max-width: 200px;
@@ -134,6 +136,14 @@ ul {
 
 .my-5 {
     margin: 5px auto;
+}
+
+.mx-10 {
+    margin: auto 10px;
+}
+
+.mx-5 {
+    margin: auto 5px;
 }
 
 .tab-menu {
@@ -206,6 +216,10 @@ ul {
     text-align: center;
     background: $green;
     color: $white;
+
+    .error {
+        background: $yellow;
+    }
 }
 
 .flex-column {
@@ -215,7 +229,7 @@ ul {
     align-items: center;
 }
 
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1024px) {
     .container {
         max-width: 100%;
     }

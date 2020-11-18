@@ -2,27 +2,60 @@
 
 namespace App\Http\Controllers\Mypage;
 
+use App\Models\AccessCode;
+use App\Repositories\AccessCode\AccessCodeRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AccessCodeController extends Controller
 {
+    private AccessCodeRepositoryInterface $accessCodeRepository;
+
     /**
-     * Create a new controller instance.
+     * AccessCodeController constructor.
      *
-     * @return void
+     * @param AccessCodeRepositoryInterface $accessCodeRepository
      */
-    public function __construct()
+    public function __construct(AccessCodeRepositoryInterface $accessCodeRepository)
     {
+        $this->accessCodeRepository = $accessCodeRepository;
     }
 
     /**
-     * Show the application dashboard.
+     * アクセスコード設定画面
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\View\View
      */
     public function index()
     {
-        return view('home');
+        // 管理者チェック
+        if (!auth()->user()->admin_flg) {
+            abort(404);
+        }
+        $accessCode = $this->accessCodeRepository->find();
+
+        return view('mypage.access-code.index', compact('accessCode'));
+    }
+
+    /**
+     * アクセスコード設定更新
+     *
+     * @param AccessCode $accessCode
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(AccessCode $accessCode, Request $request)
+    {
+        // 管理者チェック
+        if (!auth()->user()->admin_flg) {
+            abort(404);
+        }
+
+        $data = $request->all();
+        if (!empty($data['updateCode'])) {
+            $data['code'] = uniqid('', true);
+        }
+        $this->accessCodeRepository->update($accessCode->id, $data);
+
+        return redirect(route('mypage.access-code.index'))->with('message', '更新しました');
     }
 }

@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CampPlace extends Model
 {
+    public $timestamps = false;
+
     /**
      * @var array
      */
