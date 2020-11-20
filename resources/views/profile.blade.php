@@ -142,7 +142,7 @@
                 @foreach ($user->campSchedulesDesc as $campSchedule)
                     <li class="item">
                         <p class="date">{{ $campSchedule->date->format('Y-m-d') }}</p>
-                        <p class="title">{{ $campSchedule->title }}</p>
+                        <p class="title">{{ $campSchedule->place->name }}</p>
                     </li>
                 @endforeach
             </ul>

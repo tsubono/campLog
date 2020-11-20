@@ -18,18 +18,6 @@
 </div>
 
 <div class="form-group">
-    <input id="title" type="text" class="@error('title') is-invalid @enderror"
-           name="title" value="{{ old('title', $campSchedule->title) }}">
-    <label class="form-label" for="title">タイトル<span class="require">*</span></label>
-
-    @error('title')
-    <div class="text-error my-5">
-        <strong>{{ $message }}</strong>
-    </div>
-    @enderror
-</div>
-
-<div class="form-group">
     <input id="number_of_stay" type="number" class="@error('number_of_stay') is-invalid @enderror"
            name="number_of_stay" value="{{ old('number_of_stay', $campSchedule->number_of_stay) }}">
     <label class="form-label" for="number_of_stay">泊数 (0の場合はデイになります)</label>
@@ -42,32 +30,8 @@
 </div>
 
 <div class="form-group">
-    <input id="url" type="text" class="@error('url') is-invalid @enderror"
-           name="url" value="{{ old('url', $campSchedule->url) }}">
-    <label class="form-label" for="url">URL</label>
-</div>
-
-<div class="form-group">
-    <textarea name="cancel_note">{{ old('cancel_note', $campSchedule->cancel_note) }}</textarea>
-    <label class="form-label" for="cancel_note">キャンセル規程</label>
-</div>
-
-<div class="form-group">
-    <input id="in" type="time" class="@error('in') is-invalid @enderror"
-           name="in" value="{{ old('in', $campSchedule->in) }}">
-    <label class="form-label" for="in">イン</label>
-</div>
-
-<div class="form-group">
-    <input id="out" type="time" class="@error('out') is-invalid @enderror"
-           name="out" value="{{ old('out', $campSchedule->out) }}">
-    <label class="form-label" for="out">アウト</label>
-</div>
-
-<div class="form-group">
-    <input id="tel_number" type="text" class="@error('tel_number') is-invalid @enderror"
-           name="tel_number" value="{{ old('tel_number', $campSchedule->tel_number) }}">
-    <label class="form-label" for="tel_number">電話番号</label>
+    <textarea name="note">{{ old('note', $campSchedule->note) }}</textarea>
+    <label class="form-label" for="cancel_note">備考</label>
 </div>
 
 <div class="form-group">

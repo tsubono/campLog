@@ -15,7 +15,6 @@
                         <img class="eye-catch-image content-part" src="{{ $campSchedule->eye_catch_image_path }}" alt="アイキャッチ画像" />
                         <div class="content-part">{{ $campSchedule->date->format('Y.m.d') }}</div>
                         <div class="content-part">{{ $campSchedule->place->name }}</div>
-                        <div class="content-part">{{ $campSchedule->place->prefecture->name }}</div>
                         <div class="content-part">{{ $campSchedule->number_of_stay_text }}</div>
                         <div class="buttons">
                             <a class="btn default-btn content-part js-show-popup" data-id="campScheduleShowPopup-{{ $campSchedule->id }}">詳細</a>

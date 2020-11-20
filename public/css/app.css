@@ -542,7 +542,8 @@ ul {
 .register-form,
 .profile-form,
 .camp-schedule-form,
-.access-code-form {
+.access-code-form,
+.import-form {
   width: 70%;
   min-height: 300px;
   margin: 0 auto;
@@ -1103,8 +1104,33 @@ ul {
 
 .camp-schedule-show .camp-schedule-show-wrapper .camp-schedule-show .item .item-value.images img {
   width: 100px;
+  height: 100px;
   margin: 5px;
   -o-object-fit: cover;
      object-fit: cover;
+  cursor: pointer;
+}
+
+.image-modal-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100% !important;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.image-modal-bg img {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 90%;
+  max-height: 90%;
+  height: 90%;
 }
 

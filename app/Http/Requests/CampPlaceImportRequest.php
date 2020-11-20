@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CampScheduleRequest extends FormRequest
+class CampPlaceImportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,14 @@ class CampScheduleRequest extends FormRequest
     public function rules()
     {
         return [
-            'camp_place_id' => 'required',
-            'date' => 'required|date',
+            'csv_file' => 'required|mimes:csv,txt',
         ];
     }
 
     public function attributes()
     {
         return [
-			'camp_place_id' => 'キャンプ場',
-			'date' => '日付',
+			'csv_file' => 'CSVファイル',
         ];
     }
 }

@@ -14,6 +14,11 @@
         {{ session('message') }}
     </div>
 @endif
+@if (session('message-error'))
+    <div class="flash-message error">
+        {{ session('message-error') }}
+    </div>
+@endif
 @if ($errors->any())
     <div class="flash-message error">
         入力内容を確認してください

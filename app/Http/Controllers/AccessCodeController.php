@@ -3,10 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AccessCodeRequest;
-use App\Models\AccessCode;
 use App\Repositories\AccessCode\AccessCodeRepositoryInterface;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class AccessCodeController extends Controller
 {
