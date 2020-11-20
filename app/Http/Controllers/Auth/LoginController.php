@@ -76,6 +76,7 @@ class LoginController extends Controller
                 'handle_name' => $user->name,
                 'avatar_path' => $user->avatar_original,
                 'background_path' => $user['profile_banner_url'],
+                'introduction' => $user['description'],
                 'email' => $user->email
             ]
         );

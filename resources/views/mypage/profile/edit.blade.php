@@ -22,6 +22,10 @@
                     @csrf
                     @method('PUT')
 
+                    @if (!empty($user->twitter_token))
+                        <input type="hidden" name="twitter_token" value="{{ $user->twitter_token }}" />
+                    @endif
+
                     <div class="form-content">
                         <div class="form-group">
                             <label class="form-label" for="avatar_path">アバター画像</label>

@@ -17,8 +17,8 @@
             <h2 class="name">{{ $user->handle_name }}</h2>
             <div class="self-introduction">
                 <p>
-                    @if (!empty($user->gender) && $user->is_public_gender)性別／{{ $user->gender }}　@endif
-                    @if (!empty($user->age) && $user->is_public_age)年齢／{{ $user->age }}　@endif
+                    @if (!empty($user->gender) && $user->is_public_gender)性別／{{ $user->gender_txt }}　@endif
+                    @if (!empty($user->age) && $user->is_public_age)年齢／{{ $user->age }}歳　@endif
                     @if (!empty($user->camp_history) && $user->is_public_camp_history)キャンプ歴／{{ $user->camp_history }}年　@endif
                     @if (!empty($user->location) && $user->is_public_location)拠点／{{ $user->location }}　@endif
                 </p>

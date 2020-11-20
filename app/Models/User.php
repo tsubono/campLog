@@ -131,4 +131,23 @@ class User extends Authenticatable
 
         return $summary;
     }
+
+    /**
+     * 性別テキストを取得する
+     *
+     * @return string
+     */
+    public function getGenderTxtAttribute(): string
+    {
+        switch ($this->gender) {
+            case self::GENDER_MALE:
+                return '男性';
+            case self::GENDER_FEMALE:
+                return '女性';
+            case self::GENDER_OTHER:
+                return 'その他';
+            default:
+                return '';
+        }
+    }
 }
