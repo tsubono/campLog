@@ -92,6 +92,11 @@ ul {
     }
 }
 
+.flex-left {
+    display: flex;
+    justify-content: flex-start;
+}
+
 .header-nav {
     background: $red;
     color: $white;
@@ -105,7 +110,7 @@ ul {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 35%;
+        width: 45%;
 
         a {
             margin: 0 10px;
@@ -217,7 +222,7 @@ ul {
     background: $green;
     color: $white;
 
-    .error {
+    &.error {
         background: $yellow;
     }
 }
@@ -227,6 +232,25 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.auth-btn {
+    margin-right: 16px;
+    border-radius: 4px;
+    background: $white;
+    text-decoration: none;
+    font-size: 14px;
+    box-shadow: 0 0 8px gray;
+    border: 1px solid $blue;
+    color: $blue;
+    padding: 10px;
+
+    img {
+        margin-right: auto;
+        width: 20px;
+        position: relative;
+        top: 4px;
+    }
 }
 
 @media screen and (max-width: 1024px) {

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -40,25 +42,54 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * Twitter認証へリダイレクトする
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function redirectToTwitterProvider()
     {
         return Socialite::driver('twitter')->redirect();
     }
 
+    /**
+     * Twitter認証リダイレクトCallback
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function handleTwitterProviderCallback(){
 
         try {
             $user = Socialite::with("twitter")->user();
         }
         catch (\Exception $e) {
-            return redirect('/login')->with('oauth_error', 'ログインに失敗しました');
-            // エラーならログイン画面へ転送
+            return redirect('/login')->with('error-message', 'ログインに失敗しました');
         }
 
-        $myinfo = User::firstOrCreate(['token' => $user->token ],
-            ['name' => $user->nickname,'email' => $user->getEmail()]);
-        Auth::login($myinfo);
-        return redirect()->to('/'); // homeへ転送
+        $registerUser = User::firstOrCreate(
+            [
+                'twitter_token' => $user->token
+            ],
+            [
+                'twitter_token' => $user->token,
+                'name' => $user->nickname,
+                'handle_name' => $user->name,
+                'avatar_path' => $user->avatar_original,
+                'background_path' => $user['profile_banner_url'],
+                'email' => $user->email
+            ]
+        );
+        Auth::login($registerUser);
 
+        return redirect()->to('/mypage/profile');
+    }
+
+    /**
+     * ログアウト後の遷移先を指定
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function loggedOut()
+    {
+        return redirect(route('login'));
     }
 }

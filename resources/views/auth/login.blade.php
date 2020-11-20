@@ -7,10 +7,13 @@
                 <h2>ログイン</h2>
 
                 <div class="flex-right">
-                    <a class="btn primary-btn item">Twitterで認証</a>
+                    <a class="auth-btn item" href="{{ route('twitter.auth') }}">
+                        <img src="{{ asset('img/icon_twitter.svg') }}" />
+                        <span>Twitterで認証</span>
+                    </a>
                 </div>
 
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login') }}" >
                     @csrf
 
                     <div class="form-content">

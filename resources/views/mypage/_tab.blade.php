@@ -14,3 +14,8 @@
         {{ session('message') }}
     </div>
 @endif
+@if ($errors->any())
+    <div class="flash-message error">
+        入力内容を確認してください
+    </div>
+@endif

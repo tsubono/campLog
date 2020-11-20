@@ -4,7 +4,6 @@
     <section class="profile-edit">
         @include('mypage._tab')
         <div class="content">
-
             <div class="flex-right mx-10">
                 <div class="mx-5">
                     {!! QrCode::generate(route('profile.index', ['userName' => auth()->user()->name])) !!}
@@ -235,6 +234,12 @@
                             <button class="btn primary-btn" type="submit">更新する</button>
                         </div>
                     </div>
+                </form>
+            </div>
+            <div class="flex-right">
+                <a class="btn default-btn logout-btn" onclick="document.logoutForm.submit()">ログアウト</a>
+                <form action="{{ route('logout') }}" name="logoutForm" method="post">
+                    @csrf
                 </form>
             </div>
         </div>

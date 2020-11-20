@@ -94,6 +94,11 @@ ul {
   max-width: 200px;
 }
 
+.flex-left {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .header-nav {
   background: #e88b79;
   color: #FFFFFF;
@@ -108,7 +113,7 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 35%;
+  width: 45%;
 }
 
 .header-nav .right a {
@@ -215,7 +220,7 @@ ul {
   color: #FFFFFF;
 }
 
-.flash-message .error {
+.flash-message.error {
   background: #f0b478;
 }
 
@@ -224,6 +229,25 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.auth-btn {
+  margin-right: 16px;
+  border-radius: 4px;
+  background: #FFFFFF;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 0 8px gray;
+  border: 1px solid #799bd1;
+  color: #799bd1;
+  padding: 10px;
+}
+
+.auth-btn img {
+  margin-right: auto;
+  width: 20px;
+  position: relative;
+  top: 4px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -990,6 +1014,11 @@ ul {
 .copy {
   margin: 15px;
   width: 80%;
+}
+
+.logout-btn {
+  width: 100px;
+  margin-top: 30px;
 }
 
 .popup {

@@ -22,7 +22,7 @@ Route::middleware('access-code-check')->group(function() {
     /**
      * Twitter認証
      */
-    Route::get('login/twitter', 'Auth\LoginController@redirectToTwitterProvider');
+    Route::get('login/twitter', 'Auth\LoginController@redirectToTwitterProvider')->name('twitter.auth');
     Route::get('login/twitter/callback', 'Auth\LoginController@handleTwitterProviderCallback');
 
     /**

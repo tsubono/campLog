@@ -7,7 +7,10 @@
                 <h2>新規登録</h2>
 
                 <div class="flex-right">
-                    <a class="btn primary-btn item" href="">Twitterで登録</a>
+                    <a class="auth-btn item" href="{{ route('twitter.auth') }}">
+                        <img src="{{ asset('img/icon_twitter.svg') }}" />
+                        <span>Twitterで登録</span>
+                    </a>
                 </div>
 
                 <form method="POST" action="{{ route('register') }}">
