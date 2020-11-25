@@ -86,7 +86,7 @@ class User extends Authenticatable
      */
     public function getCampSchedulesDescAttribute(): Collection
     {
-        return $this->campSchedules()->orderBy('date', 'desc')->get();
+        return $this->campSchedules()->where('is_public', true)->orderBy('date', 'desc')->get();
     }
 
     /**
