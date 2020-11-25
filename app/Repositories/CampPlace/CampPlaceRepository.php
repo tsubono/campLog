@@ -31,6 +31,16 @@ class CampPlaceRepository implements CampPlaceRepositoryInterface
     }
 
     /**
+     * 1件取得する
+     *
+     * @param string $name
+     */
+    public function findByName(string $name)
+    {
+        return $this->campPlace->query()->where('name', $name)->first();
+    }
+
+    /**
      * 登録する
      *
      * @param array $data
@@ -42,6 +52,29 @@ class CampPlaceRepository implements CampPlaceRepositoryInterface
         DB::beginTransaction();
         try {
             $this->campPlace->create($data);
+
+            DB::commit();
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            Log::error($e->getMessage());
+            throw new \Exception($e);
+        }
+    }
+
+    /**
+     * 更新する
+     *
+     * @param int $id
+     * @param array $data
+     * @throws \Exception
+     */
+    public function update(int $id, array $data): void
+    {
+        DB::beginTransaction();
+        try {
+            $campPlace = $this->campPlace->findOrFail($id);
+            $campPlace->update($data);
 
             DB::commit();
 

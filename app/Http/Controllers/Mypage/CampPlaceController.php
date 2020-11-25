@@ -75,7 +75,12 @@ class CampPlaceController extends Controller
 
         // DB登録
         foreach ($csvArray as $index => $data) {
-            $this->campPlaceRepository->store($data);
+            $campPlace = $this->campPlaceRepository->findByName($data['name']);
+            if (empty($campPlace)) {
+                $this->campPlaceRepository->store($data);
+            } else {
+                $this->campPlaceRepository->update($campPlace->id, $data);
+            }
         }
 
         return redirect(route('mypage.camp-places.import'))->with('message', 'インポートが完了しました');

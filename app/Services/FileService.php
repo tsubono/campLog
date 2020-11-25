@@ -19,21 +19,28 @@ class FileService
     {
         $csvArray = [];
         $temporary = $csv->store($dir);
-        $fp = fopen(storage_path('app/') . $temporary, 'r');
-        $headers = fgetcsv($fp);
+        $file = new \SplFileObject(storage_path('app/') . $temporary);
+        $file->setFlags(
+            \SplFileObject::READ_CSV |
+            \SplFileObject::READ_AHEAD |
+            \SplFileObject::SKIP_EMPTY |
+            \SplFileObject::DROP_NEW_LINE
+        );
 
-        $i = 0;
-        while ($row = fgetcsv($fp)) {
-            mb_convert_variables('UTF-8', 'SJIS-win', $row);
-            foreach ($headers as $index => $column_name) {
-                if (!isset($row[$index])) {
-                    Log::info($index);
-                    $csvArray = false;
-                    break;
-                }
-                $csvArray[$i][$columns[$index]] = $row[$index];
+        $headers = $file->fgetcsv();
+        mb_convert_variables('UTF-8', 'sjis-win', $headers);
+
+        foreach ($file as $rowIndex => $row) {
+            // 文字コードを UTF-8 へ変換
+            mb_convert_variables('UTF-8', 'sjis-win', $row);
+
+            if ($rowIndex === 0) {
+                continue;
             }
-            $i++;
+
+            foreach ($headers as $headerIndex => $column_name) {
+                $csvArray[$rowIndex][$columns[$headerIndex]] = $row[$headerIndex] ?? '';
+            }
         }
 
         return $csvArray;
