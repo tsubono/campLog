@@ -56,7 +56,7 @@
                         <div class="form-group">
                             <input id="password-confirmation" type="password"
                                    name="password_confirmation">
-                            <label for="password-confirmation">パスワード (確認用)</label>
+                            <label class="form-label" for="password-confirmation">パスワード (確認用)</label>
                         </div>
 
                         <div class="form-buttons">

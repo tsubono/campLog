@@ -18,6 +18,7 @@ Route::middleware('access-code-check')->group(function() {
      * 認証
      */
     Auth::routes();
+    Route::get('/', 'Auth\RegisterController@showRegistrationForm')->name('register');
 
     /**
      * Twitter認証
