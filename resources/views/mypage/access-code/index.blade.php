@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="profile-edit">
+    <section class="access-code-section">
         @include('mypage._tab')
         <div class="content">
             <div class="access-code-form">

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="camp-schedule">
+    <section class="camp-schedule-section">
         @include('mypage._tab')
         <div class="content">
             <h2>キャンプ予定一覧</h2>

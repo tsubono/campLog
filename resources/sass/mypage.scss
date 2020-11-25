@@ -1,7 +1,7 @@
 /*===============================
   キャンプ予定
 ================================*/
-.camp-schedule {
+.camp-schedule-section {
     min-height: 500px;
 
     .content {
@@ -49,6 +49,16 @@
 }
 
 /*===============================
+  プロフィール設定
+================================*/
+.profile-edit-section {
+    .top-content {
+        margin: 10px;
+        align-items: center;
+    }
+}
+
+/*===============================
   アクセスコード
 ================================*/
 .access-code {
@@ -66,3 +76,41 @@
     width: 100px;
     margin-top: 30px;
 }
+
+@media screen and (max-width: 480px) {
+    .profile-edit-section {
+        .top-content {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-form {
+            width: 90%;
+        }
+    }
+
+    .camp-schedule-section {
+        .camp-schedule-form {
+            width: 90%;
+        }
+
+        .camp-schedule-list {
+            .camp-schedule-item {
+                flex-direction: column;
+
+                .content-part {
+                    margin: 10px auto;
+                }
+
+                .buttons {
+                    width: 100%;
+
+                    .content-part {
+                        width: 45%;
+                    }
+                }
+            }
+        }
+    }
+}
+

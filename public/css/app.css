@@ -261,6 +261,21 @@ ul {
   }
 }
 
+@media screen and (max-width: 480px) {
+  .header-nav {
+    display: block;
+  }
+
+  .header-nav h1 {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .header-nav .right {
+    width: 100%;
+  }
+}
+
 .form-content {
   display: flex;
   flex-direction: column;
@@ -959,20 +974,20 @@ ul {
   キャンプ予定
 ================================*/
 
-.camp-schedule {
+.camp-schedule-section {
   min-height: 500px;
 }
 
-.camp-schedule .content {
+.camp-schedule-section .content {
   padding: 10px;
 }
 
-.camp-schedule .camp-schedule-list {
+.camp-schedule-section .camp-schedule-list {
   border: 1px solid #1A1A1A;
   padding: 10px;
 }
 
-.camp-schedule .camp-schedule-list .camp-schedule-item {
+.camp-schedule-section .camp-schedule-list .camp-schedule-item {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -980,18 +995,18 @@ ul {
   margin: 10px auto;
 }
 
-.camp-schedule .camp-schedule-list .camp-schedule-item .content-part {
+.camp-schedule-section .camp-schedule-list .camp-schedule-item .content-part {
   margin-right: 10px;
 }
 
-.camp-schedule .camp-schedule-list .camp-schedule-item .eye-catch-image {
+.camp-schedule-section .camp-schedule-list .camp-schedule-item .eye-catch-image {
   width: 120px;
   height: 120px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.camp-schedule .camp-schedule-list .camp-schedule-item .buttons {
+.camp-schedule-section .camp-schedule-list .camp-schedule-item .buttons {
   margin-left: auto;
   display: flex;
   justify-content: center;
@@ -999,12 +1014,21 @@ ul {
   width: 30%;
 }
 
-.camp-schedule .camp-schedule-list .camp-schedule-item .buttons .content-part {
+.camp-schedule-section .camp-schedule-list .camp-schedule-item .buttons .content-part {
   width: 50%;
 }
 
-.camp-schedule .camp-schedule-list .camp-schedule-item .buttons .content-part a {
+.camp-schedule-section .camp-schedule-list .camp-schedule-item .buttons .content-part a {
   margin: 5px 0;
+}
+
+/*===============================
+  プロフィール設定
+================================*/
+
+.profile-edit-section .top-content {
+  margin: 10px;
+  align-items: center;
 }
 
 /*===============================
@@ -1025,6 +1049,37 @@ ul {
 .logout-btn {
   width: 100px;
   margin-top: 30px;
+}
+
+@media screen and (max-width: 480px) {
+  .profile-edit-section .top-content {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile-edit-section .profile-form {
+    width: 90%;
+  }
+
+  .camp-schedule-section .camp-schedule-form {
+    width: 90%;
+  }
+
+  .camp-schedule-section .camp-schedule-list .camp-schedule-item {
+    flex-direction: column;
+  }
+
+  .camp-schedule-section .camp-schedule-list .camp-schedule-item .content-part {
+    margin: 10px auto;
+  }
+
+  .camp-schedule-section .camp-schedule-list .camp-schedule-item .buttons {
+    width: 100%;
+  }
+
+  .camp-schedule-section .camp-schedule-list .camp-schedule-item .buttons .content-part {
+    width: 45%;
+  }
 }
 
 .popup {
@@ -1137,5 +1192,11 @@ ul {
   max-width: 90%;
   max-height: 90%;
   height: 90%;
+}
+
+@media screen and (max-width: 480px) {
+  .popup-content {
+    width: 95% !important;
+  }
 }
 

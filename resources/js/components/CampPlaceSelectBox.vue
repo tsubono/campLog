@@ -64,7 +64,6 @@ export default {
     props: ['items', 'defaultName', 'defaultId'],
     computed: {
         inputName() {
-            debugger
             return this.selectedCampPlaceName != null ? this.selectedCampPlaceName : this.defaultName;
         },
         inputId() {

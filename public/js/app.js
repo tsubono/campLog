@@ -1977,7 +1977,6 @@ __webpack_require__.r(__webpack_exports__);
   props: ['items', 'defaultName', 'defaultId'],
   computed: {
     inputName: function inputName() {
-      debugger;
       return this.selectedCampPlaceName != null ? this.selectedCampPlaceName : this.defaultName;
     },
     inputId: function inputId() {

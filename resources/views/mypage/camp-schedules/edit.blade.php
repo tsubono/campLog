@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="profile-edit">
+    <section class="camp-schedule-section">
         @include('mypage._tab')
         <div class="content">
             <div class="camp-schedule-form">

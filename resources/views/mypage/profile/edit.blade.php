@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="profile-edit">
+    <section class="profile-edit-section">
         @include('mypage._tab')
         <div class="content">
-            <div class="flex-right mx-10">
+            閲覧: {{ auth()->user()->access_count }}
+            <div class="flex-right mx-10 top-content">
                 <div class="mx-5">
                     {!! QrCode::generate(route('profile.index', ['userName' => auth()->user()->name])) !!}
                 </div>
