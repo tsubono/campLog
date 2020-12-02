@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
                         'name' => 'admin',
                         'handle_name' => 'admin',
                         'email' => 'admin@test.com',
-                        'password' => \Hash::make('xTFR4u/*v8QB'),
+                        'password' => \Hash::make('test'),
                         'admin_flg' => 1,
                         'created_at' => $now,
                         'updated_at' => $now,
