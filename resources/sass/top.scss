@@ -1,0 +1,132 @@
+.top-section {
+    text-align: center;
+
+    .head {
+        img {
+            width: 300px;
+        }
+    }
+
+    .top-content {
+        position: relative;
+        backdrop-filter: blur(2px);
+
+        .bg-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            backdrop-filter: blur(2px);
+            padding: 100px;
+            align-items: center;
+
+            a {
+                margin: 0 10px;
+                width: 200px;
+                height: 60px;
+                font-size: 1.3rem;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .middle-content {
+        background: $gray;
+        position: relative;
+        top: -10px;
+        padding-bottom: 30px;
+
+        .description {
+            padding: 30px 0 20px 0;
+            font-size: 1.3rem;
+        }
+
+        img {
+            width: 400px;
+            mix-blend-mode: multiply;
+        }
+    }
+
+    .bottom-content {
+        background: $yellow;
+        padding: 20px 0 0 0;
+        position: relative;
+        top: -10px;
+
+        .head-text {
+            font-size: 1.5rem;
+            color: $white;
+            font-weight: bold;
+        }
+
+        img {
+            width: 350px;
+        }
+    }
+
+    .content {
+        margin-top: 80px;
+
+        .register-btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+        }
+
+        .middle-txt {
+            padding: 30px 0 10px 0;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .top-section {
+        .top-content {
+            .buttons {
+                padding: 0;
+
+                a {
+                    margin: 0 5px;
+                    width: 50%;
+                    height: auto;
+                    font-size: 1rem;
+                }
+            }
+        }
+        .middle-content {
+            padding: 0 10px;
+
+            .description {
+                font-size: 1rem;
+            }
+
+            img {
+                width: 90%;
+            }
+        }
+
+        .bottom-content {
+            .head-text {
+                font-size: 1.2rem;
+            }
+
+            img {
+                width: 80%;
+            }
+        }
+
+        .content {
+            margin-top: 40px;
+        }
+    }
+}

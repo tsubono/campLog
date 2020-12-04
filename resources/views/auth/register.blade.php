@@ -1,21 +1,42 @@
+@php
+    $isNotHeaderNav = true;
+@endphp
+
 @extends('layouts.app')
 
 @section('content')
-    <section>
-        <div class="content">
+    <section class="top-section">
+        <div class="head">
+            <img src="{{ asset('img/head-logo.png') }}" alt="ロゴ" />
+        </div>
+        <div class="top-content">
+            <img class="bg-image" src="{{ asset('img/top-content-bg.jpeg') }}" alt="背景画像"/>
+            <div class="buttons">
+                <a href="#register" class="btn warning-btn">無料登録</a>
+                <a href="{{ route('login') }}" class="btn primary-btn">ログイン</a>
+            </div>
+        </div>
+        <div class="middle-content">
+            <div class="description">
+                キャンプのログをカンタンに記録！ <br>
+                宿泊履歴やこれからの予定まで、<br>
+                無料で管理してキャンプライフを楽しもう！<br>
+            </div>
+            <img src="{{ asset('img/merits.png') }}" alt="メリット" />
+        </div>
+        <div class="bottom-content">
+            <div class="head-text">\ あなただけの専用ページを無料作成！ /</div>
+            <img src="{{ asset('img/mobile-img.png') }}" alt="スマホ画像" />
+        </div>
+        <div class="content" id="register">
             <div class="register-form">
-                <h2>新規登録</h2>
-
-                <div class="flex-right">
-                    <a class="auth-btn item" href="{{ route('twitter.auth') }}">
-                        <img src="{{ asset('img/icon_twitter.svg') }}" />
-                        <span>Twitterで登録</span>
-                    </a>
-                </div>
-
+                <a class="auth-btn item register-btn" href="{{ route('twitter.auth') }}">
+                    <img src="{{ asset('img/icon_twitter.svg') }}" />
+                    <span>Twitterで登録</span>
+                </a>
+                <p class="middle-txt">または</p>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
-
                     <div class="form-content">
                         <div class="form-group">
                             <input id="name" type="text" class="@error('name') is-invalid @enderror"

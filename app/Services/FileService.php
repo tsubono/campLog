@@ -2,24 +2,52 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Log;
-
 class FileService
 {
     /**
      * CSV読み込み
      *
-     * @param $csv
-     * @param $dir
-     * @param $columns
-     * @param $columnLabels
-     * @return array | boolean
+     * @param [type] $csv
+     * @param [type] $dir
+     * @param [type] $columnLabels
+     * @param array $columns
+     * @return void
      */
-    public function loadCsv($csv, $dir, $columnLabels, $columns)
+    public function loadCsv($csv, $dir, $columnLabels, array $columns)
     {
-        $csvArray = [];
         $temporary = $csv->store($dir);
-        $file = new \SplFileObject(storage_path('app/') . $temporary);
+
+        $csv_path = storage_path('app/') . $temporary;
+        $this->sjisToUtf8($csv_path);
+
+        return $this->parseCsv($csv_path, $columns);
+    }
+
+    /**
+     * sjisToUtf8
+     *
+     * CSVの文字コードをUTF8にする
+     *
+     * @param string $csv_path
+     * @return void
+     */
+    public function sjisToUtf8(string $csv_path): void
+    {
+        $sjis = file_get_contents($csv_path);
+        $utf8 = mb_convert_encoding($sjis, 'UTF-8', 'SJIS-win');
+        file_put_contents($csv_path, $utf8);
+    }
+
+    /**
+     * 読み込んだCSVをDB登録用にパースする
+     *
+     * @param string $csv_path
+     * @param array $columns
+     * @return array
+     */
+    public function parseCsv(string $csv_path, array $columns): array
+    {
+        $file = new \SplFileObject($csv_path);
         $file->setFlags(
             \SplFileObject::READ_CSV |
             \SplFileObject::READ_AHEAD |
@@ -28,12 +56,8 @@ class FileService
         );
 
         $headers = $file->fgetcsv();
-        mb_convert_variables('UTF-8', 'sjis-win', $headers);
 
         foreach ($file as $rowIndex => $row) {
-            // 文字コードを UTF-8 へ変換
-            mb_convert_variables('UTF-8', 'sjis-win', $row);
-
             if ($rowIndex === 0) {
                 continue;
             }
@@ -42,7 +66,6 @@ class FileService
                 $csvArray[$rowIndex][$columns[$headerIndex]] = $row[$headerIndex] ?? '';
             }
         }
-
         return $csvArray;
     }
 }
