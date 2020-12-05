@@ -64,6 +64,11 @@ ul {
         background: $yellow;
     }
 
+    &.success-btn {
+        color: $white;
+        background: $green;
+    }
+
     &.danger-btn {
         color: $white;
         background: $red;

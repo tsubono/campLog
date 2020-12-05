@@ -65,6 +65,11 @@ ul {
   background: #f0b478;
 }
 
+.btn.success-btn {
+  color: #FFFFFF;
+  background: #62b882;
+}
+
 .btn.danger-btn {
   color: #FFFFFF;
   background: #e88b79;
@@ -1205,7 +1210,7 @@ ul {
 }
 
 .top-section .head img {
-  width: 300px;
+  width: 250px;
 }
 
 .top-section .top-content {
@@ -1226,7 +1231,7 @@ ul {
   display: flex;
   justify-content: center;
   position: absolute;
-  top: 0;
+  top: -14px;
   bottom: 0;
   left: 0;
   right: 0;
@@ -1239,9 +1244,9 @@ ul {
 
 .top-section .top-content .buttons a {
   margin: 0 10px;
-  width: 200px;
-  height: 60px;
-  font-size: 1.3rem;
+  width: 150px;
+  height: 40px;
+  font-size: 1.1rem;
   font-weight: bold;
 }
 

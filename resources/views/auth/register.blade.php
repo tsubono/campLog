@@ -12,15 +12,15 @@
         <div class="top-content">
             <img class="bg-image" src="{{ asset('img/top-content-bg.jpeg') }}" alt="背景画像"/>
             <div class="buttons">
-                <a href="#register" class="btn warning-btn">無料登録</a>
+                <a href="#register" class="btn success-btn">無料登録</a>
                 <a href="{{ route('login') }}" class="btn primary-btn">ログイン</a>
             </div>
         </div>
         <div class="middle-content">
             <div class="description">
-                キャンプのログをカンタンに記録！ <br>
-                宿泊履歴やこれからの予定まで、<br>
-                無料で管理してキャンプライフを楽しもう！<br>
+                キャンプの記録をカンタンに管理！ <br>
+                宿泊記録やこれからの予定まで<br>
+                無料で管理してキャンプライフを楽しもう<br>
             </div>
             <img src="{{ asset('img/merits.png') }}" alt="メリット" />
         </div>
@@ -35,6 +35,7 @@
                     <span>Twitterで登録</span>
                 </a>
                 <p class="middle-txt">または</p>
+                <p class="middle-txt">メールアドレスで登録</p>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="form-content">
@@ -81,7 +82,7 @@
                         </div>
 
                         <div class="form-buttons">
-                            <button class="btn primary-btn" type="submit">登録する</button>
+                            <button class="btn primary-btn" type="submit">無料登録する</button>
                         </div>
                     </div>
                 </form>
