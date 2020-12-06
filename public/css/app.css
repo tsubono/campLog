@@ -113,6 +113,10 @@ ul {
   align-items: center;
 }
 
+.header-nav .logo-img {
+  width: 250px;
+}
+
 .header-nav .right {
   margin-left: auto;
   display: flex;
@@ -1304,7 +1308,7 @@ ul {
 
   .top-section .top-content .buttons a {
     margin: 0 5px;
-    width: 50%;
+    width: 33%;
     height: auto;
     font-size: 1rem;
   }

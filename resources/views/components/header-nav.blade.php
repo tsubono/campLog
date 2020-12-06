@@ -1,5 +1,7 @@
 <header class="header-nav">
-    <h1>キャンログ</h1>
+    <h1>
+        <img class="logo-img" src="{{ asset('img/logo.png') }}" alt="キャンログ">
+    </h1>
     @if (empty($isAccessCode))
         <div class="right">
             @if (auth()->check())
