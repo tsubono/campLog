@@ -348,17 +348,24 @@
 }
 
 @media screen and (max-width: 480px) {
+    .header-image {
+        height: 120px;
+    }
+
     .profile {
-        display: block;
         padding: 0 10px;
+        margin-bottom: 0;
 
         .avatar {
             position: relative;
             margin: 10px auto;
+            width: 130px;
 
             img {
                 position: relative;
                 top: -40px;
+                width: 140px;
+                height: 140px;
             }
         }
 
@@ -366,7 +373,14 @@
             margin: 0 auto;
             text-align: center;
             position: relative;
-            top: -40px;
+        }
+
+        .name {
+            font-size: 17px;
+        }
+
+        .self-introduction {
+            font-size: 12px;
         }
     }
 
@@ -375,7 +389,7 @@
     }
 
     .sns-list {
-        margin-top: 50px;
+        margin-top: 0;
         margin-bottom: -20px;
         padding: 10px;
     }

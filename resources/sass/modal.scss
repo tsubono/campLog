@@ -4,6 +4,7 @@
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1;
 
     .popup-bg {
         width:100%;
@@ -55,7 +56,7 @@
             margin: 10px auto;
             max-height: 400px;
 
-            .item {
+            .show-item {
                 margin: 10px;
 
                 label {

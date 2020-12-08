@@ -264,6 +264,18 @@ ul {
   top: 4px;
 }
 
+.auth-btn .micro-txt {
+  font-size: 0.6rem;
+  padding-top: 5px;
+}
+
+.register-btn {
+  width: 300px;
+  margin: 0 auto;
+  padding: 10px 25px;
+  font-size: 1.1rem;
+}
+
 @media screen and (max-width: 1024px) {
   .container {
     max-width: 100%;
@@ -378,8 +390,6 @@ ul {
 
 .form-content .form-group textarea:focus ~ .form-label,
 .form-content .form-group textarea:focus:focus ~ .form-label {
-  top: 10px;
-  left: 0;
   color: #f0b478;
   font: 700 12px Roboto;
 }
@@ -391,8 +401,8 @@ ul {
 
 .form-content .form-group textarea ~ .form-label,
 .form-content .form-group textarea:focus ~ .form-label {
-  top: 35px;
-  left: 7px;
+  top: 10px;
+  left: 0;
 }
 
 .form-content .form-group .form-item-note {
@@ -929,26 +939,40 @@ ul {
 }
 
 @media screen and (max-width: 480px) {
+  .header-image {
+    height: 120px;
+  }
+
   .profile {
-    display: block;
     padding: 0 10px;
+    margin-bottom: 0;
   }
 
   .profile .avatar {
     position: relative;
     margin: 10px auto;
+    width: 130px;
   }
 
   .profile .avatar img {
     position: relative;
     top: -40px;
+    width: 140px;
+    height: 140px;
   }
 
   .profile .text {
     margin: 0 auto;
     text-align: center;
     position: relative;
-    top: -40px;
+  }
+
+  .profile .name {
+    font-size: 17px;
+  }
+
+  .profile .self-introduction {
+    font-size: 12px;
   }
 
   .summary {
@@ -956,7 +980,7 @@ ul {
   }
 
   .sns-list {
-    margin-top: 50px;
+    margin-top: 0;
     margin-bottom: -20px;
     padding: 10px;
   }
@@ -1040,6 +1064,10 @@ ul {
   align-items: center;
 }
 
+.profile-edit-section .top-content .qr-note {
+  font-size: 0.6rem;
+}
+
 /*===============================
   アクセスコード
 ================================*/
@@ -1097,6 +1125,7 @@ ul {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1;
 }
 
 .popup .popup-bg {
@@ -1151,27 +1180,27 @@ ul {
   max-height: 400px;
 }
 
-.camp-schedule-show .camp-schedule-show-wrapper .camp-schedule-show .item {
+.camp-schedule-show .camp-schedule-show-wrapper .camp-schedule-show .show-item {
   margin: 10px;
 }
 
-.camp-schedule-show .camp-schedule-show-wrapper .camp-schedule-show .item label {
+.camp-schedule-show .camp-schedule-show-wrapper .camp-schedule-show .show-item label {
   color: #5c6066;
   font-size: 0.9rem;
   padding: 5px;
 }
 
-.camp-schedule-show .camp-schedule-show-wrapper .camp-schedule-show .item .item-value {
+.camp-schedule-show .camp-schedule-show-wrapper .camp-schedule-show .show-item .item-value {
   font-weight: bold;
 }
 
-.camp-schedule-show .camp-schedule-show-wrapper .camp-schedule-show .item .item-value.images {
+.camp-schedule-show .camp-schedule-show-wrapper .camp-schedule-show .show-item .item-value.images {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.camp-schedule-show .camp-schedule-show-wrapper .camp-schedule-show .item .item-value.images img {
+.camp-schedule-show .camp-schedule-show-wrapper .camp-schedule-show .show-item .item-value.images img {
   width: 100px;
   height: 100px;
   margin: 5px;
@@ -1290,11 +1319,6 @@ ul {
 
 .top-section .content {
   margin-top: 80px;
-}
-
-.top-section .content .register-btn {
-  padding: 15px 30px;
-  font-size: 1.1rem;
 }
 
 .top-section .content .middle-txt {

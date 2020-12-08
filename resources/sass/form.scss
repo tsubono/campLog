@@ -83,8 +83,6 @@ $md-checkbox-size: 1.25em;
                 }
 
                 ~ .form-label {
-                    top: 10px;
-                    left: 0;
                     color: $yellow;
                     font: 700 12px Roboto;
                 }
@@ -97,8 +95,8 @@ $md-checkbox-size: 1.25em;
             }
 
             ~ .form-label {
-                top: 35px;
-                left: 7px;
+                top: 10px;
+                left: 0;
             }
         }
 

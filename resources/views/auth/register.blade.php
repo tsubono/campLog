@@ -30,9 +30,12 @@
         </div>
         <div class="content" id="register">
             <div class="register-form">
-                <a class="auth-btn item register-btn" href="{{ route('twitter.auth') }}">
-                    <img src="{{ asset('img/icon_twitter.svg') }}" />
-                    <span>Twitterで登録</span>
+                <a class="auth-btn item register-btn flex-column" href="{{ route('twitter.auth') }}">
+                    <div>
+                        <img src="{{ asset('img/icon_twitter.svg') }}" />
+                        <span>Twitterで登録</span>
+                    </div>
+                    <div class="micro-txt">※許可なく投稿されることはありません。</div>
                 </a>
                 <p class="middle-txt">または</p>
                 <p class="middle-txt">メールアドレスで登録</p>

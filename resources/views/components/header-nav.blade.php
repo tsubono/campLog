@@ -1,6 +1,6 @@
 <header class="header-nav">
     <h1>
-        <img class="logo-img" src="{{ asset('img/logo.png') }}" alt="キャンログ">
+        <img class="logo-img" src="{{ asset('img/logo-white.png') }}" alt="キャンログ">
     </h1>
     @if (empty($isAccessCode))
         <div class="right">

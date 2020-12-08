@@ -32,11 +32,11 @@
         </div>
     </div>
     @if (
-    !empty($user->twitter_url) && $user->is_public_twitter_url &&
-    !empty($user->instagram_url) && $user->is_public_instagram_url &&
-    !empty($user->facebook_url) && $user->is_public_facebook_url &&
-    !empty($user->youtube_url) && $user->is_public_youtube_url &&
-    !empty($user->blog_url) && $user->is_public_blog_url
+    (!empty($user->twitter_url) && $user->is_public_twitter_url) ||
+    (!empty($user->instagram_url) && $user->is_public_instagram_url) ||
+    (!empty($user->facebook_url) && $user->is_public_facebook_url) ||
+    (!empty($user->youtube_url) && $user->is_public_youtube_url) ||
+    (!empty($user->blog_url) && $user->is_public_blog_url)
     )
         <div class="sns-list">
             <div class="sns-wrapper">
@@ -126,7 +126,8 @@
         <div class="grid-tab-content tab-content show">
             <div class="list">
                 @foreach ($user->campSchedulesDesc as $campSchedule)
-                    <div class="item">
+                    <div class="item js-show-popup" data-id="campScheduleShowPopup-{{ $campSchedule->id }}">
+                        @include('components.modals.camp-schedule-show', ['campSchedule' => $campSchedule])
                         <img class="eye-catch" src="{{ $campSchedule->eye_catch_image_path }}" alt="アイキャッチ画像" />
                         <div class="date">
                             <span class="month">{{ $campSchedule->date->format('m') }}</span>

@@ -8,6 +8,7 @@
             <div class="flex-right mx-10 top-content">
                 <div class="mx-5">
                     {!! QrCode::generate(route('profile.index', ['userName' => auth()->user()->name])) !!}
+                    <p class="qr-note">カメラで撮るとあなたのページが表示されます。</p>
                 </div>
                 <a href="https://twitter.com/share"
                    target="_blank"
@@ -29,7 +30,7 @@
 
                     <div class="form-content">
                         <div class="form-group">
-                            <label class="form-label" for="avatar_path">アバター画像</label>
+                            <label class="form-label" for="avatar_path">アイコン画像</label>
                             <drop-image v-bind:name="'avatar_path'" v-bind:path="'{{ old('avatar_path', $user->display_avatar_path) }}'"
                                         v-bind:url="'/api/uploadImage'" v-bind:dir="'uploaded/user/avatar'"></drop-image>
 
@@ -67,7 +68,7 @@
                         <div class="form-group">
                             <input id="handle_name" type="text" class="@error('handle_name') is-invalid @enderror"
                                    name="handle_name" value="{{ old('handle_name', $user->handle_name) }}">
-                            <label class="form-label" for="handle_name">ハンドルネーム <span class="require">*</span></label>
+                            <label class="form-label" for="handle_name">ニックネーム <span class="require">*</span></label>
 
                             @error('handle_name')
                             <div class="text-error my-5">
@@ -116,6 +117,7 @@
                         </div>
 
                         <div class="form-group">
+                            <input type="date" value="{{ old('camp_history', $user->camp_history) }}">
                             <input id="camp_history" type="number"
                                    name="camp_history" value="{{ old('camp_history', $user->camp_history) }}">
                             <label class="form-label" for="camp_history">キャンプ歴</label>

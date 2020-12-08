@@ -267,6 +267,18 @@ ul {
         position: relative;
         top: 4px;
     }
+
+    .micro-txt {
+        font-size: 0.6rem;
+        padding-top: 5px;
+    }
+}
+
+.register-btn {
+    width: 300px;
+    margin: 0 auto;
+    padding: 10px 25px;
+    font-size: 1.1rem;
 }
 
 @media screen and (max-width: 1024px) {
