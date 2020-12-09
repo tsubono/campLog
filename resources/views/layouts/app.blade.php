@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ asset('img/favicon.ico') }}">
+    <link rel="icon" href="{{ secure_asset('img/favicon.ico') }}">
 
     <title>キャンログ</title>
 
@@ -14,7 +14,7 @@
     @include('components.js')
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
 <div class="container">
