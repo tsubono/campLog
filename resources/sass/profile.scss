@@ -321,7 +321,6 @@
             border-right: 1px solid #ddd;
             border-left: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
-            cursor: pointer;
 
             &:first-child {
                 border-top: 1px solid #ddd;
@@ -334,6 +333,13 @@
 
             .date {
                 color: #5e5e5e;
+            }
+
+            .address,
+            .tel,
+            .check-in-out {
+                font-size: 0.8rem;
+                margin-top: 10px;
             }
         }
     }

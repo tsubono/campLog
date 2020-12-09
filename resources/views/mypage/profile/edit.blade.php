@@ -117,10 +117,8 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="date" value="{{ old('camp_history', $user->camp_history) }}">
-                            <input id="camp_history" type="number"
-                                   name="camp_history" value="{{ old('camp_history', $user->camp_history) }}">
-                            <label class="form-label" for="camp_history">キャンプ歴</label>
+                            <input id="camp_start_date" type="date" name="camp_start_date" value="{{ old('camp_start_date', $user->camp_start_date) }}">
+                            <label class="form-label" for="camp_start_date">キャンプ開始日 (キャンプ歴)</label>
                             <div class="form-check-group is-public">
                                 <input type="hidden" name="is_public_camp_history" value="1" />
                                 <input id="is_public_camp_history" type="checkbox" name="is_public_camp_history" value=""

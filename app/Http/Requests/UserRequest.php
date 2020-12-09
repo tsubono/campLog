@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255', 'regex:/^[!-~]+$/', Rule::unique('users')->ignore(Auth::id())->whereNull('deleted_at')],
-            'email' => ['required_without:twitter_token', 'max:255', Rule::unique('users')->ignore(Auth::id())->whereNull('deleted_at')],
+            'email' => ['required_without:twitter_token', 'max:255', Rule::unique('users')->ignore(Auth::id())->whereNull('deleted_at')->whereNotNull('email')],
             'handle_name' => 'required|string|max:255',
             'password' => 'nullable|string|min:8',
         ];

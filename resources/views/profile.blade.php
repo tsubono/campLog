@@ -19,7 +19,7 @@
                 <p>
                     @if (!empty($user->gender) && $user->is_public_gender)性別／{{ $user->gender_txt }}　@endif
                     @if (!empty($user->age) && $user->is_public_age)年齢／{{ $user->age }}歳　@endif
-                    @if (!empty($user->camp_history) && $user->is_public_camp_history)キャンプ歴／{{ $user->camp_history }}年　@endif
+                    @if (!empty($user->camp_start_date) && $user->is_public_camp_history)キャンプ歴／{{ $user->camp_start_date }}年　@endif
                     @if (!empty($user->location) && $user->is_public_location)拠点／{{ $user->location }}　@endif
                 </p>
                 @if ($user->is_public_introduction)
@@ -143,7 +143,19 @@
                 @foreach ($user->campSchedulesDesc as $campSchedule)
                     <li class="item">
                         <p class="date">{{ $campSchedule->date->format('Y-m-d') }}</p>
-                        <p class="title">{{ $campSchedule->place->name }}</p>
+                        <p class="title">
+                            <a href="{{ $campSchedule->place->url }}" target="_blank" rel="noopener">{{ $campSchedule->place->name }}</a>
+                        </p>
+                        <p class="address">
+                            <a href="https://www.google.com/maps/search/?api=1&query={{ $campSchedule->place->address }}" target="_blank" rel="noopener">{{ $campSchedule->place->address }}</a>
+                        </p>
+                        <p class="tel">
+                            <a href="tel:{{ $campSchedule->place->tel_number }}">{{ $campSchedule->place->tel_number }}</a>
+                        </p>
+                        <p class="check-in-out">
+                            チェックイン: <br> {{ $campSchedule->place->check_in }} <br>
+                            チェックアウト: <br> {{ $campSchedule->place->check_out }}
+                        </p>
                     </li>
                 @endforeach
             </ul>

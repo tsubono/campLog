@@ -65,9 +65,7 @@ class LoginController extends Controller
         catch (\Exception $e) {
             return redirect('/login')->with('error-message', 'ログインに失敗しました');
         }
-        if (isset($user['entities']['url'])) {
-            //print_r($user['entities']['url']['urls'][0]['expanded_url']);
-        }
+
         $registerUser = User::firstOrCreate(
             [
                 'twitter_token' => $user->token
@@ -80,6 +78,7 @@ class LoginController extends Controller
                 'background_path' => $user['profile_banner_url'],
                 'introduction' => $user['description'],
                 'email' => $user->email,
+                'twitter_url' => "https://twitter.com/{$user->nickname}",
             ]
         );
         Auth::login($registerUser);
