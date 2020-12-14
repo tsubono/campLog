@@ -1,5 +1,6 @@
 @php
     $isNotHeaderNav = true;
+    $isProfile = true;
 @endphp
 
 @extends('layouts.app')
@@ -19,7 +20,7 @@
                 <p>
                     @if (!empty($user->gender) && $user->is_public_gender)性別／{{ $user->gender_txt }}　@endif
                     @if (!empty($user->age) && $user->is_public_age)年齢／{{ $user->age }}歳　@endif
-                    @if (!empty($user->camp_start_date) && $user->is_public_camp_history)キャンプ歴／{{ $user->camp_start_date }}年　@endif
+                    @if (!empty($user->camp_start_date) && $user->is_public_camp_history)キャンプ歴／{{ $user->camp_history }}　@endif
                     @if (!empty($user->location) && $user->is_public_location)拠点／{{ $user->location }}　@endif
                 </p>
                 @if ($user->is_public_introduction)

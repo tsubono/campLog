@@ -66,6 +66,7 @@ class UserRepository implements UserRepositoryInterface
         DB::beginTransaction();
         try {
             $user = $this->user->findOrFail($id);
+            $user->campSchedules()->delete();
             $user->delete();
 
             DB::commit();

@@ -49,6 +49,15 @@
         $('.image-modal-bg, .image-modal-bg img').click(function() {
             $(".image-modal-bg").fadeOut(200);
         });
+
+        /**
+         * アカウント削除確認
+         */
+        $('.js-profile-delete-link').click (function() {
+            if (confirm('本当に削除してもよろしいですか？')) {
+                $('#profile-delete-form').submit();
+            }
+        });
     });
 
     function copyToClipboard(id) {

@@ -36,6 +36,7 @@ Route::middleware('access-code-check')->group(function() {
         // プロフィール設定
         Route::get('/profile', 'ProfileController@edit')->name('profile.edit');
         Route::put('/profile', 'ProfileController@update')->name('profile.update');
+        Route::delete('/profile', 'ProfileController@destroy')->name('profile.destroy');
         // キャンプ場インポート
         Route::get('/camp-places/import', 'CampPlaceController@import')->name('camp-places.import');
         Route::post('/camp-places/import', 'CampPlaceController@postImport');

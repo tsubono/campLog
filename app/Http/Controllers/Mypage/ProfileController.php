@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Mypage;
 use App\Http\Requests\UserRequest;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
@@ -44,8 +45,22 @@ class ProfileController extends Controller
         } else {
             $data['password'] = bcrypt($data['password']);
         }
-        $this->userRepository->update(auth()->user()->id, $data);
+        $data['camp_start_date'] =
+            !empty($data['camp_start_date_y']) && !empty($data['camp_start_date_m']) ? Carbon::parse("{$data['camp_start_date_y']}-{$data['camp_start_date_m']}-1") : null;
+            $this->userRepository->update(auth()->user()->id, $data);
 
         return redirect(route('mypage.profile.edit'))->with('message', '更新しました');
+    }
+
+    /**
+     * プロフィール削除
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy()
+    {
+        $this->userRepository->destroy(auth()->user()->id);
+
+        return redirect(url('/'));
     }
 }

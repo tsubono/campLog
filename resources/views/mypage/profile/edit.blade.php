@@ -117,11 +117,26 @@
                         </div>
 
                         <div class="form-group">
-                            <input id="camp_start_date" type="date" name="camp_start_date" value="{{ old('camp_start_date', $user->camp_start_date) }}">
-                            <label class="form-label" for="camp_start_date">キャンプ開始日 (キャンプ歴)</label>
+                            <input type="number" name="camp_start_date_y" class="small"
+                                   value="{{ old('camp_start_date_y', !empty($user->camp_start_date) ? $user->camp_start_date->format('Y') : null) }}"/>
+                            <span class="txt">年</span>
+                            <label class="form-label" for="camp_start_date_y">キャンプ開始年</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="camp_start_date_m" class="small"
+                                   value="{{ old('camp_start_date_m', !empty($user->camp_start_date) ? $user->camp_start_date->format('m') : null) }}"/>
+                            <span class="txt">月</span>
+                            <label class="form-label" for="camp_start_date_m">キャンプ開始月</label>
+                            @error('camp_start_date_m')
+                            <div class="text-error my-5">
+                                <strong>{{ $message }}</strong>
+                            </div>
+                            @enderror
+
                             <div class="form-check-group is-public">
-                                <input type="hidden" name="is_public_camp_history" value="1" />
-                                <input id="is_public_camp_history" type="checkbox" name="is_public_camp_history" value=""
+                                <input type="hidden" name="is_public_camp_history" value="1"/>
+                                <input id="is_public_camp_history" type="checkbox" name="is_public_camp_history"
+                                       value=""
                                     {{ old('is_public_camp_history', $user->is_public_camp_history) != 1 ? 'checked' : '' }}/>
                                 <label class="form-check-label" for="is_public_camp_history">非公開にする</label>
                             </div>
@@ -247,6 +262,11 @@
                     @csrf
                 </form>
             </div>
+            <a class="profile-delete-link js-profile-delete-link">アカウントを削除する</a>
+            <form action="{{ route('mypage.profile.destroy') }}" id="profile-delete-form" method="post">
+                @csrf
+                @method('DELETE')
+            </form>
         </div>
     </section>
 @endsection

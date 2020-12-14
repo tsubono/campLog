@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);@charset "UTF-8";
 
 * {
   box-sizing: border-box;
@@ -89,6 +89,10 @@ ul {
   text-align: center;
 }
 
+.flex {
+  display: flex;
+}
+
 .flex-right {
   display: flex;
   justify-content: flex-end;
@@ -132,6 +136,21 @@ ul {
 
 .header-nav .right .header-avatar {
   width: 100px;
+}
+
+.header-nav.profile {
+  background: #FFFFFF;
+  padding: 5px 15px;
+  justify-content: start;
+  margin: 0;
+}
+
+.header-nav.profile h1 {
+  text-align: left;
+}
+
+.header-nav.profile .logo-img {
+  width: 200px;
 }
 
 .avatar-img {
@@ -295,6 +314,19 @@ ul {
   .header-nav .right {
     width: 100%;
   }
+
+  .header-nav.profile {
+    padding: 0 15px;
+    margin: 0;
+  }
+
+  .header-nav.profile h1 {
+    padding: 5px 0 0 0;
+  }
+
+  .header-nav.profile .logo-img {
+    width: 150px;
+  }
 }
 
 .form-content {
@@ -360,6 +392,18 @@ ul {
 .form-content .form-group input:focus.is-invalid ~ .form-label,
 .form-content .form-group input.focus.is-invalid ~ .form-label {
   color: #e88b79;
+}
+
+.form-content .form-group input.small {
+  width: 200px;
+}
+
+.form-content .form-group input.small ~ .txt {
+  position: absolute;
+  top: 35px;
+  left: 210px;
+  font-size: 0.9rem;
+  color: #5c6066;
 }
 
 .form-content .form-group textarea,
@@ -914,7 +958,6 @@ ul {
   border-right: 1px solid #ddd;
   border-left: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  cursor: pointer;
 }
 
 .camp-schedules .list-tab-content .item:first-child {
@@ -928,6 +971,13 @@ ul {
 
 .camp-schedules .list-tab-content .item .date {
   color: #5e5e5e;
+}
+
+.camp-schedules .list-tab-content .item .address,
+.camp-schedules .list-tab-content .item .tel,
+.camp-schedules .list-tab-content .item .check-in-out {
+  font-size: 0.8rem;
+  margin-top: 10px;
 }
 
 .camp-schedules .tab-content {
@@ -1086,6 +1136,15 @@ ul {
 .logout-btn {
   width: 100px;
   margin-top: 30px;
+}
+
+.profile-delete-link {
+  color: #5c6066;
+  font-size: 0.9rem;
+  position: relative;
+  top: 25px;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 480px) {

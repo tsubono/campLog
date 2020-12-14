@@ -24,6 +24,11 @@ class User extends Authenticatable
     protected $guarded = ['id'];
 
     /**
+     * @var string[]
+     */
+    protected $dates = ['camp_start_date'];
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
@@ -149,5 +154,34 @@ class User extends Authenticatable
             default:
                 return '';
         }
+    }
+
+    /**
+     * キャンプ歴を算出する
+     *
+     * @return int|null
+     * @throws \Exception
+     */
+    public function getCampHistoryAttribute()
+    {
+        if (empty($this->camp_start_date)) {
+            return null;
+        }
+
+        $date = new \DateTime($this->camp_start_date);
+        $now = new \DateTime();
+        $interval = $now->diff($date);
+
+        if (empty($interval->y) &&  empty($interval->m)) {
+            return null;
+        }
+        if (empty($interval->y)) {
+            return "{$interval->m}ヶ月";
+        }
+        if (empty(($interval->m))) {
+            return "{$interval->y}年";
+        }
+
+        return "{$interval->y}年{$interval->m}ヶ月";
     }
 }

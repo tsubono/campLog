@@ -30,6 +30,7 @@ class UserRequest extends FormRequest
             'email' => ['required_without:twitter_token', 'max:255', Rule::unique('users')->ignore(Auth::id())->whereNull('deleted_at')->whereNotNull('email')],
             'handle_name' => 'required|string|max:255',
             'password' => 'nullable|string|min:8',
+            'camp_start_date_m' => 'nullable|integer|between:1,12',
         ];
     }
 
@@ -40,6 +41,7 @@ class UserRequest extends FormRequest
 			'handle_name' => 'ハンドルネーム',
 			'email' => 'メールアドレス',
 			'password' => 'パスワード',
+			'camp_start_date_m' => 'キャンプ開始月',
         ];
     }
 }

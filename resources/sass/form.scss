@@ -60,6 +60,18 @@ $md-checkbox-size: 1.25em;
                     }
                 }
             }
+
+            &.small {
+                width: 200px;
+
+                ~.txt {
+                    position: absolute;
+                    top: 35px;
+                    left: 210px;
+                    font-size: 0.9rem;
+                    color: $gray-dark;
+                }
+            }
         }
 
         textarea, textarea:focus {

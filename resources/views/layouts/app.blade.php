@@ -22,6 +22,9 @@
         @if (empty($isNotHeaderNav))
             @include('components.header-nav')
         @endif
+        @if (!empty($isProfile))
+            @include('components.header-nav-profile')
+        @endif
         @yield('content')
     </div>
 </div>
