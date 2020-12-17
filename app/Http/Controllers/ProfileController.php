@@ -31,7 +31,7 @@ class ProfileController extends Controller
         }
 
         // 自身のプロフィールでない場合はアクセス数を更新する
-        if ($user->id !== auth()->user()->id) {
+        if (auth()->check() && $user->id !== auth()->user()->id) {
             $this->userRepository->update($user->id, ['access_count' => $user->access_count + 1]);
         }
 
