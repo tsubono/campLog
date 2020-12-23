@@ -42,11 +42,13 @@
         /**
          * 画像モーダル
          */
-        $('.js-modal-image').click(function() {
+        $('.js-modal-image').click(function(event) {
+            event.stopPropagation()
             $('.image-modal-bg').html($(this).prop('outerHTML'));
             $('.image-modal-bg').fadeIn(200);
         });
-        $('.image-modal-bg, .image-modal-bg img').click(function() {
+        $('.image-modal-bg, .image-modal-bg img').click(function(event) {
+            event.stopPropagation()
             $(".image-modal-bg").fadeOut(200);
         });
 

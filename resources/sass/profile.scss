@@ -41,13 +41,27 @@
         margin: 20px 0 10px 0;
     }
 
-    .self-introduction {
+    .introduction {
         font-size: 14px;
 
         p {
             margin: 0;
         }
     }
+}
+
+.self-introduction {
+    font-size: 14px;
+
+    p {
+        margin: 0;
+    }
+}
+
+.self-introduction {
+    position: relative;
+    top: 20px;
+    margin: auto 15px;
 }
 
 /*===============================
@@ -287,6 +301,7 @@
                     left: 0;
                     margin: auto;
                     object-fit: cover;
+                    pointer-events: none;
                 }
             }
         }
@@ -368,10 +383,8 @@
             width: 130px;
 
             img {
-                position: relative;
-                top: -40px;
-                width: 140px;
-                height: 140px;
+                width: 120px;
+                height: 120px;
             }
         }
 
@@ -379,15 +392,28 @@
             margin: 0 auto;
             text-align: center;
             position: relative;
+            padding: 0 10px;
         }
 
         .name {
             font-size: 17px;
+            margin: 10px 0 10px 0;
         }
 
-        .self-introduction {
+        .introduction {
             font-size: 12px;
+            text-align: left;
+            margin: 0 5px;
         }
+    }
+
+    .self-introduction {
+        font-size: 12px;
+        text-align: left;
+        max-height: 100px;
+        overflow-y: auto;
+        top: 0;
+        margin: auto 15px;
     }
 
     .summary {
@@ -395,12 +421,50 @@
     }
 
     .sns-list {
-        margin-top: -20px;
+        margin-top: 15px;
         margin-bottom: -20px;
         padding: 10px;
+
+        .sns-wrapper {
+            .sns-item {
+                width: 100px;
+                font-size: 13px;
+                margin-right: 9px;
+
+                img {
+                    margin-right: 5px;
+                    margin-left: 5px;
+                    width: 15px;
+                }
+            }
+        }
+    }
+
+    .summary {
+        .cards {
+            .card {
+                &.long {
+                    width: 145px;
+                    min-width: 145px;
+                }
+
+                .card-data {
+                    height: 45px;
+                    font-size: 35px;
+                }
+            }
+        }
+    }
+
+    .tab-menu {
+        .tab-item {
+            padding: 16px 0;
+        }
     }
 
     .camp-schedules {
+        margin-top: 0;
+
         .grid-tab-content {
             .date {
                 top: 10px;

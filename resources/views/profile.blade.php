@@ -16,21 +16,23 @@
         </div>
         <div class="text">
             <h2 class="name">{{ $user->handle_name }}</h2>
-            <div class="self-introduction">
+            <div class="introduction">
                 <p>
                     @if (!empty($user->gender) && $user->is_public_gender)性別／{{ $user->gender_txt }}　@endif
                     @if (!empty($user->age) && $user->is_public_age)年齢／{{ $user->age }}歳　@endif
                     @if (!empty($user->camp_start_date) && $user->is_public_camp_history)キャンプ歴／{{ $user->camp_history }}　@endif
                     @if (!empty($user->location) && $user->is_public_location)拠点／{{ $user->location }}　@endif
                 </p>
-                @if ($user->is_public_introduction)
-                    <br>
-                    <p>
-                        {!! nl2br(e($user->introduction)) !!}
-                    </p>
-                @endif
             </div>
         </div>
+    </div>
+    <div class="self-introduction">
+        @if ($user->is_public_introduction)
+            <br>
+            <p>
+                {!! nl2br(e($user->introduction)) !!}
+            </p>
+        @endif
     </div>
     @if (
     (!empty($user->twitter_url) && $user->is_public_twitter_url) ||
@@ -53,22 +55,22 @@
                          <span>Instagram</span>
                      </a>
                 @endif
+                @if (!empty($user->youtube_url) && $user->is_public_youtube_url)
+                    <a class="sns-item" href="{{ $user->youtube_url }}" target="_blank" rel="noopener">
+                        <img src="./img/icon_youtube.svg" class="icon">
+                        <span>Youtube</span>
+                    </a>
+                @endif
+                @if (!empty($user->blog_url) && $user->is_public_blog_url)
+                    <a class="sns-item" href="{{ $user->blog_url }}" target="_blank" rel="noopener">
+                        <img src="./img/icon_blog.svg" class="icon">
+                        <span>Blog</span>
+                    </a>
+                @endif
                 @if (!empty($user->facebook_url) && $user->is_public_facebook_url)
                      <a class="sns-item" href="{{ $user->facebook_url }}" target="_blank" rel="noopener">
                          <img src="./img/icon_facebook.svg" class="icon">
                          <span>Facebook</span>
-                     </a>
-                @endif
-                @if (!empty($user->youtube_url) && $user->is_public_youtube_url)
-                     <a class="sns-item" href="{{ $user->youtube_url }}" target="_blank" rel="noopener">
-                         <img src="./img/icon_youtube.svg" class="icon">
-                         <span>Youtube</span>
-                     </a>
-                @endif
-                @if (!empty($user->blog_url) && $user->is_public_blog_url)
-                     <a class="sns-item" href="{{ $user->blog_url }}" target="_blank" rel="noopener">
-                         <img src="./img/icon_blog.svg" class="icon">
-                         <span>Blog</span>
                      </a>
                 @endif
             </div>

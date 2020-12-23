@@ -26,6 +26,9 @@
                             </div>
                         </div>
                     </div>
+                @if (!$loop->last)
+                        <hr>
+                @endif
                 @empty
                     <p>まだ登録されていません</p>
                 @endforelse
