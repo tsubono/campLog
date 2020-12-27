@@ -15,6 +15,15 @@
 
     <!-- Styles -->
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DLSK5Q6G5N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-DLSK5Q6G5N');
+    </script>
 </head>
 <body>
 <div class="container">

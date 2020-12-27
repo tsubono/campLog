@@ -124,7 +124,7 @@
                         </div>
                         <div class="form-group">
                             <input type="number" name="camp_start_date_m" class="small"
-                                   value="{{ old('camp_start_date_m', !empty($user->camp_start_date) ? $user->camp_start_date->format('m') : null) }}"/>
+                                   value="{{ old('camp_start_date_m', !empty($user->camp_start_date) ? $user->camp_start_date->format('n') : null) }}"/>
                             <span class="txt">月</span>
                             <label class="form-label" for="camp_start_date_m">キャンプ開始月</label>
                             @error('camp_start_date_m')

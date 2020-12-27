@@ -75,7 +75,7 @@ class LoginController extends Controller
                 'name' => $user->nickname,
                 'handle_name' => $user->name,
                 'avatar_path' => $user->avatar_original,
-                'background_path' => $user['profile_banner_url'],
+                'background_path' => $user['profile_banner_url'] ?? asset('img/default-image.png'),
                 'introduction' => $user['description'],
                 'email' => $user->email,
                 'twitter_url' => "https://twitter.com/{$user->nickname}",
