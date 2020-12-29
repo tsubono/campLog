@@ -147,17 +147,29 @@
                     <li class="item">
                         <p class="date">{{ $campSchedule->date->format('Y-m-d') }}</p>
                         <p class="title">
-                            <a href="{{ $campSchedule->place->url }}" target="_blank" rel="noopener">{{ $campSchedule->place->name }}</a>
+                            @if (!empty($campSchedule->place->url))
+                                <a href="{{ $campSchedule->place->url }}" target="_blank" rel="noopener">{{ $campSchedule->place->name }}</a>
+                            @else
+                                {{ $campSchedule->place->name }}
+                            @endif
                         </p>
                         <p class="address">
                             <a href="https://www.google.com/maps/search/?api=1&query={{ $campSchedule->place->address }}" target="_blank" rel="noopener">{{ $campSchedule->place->address }}</a>
                         </p>
                         <p class="tel">
-                            <a href="tel:{{ $campSchedule->place->tel_number }}">{{ $campSchedule->place->tel_number }}</a>
+                            @if (!empty($campSchedule->place->tel_number))
+                                <a href="tel:{{ $campSchedule->place->tel_number }}">{{ $campSchedule->place->tel_number }}</a>
+                            @else
+                                {{ $campSchedule->place->tel_number }}
+                            @endif
                         </p>
                         <p class="check-in-out">
-                            チェックイン: <br> {{ $campSchedule->place->check_in }} <br>
-                            チェックアウト: <br> {{ $campSchedule->place->check_out }}
+                            @if (!empty($campSchedule->place->check_in))
+                                チェックイン: <br> {{ $campSchedule->place->check_in }} <br>
+                            @endif
+                            @if (!empty($campSchedule->place->check_out))
+                                チェックアウト: <br> {{ $campSchedule->place->check_out }}
+                           @endif
                         </p>
                     </li>
                 @endforeach
