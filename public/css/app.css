@@ -143,6 +143,7 @@ ul {
   padding: 5px 15px;
   justify-content: start;
   margin: 0;
+  border-bottom: 1px solid #ededed;
 }
 
 .header-nav.profile h1 {
@@ -151,6 +152,33 @@ ul {
 
 .header-nav.profile .logo-img {
   width: 200px;
+}
+
+footer {
+  background: #5c6066;
+  color: #FFFFFF;
+  padding: 10px;
+}
+
+footer .links {
+  display: flex;
+  margin: 0 auto;
+  width: 90%;
+  padding: 10px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+footer .links a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+footer .copy-write {
+  font-size: 0.8rem;
+  text-align: center;
 }
 
 .avatar-img {
@@ -326,6 +354,14 @@ ul {
 
   .header-nav.profile .logo-img {
     width: 150px;
+  }
+
+  footer .links {
+    justify-content: start;
+  }
+
+  footer .links a {
+    margin: 0 5px;
   }
 }
 
@@ -1476,5 +1512,61 @@ ul {
   .top-section .content {
     margin-top: 40px;
   }
+}
+
+/*===============================
+  固定ページ
+================================*/
+
+.page-section h2 {
+  text-align: center;
+  margin: 10px auto;
+}
+
+.page-section .content {
+  width: 90%;
+  margin: 20px auto;
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+.page-section .content h3 {
+  margin: 20px auto 10px auto;
+}
+
+.page-section .content p.right {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.page-section .content.guide {
+  font-size: 1rem;
+}
+
+.page-section .content.guide h3 {
+  padding: 0.25em 0.5em;
+  background: transparent;
+  border-left: solid 5px #f0b478;
+}
+
+.page-section .content.guide .content-part {
+  margin: 10px auto 40px auto;
+}
+
+.page-section .content.guide p {
+  margin: 10px 0;
+}
+
+.page-section .content.guide img {
+  max-width: 300px;
+  border: 1px solid #ededed;
+}
+
+.page-section .content.guide .row {
+  display: flex;
+}
+
+.page-section .content.guide .row img {
+  margin: 0 10px;
 }
 

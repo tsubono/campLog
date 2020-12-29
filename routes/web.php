@@ -52,6 +52,17 @@ Route::get('/access-code', 'AccessCodeController@index')->name('access-code.inde
 Route::post('/access-code', 'AccessCodeController@check')->name('access-code.check');
 
 /**
+ * 固定ページ
+ */
+// 利用手順
+Route::get('/guide', 'PageController@guide')->name('guide');
+// 利用規約
+Route::get('/rules', 'PageController@rules')->name('rules');
+// プライバシーポリシー
+Route::get('/privacy-policy', 'PageController@privacyPolicy')->name('privacy-policy');
+
+/**
  * プロフィール
  */
 Route::get('/{userName}', 'ProfileController@index')->name('profile.index');
+

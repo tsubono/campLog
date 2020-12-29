@@ -1,6 +1,6 @@
 @php
     $isNotHeaderNav = true;
-    $isProfile = true;
+    $isPageHeaderNav = true;
 @endphp
 
 @extends('layouts.app')

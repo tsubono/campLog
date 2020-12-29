@@ -32,6 +32,12 @@
 <div class="form-group">
     <textarea name="note">{{ old('note', $campSchedule->note) }}</textarea>
     <label class="form-label" for="cancel_note">備考</label>
+
+    @error('note')
+    <div class="text-error my-5">
+        <strong>{{ $message }}</strong>
+    </div>
+    @enderror
 </div>
 
 <div class="form-group">

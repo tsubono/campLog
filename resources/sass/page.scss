@@ -1,0 +1,58 @@
+/*===============================
+  固定ページ
+================================*/
+.page-section {
+    h2 {
+        text-align: center;
+        margin: 10px auto;
+    }
+
+    .content {
+        width: 90%;
+        margin: 20px auto;
+        font-size: 0.8rem;
+        text-align: left;
+
+        h3 {
+            margin: 20px auto 10px auto;
+        }
+
+        p {
+            &.right {
+                text-align: right;
+                margin-top: 20px;
+            }
+        }
+
+        &.guide {
+            font-size: 1rem;
+
+            h3 {
+                padding: 0.25em 0.5em;
+                background: transparent;
+                border-left: solid 5px $yellow;
+            }
+
+            .content-part {
+                margin: 10px auto 40px auto;
+            }
+
+            p {
+                margin: 10px 0;
+            }
+
+            img {
+                max-width: 300px;
+                border: 1px solid #ededed;
+            }
+
+            .row {
+                display: flex;
+
+                img {
+                    margin: 0 10px;
+                }
+            }
+        }
+    }
+}

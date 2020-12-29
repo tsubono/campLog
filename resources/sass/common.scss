@@ -142,6 +142,7 @@ ul {
         padding: 5px 15px;
         justify-content: start;
         margin: 0;
+        border-bottom: 1px solid #ededed;
 
         h1 {
             text-align: left;
@@ -150,6 +151,33 @@ ul {
         .logo-img {
             width: 200px;
         }
+    }
+}
+
+footer {
+    background: $gray-dark;
+    color: #FFFFFF;
+    padding: 10px;
+
+    .links {
+        display: flex;
+        margin: 0 auto;
+        width: 90%;
+        padding: 10px;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        align-items: center;
+        font-size: 0.9rem;
+
+        a {
+            text-decoration: none;
+            color: #FFFFFF;
+        }
+    }
+
+    .copy-write {
+        font-size: 0.8rem;
+        text-align: center;
     }
 }
 
@@ -329,6 +357,16 @@ ul {
 
             .logo-img {
                 width: 150px;
+            }
+        }
+    }
+
+    footer {
+        .links {
+            justify-content: start;
+
+            a {
+                margin: 0 5px;
             }
         }
     }

@@ -26,6 +26,7 @@ class CampScheduleRequest extends FormRequest
         return [
             'camp_place_id' => 'required',
             'date' => 'required|date',
+            'note' => 'max:700',
         ];
     }
 
@@ -34,6 +35,7 @@ class CampScheduleRequest extends FormRequest
         return [
 			'camp_place_id' => 'キャンプ場',
 			'date' => '日付',
+			'note' => '備考',
         ];
     }
 }

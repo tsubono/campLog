@@ -43,8 +43,8 @@
                     {{ item.name }}
                 </li>
                 <li v-if="1 <= filterString.length && filteredItems.length === 0">
-                    候補が見つかりません。<br>
-                    入力間違いがないか確認してください。
+                    ない場合は一旦「リストなし」を選択して登録後、
+                    <a href="https://bit.ly/camplog-contact" target="_blank">ユーザーコミュニティ</a>よりご要望ください。
                 </li>
             </ul>
         </div>

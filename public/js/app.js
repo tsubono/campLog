@@ -38560,11 +38560,20 @@ var render = function() {
             _vm._v(" "),
             1 <= _vm.filterString.length && _vm.filteredItems.length === 0
               ? _c("li", [
-                  _vm._v("\n                候補が見つかりません。"),
-                  _c("br"),
                   _vm._v(
-                    "\n                入力間違いがないか確認してください。\n            "
-                  )
+                    "\n                ない場合は一旦「リストなし」を選択して登録後、\n                "
+                  ),
+                  _c(
+                    "a",
+                    {
+                      attrs: {
+                        href: "https://bit.ly/camplog-contact",
+                        target: "_blank"
+                      }
+                    },
+                    [_vm._v("ユーザーコミュニティ")]
+                  ),
+                  _vm._v("よりご要望ください。\n            ")
                 ])
               : _vm._e()
           ],
