@@ -21,8 +21,8 @@ class CampPlaceService
             'チェックアウト',
             'カード決済',
             '利用タイプ',
-//            'URL',
-//            '電話番号',
+            'URL',
+            '電話番号',
             '掲載URL',
             'エラー',
         ];
@@ -45,8 +45,8 @@ class CampPlaceService
             'check_out',
             'can_credit',
             'usage_type',
-//            'url',
-//            'tel_number',
+            'url',
+            'tel_number',
             'base_url',
             'error',
         ];
