@@ -38561,14 +38561,17 @@ var render = function() {
             1 <= _vm.filterString.length && _vm.filteredItems.length === 0
               ? _c("li", [
                   _vm._v(
-                    "\n                ない場合は一旦「リストなし」を選択して登録後、\n                "
+                    "\n                ない場合は一旦「リストなし」を選択して登録後、"
                   ),
+                  _c("br"),
+                  _vm._v(" "),
                   _c(
                     "a",
                     {
                       attrs: {
-                        href: "https://bit.ly/camplog-contact",
-                        target: "_blank"
+                        href: "https://line.me/ti/g2/oozel5x55AFVY99vo8-oBw",
+                        target: "_blank",
+                        rel: "nofollow"
                       }
                     },
                     [_vm._v("ユーザーコミュニティ")]

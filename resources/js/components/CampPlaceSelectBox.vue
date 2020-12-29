@@ -43,8 +43,8 @@
                     {{ item.name }}
                 </li>
                 <li v-if="1 <= filterString.length && filteredItems.length === 0">
-                    ない場合は一旦「リストなし」を選択して登録後、
-                    <a href="https://bit.ly/camplog-contact" target="_blank">ユーザーコミュニティ</a>よりご要望ください。
+                    ない場合は一旦「リストなし」を選択して登録後、<br>
+                    <a href="https://line.me/ti/g2/oozel5x55AFVY99vo8-oBw" target="_blank" rel="nofollow">ユーザーコミュニティ</a>よりご要望ください。
                 </li>
             </ul>
         </div>
