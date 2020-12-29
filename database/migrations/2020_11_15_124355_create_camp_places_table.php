@@ -24,7 +24,7 @@ class CreateCampPlacesTable extends Migration
             $table->text('check_out')->nullable()->comment('チェックアウト');
             $table->string('can_credit')->nullable()->comment('カード決済');
             $table->string('usage_type')->nullable()->comment('利用タイプ');
-            $table->string('url')->nullable()->comment('URL');
+            $table->text('url')->nullable()->comment('URL');
             $table->string('tel_number')->nullable()->comment('電話番号');
             $table->timestampTz('created_at', 0)->nullable();
         });
