@@ -7,6 +7,6 @@
         <a href="https://bit.ly/camplog-contact" rel="nofollow" target="_blank">お問い合わせ</a>
     </div>
     <p class="copy-write">
-        &copy;2020-{{ date('Y') }}, camplog.in
+        &copy;2020-{{ date('Y') != 2020 ? date('Y') : '' }}, camplog.in
     </p>
 </footer>
