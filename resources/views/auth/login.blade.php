@@ -42,11 +42,11 @@
                         <div class="form-buttons">
                             <button class="btn primary-btn" type="submit">ログイン</button>
 
-{{--                            @if (Route::has('password.request'))--}}
-{{--                                <a class="btn default-btn my-10" href="{{ route('password.request') }}">--}}
-{{--                                    パスワードを忘れた方はこちら--}}
-{{--                                </a>--}}
-{{--                            @endif--}}
+                            @if (Route::has('password.request'))
+                                <a class="btn default-btn my-10" href="{{ route('password.request') }}">
+                                    パスワードを忘れた方はこちら
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </form>
