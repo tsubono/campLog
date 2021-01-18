@@ -41,33 +41,9 @@
 </div>
 
 <div class="form-group">
-    <drop-image v-bind:name="'images[]'" v-bind:path="'{{ old('images.0', !empty($campSchedule->images[0]) ? $campSchedule->images[0]->image_path : '') }}'"
-                v-bind:url="'/api/uploadImage'" v-bind:dir="'uploaded/camp-schedule'"></drop-image>
-    <label class="form-label" for="avatar_path">画像1 (アイキャッチ画像)</label>
-</div>
-
-<div class="form-group">
-    <drop-image v-bind:name="'images[]'" v-bind:path="'{{ old('images.2', !empty($campSchedule->images[1]) ? $campSchedule->images[1]->image_path : '') }}'"
-                v-bind:url="'/api/uploadImage'" v-bind:dir="'uploaded/camp-schedule'"></drop-image>
-    <label class="form-label" for="avatar_path">画像2</label>
-</div>
-
-<div class="form-group">
-    <drop-image v-bind:name="'images[]'" v-bind:path="'{{ old('images.3', !empty($campSchedule->images[2]) ? $campSchedule->images[2]->image_path : '') }}'"
-                v-bind:url="'/api/uploadImage'" v-bind:dir="'uploaded/camp-schedule'"></drop-image>
-    <label class="form-label" for="avatar_path">画像3</label>
-</div>
-
-<div class="form-group">
-    <drop-image v-bind:name="'images[]'" v-bind:path="'{{ old('images.4', !empty($campSchedule->images[3]) ? $campSchedule->images[3]->image_path : '') }}'"
-                v-bind:url="'/api/uploadImage'" v-bind:dir="'uploaded/camp-schedule'"></drop-image>
-    <label class="form-label" for="avatar_path">画像4</label>
-</div>
-
-<div class="form-group">
-    <drop-image v-bind:name="'images[]'" v-bind:path="'{{ old('images.5', !empty($campSchedule->images[4]) ? $campSchedule->images[4]->image_path : '') }}'"
-                v-bind:url="'/api/uploadImage'" v-bind:dir="'uploaded/camp-schedule'"></drop-image>
-    <label class="form-label" for="avatar_path">画像5</label>
+    <drop-images :name="'images[]'" :images="'{{ json_encode(old('images', $campSchedule->imagePaths)) }}'"
+                :url="'/api/uploadImages'" :dir="'uploaded/camp-schedule'"></drop-images>
+    <label class="form-label" for="avatar_path">画像</label>
 </div>
 
 <div class="form-check-group">

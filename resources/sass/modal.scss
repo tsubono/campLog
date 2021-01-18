@@ -111,6 +111,31 @@
     }
 }
 
+.image-modal-prev,
+.image-modal-next {
+    cursor: pointer;
+    display: none;
+    color: $white;
+    position: fixed;
+    top: 50%;
+    bottom: 0;
+    z-index: 10;
+    font-size: 30px;
+
+    &.disabled {
+        cursor: not-allowed;
+        color: $gray-dark
+    }
+}
+
+.image-modal-prev {
+    left: 25px;
+}
+
+.image-modal-next {
+    right: 25px;
+}
+
 @media screen and (max-width: 480px) {
     .popup-content {
         width: 95% !important;

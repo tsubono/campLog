@@ -1392,6 +1392,32 @@ footer .copy-write {
   height: auto;
 }
 
+.image-modal-prev,
+.image-modal-next {
+  cursor: pointer;
+  display: none;
+  color: #FFFFFF;
+  position: fixed;
+  top: 50%;
+  bottom: 0;
+  z-index: 10;
+  font-size: 30px;
+}
+
+.image-modal-prev.disabled,
+.image-modal-next.disabled {
+  cursor: not-allowed;
+  color: #5c6066;
+}
+
+.image-modal-prev {
+  left: 25px;
+}
+
+.image-modal-next {
+  right: 25px;
+}
+
 @media screen and (max-width: 480px) {
   .popup-content {
     width: 95% !important;

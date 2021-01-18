@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::namespace('Api')->group(function () {
     Route::post('/uploadImage', 'FileController@uploadImage');
+    Route::post('/uploadImages', 'FileController@uploadImages');
 });

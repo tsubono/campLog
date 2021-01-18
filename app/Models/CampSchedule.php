@@ -69,6 +69,18 @@ class CampSchedule extends Model
      */
     public function getEyeCatchImagePathAttribute(): string
     {
-        return !empty($this->images[0]) ? $this->images[0]->image_path : asset('img/default-image.png');
+        return !empty($this->images[0]) ? str_replace("camp-schedule/", "camp-schedule/resized-", $this->images[0]->image_path) : asset('img/default-image.png');
+    }
+
+    /**
+     * @return array
+     */
+    public function getImagePathsAttribute(): array
+    {
+        $res = [];
+        foreach ($this->images as $image) {
+            $res[] = $image->image_path;
+        }
+        return $res;
     }
 }

@@ -43,14 +43,56 @@
          * 画像モーダル
          */
         $('.js-modal-image').click(function(event) {
-            event.stopPropagation()
+            event.stopPropagation();
+            // 左右コントロール表示
+            $('.image-modal-prev, .image-modal-next').css('display', 'block');
+            // 左右コントロールのdisabled更新
+            toggleDisabled($(this));
+            // 画像表示
             $('.image-modal-bg').html($(this).prop('outerHTML'));
             $('.image-modal-bg').fadeIn(200);
         });
         $('.image-modal-bg, .image-modal-bg img').click(function(event) {
             event.stopPropagation()
+            // 左右コントロール非表示
+            $('.image-modal-prev, .image-modal-next').css('display', 'none').removeClass('disabled');
+            // 画像非表示
             $(".image-modal-bg").fadeOut(200);
         });
+        $('.image-modal-prev').click(function(event) {
+            event.stopPropagation()
+            if ($(this).hasClass('disabled')) {
+                return false;
+            }
+            // 前の画像取得 & 表示
+            const prev = $('.js-image-' + $('.image-modal-bg img').data('id')).prev('img');
+            $('.image-modal-bg').html(prev.prop('outerHTML'));
+            // 左右コントロールのdisabled更新
+            toggleDisabled(prev);
+        });
+        $('.image-modal-next').click(function(event) {
+            event.stopPropagation()
+            if ($(this).hasClass('disabled')) {
+                return false;
+            }
+            // 次の画像取得 & 表示
+            const next = $('.js-image-' + $('.image-modal-bg img').data('id')).next('img');
+            $('.image-modal-bg').html(next.prop('outerHTML'));
+            // 左右コントロールのdisabled更新
+            toggleDisabled(next);
+        });
+        /**
+         * 横に画像がなければdisabledにする
+         */
+        function toggleDisabled(target) {
+            $('.image-modal-prev, .image-modal-next').removeClass('disabled')
+            if (target.next('img').length === 0) {
+                $('.image-modal-next').addClass('disabled')
+            }
+            if (target.prev('img').length === 0) {
+                $('.image-modal-prev').addClass('disabled')
+            }
+        }
 
         /**
          * アカウント削除確認

@@ -108,23 +108,25 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
             $savedImagePaths = [];
             foreach ($campSchedule->images as $image) {
                 $savedImagePaths[] = $image->image_path;
-                if (!in_array($image->image_path, $data['images'])) {
+                if (!isset($data['images']) || !in_array($image->image_path, $data['images'])) {
                     $image->delete();
                 }
             }
             // 画像更新
-            foreach ($data['images'] as $index => $image) {
-                if (!empty($image)) {
-                    if (!in_array($image, $savedImagePaths)) {
-                        $campSchedule->images()->create([
-                            'image_path' => $image,
-                            'sort' => $index
-                        ]);
-                    } else {
-                        $campSchedule->images()->where('image_path', $image)->update([
-                            'image_path' => $image,
-                            'sort' => $index
-                        ]);
+            if (isset($data['images'])) {
+                foreach ($data['images'] as $index => $image) {
+                    if (!empty($image)) {
+                        if (!in_array($image, $savedImagePaths)) {
+                            $campSchedule->images()->create([
+                                'image_path' => $image,
+                                'sort' => $index
+                            ]);
+                        } else {
+                            $campSchedule->images()->where('image_path', $image)->update([
+                                'image_path' => $image,
+                                'sort' => $index
+                            ]);
+                        }
                     }
                 }
             }
