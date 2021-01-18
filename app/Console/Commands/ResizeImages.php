@@ -40,10 +40,12 @@ class ResizeImages extends Command
     {
         CampScheduleImage::all()->each (function($image) {
             $resizedPath = str_replace("camp-schedule/", "camp-schedule/resized-", $image->image_path);
-            InterventionImage::make(public_path($image->image_path))->resize(600, null,
-                function ($constraint) {
-                    $constraint->aspectRatio();
-                })->save(public_path($resizedPath));
+            if (!file_exists(public_path($resizedPath))) {
+                InterventionImage::make(public_path($image->image_path))->resize(600, null,
+                    function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save(public_path($resizedPath));
+            }
         });
     }
 }
