@@ -125,7 +125,7 @@
                         <label>画像</label>
                         <div class="item-value images">
                             @foreach ($campSchedule->images as $image)
-                                <img src="{{ $image->image_path }}" alt="画像" class="js-modal-image js-image-{{ $image->id }}" data-id="{{ $image->id }}" />
+                                <img src="{{ str_replace("camp-schedule/", "camp-schedule/resized-", $image->image_path) }}" alt="画像" class="js-modal-image js-image-{{ $image->id }}" data-id="{{ $image->id }}" />
                             @endforeach
                         </div>
                     </div>
