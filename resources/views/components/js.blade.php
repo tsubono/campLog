@@ -49,7 +49,7 @@
             // 左右コントロールのdisabled更新
             toggleDisabled($(this));
             // 画像表示
-            $('.image-modal-bg').html($(this).prop('outerHTML'));
+            $('.image-modal-bg').html($(this).prop('outerHTML').replace(/resized-/i, ''));
             $('.image-modal-bg').fadeIn(200);
         });
         $('.image-modal-bg, .image-modal-bg img').click(function(event) {
@@ -66,7 +66,7 @@
             }
             // 前の画像取得 & 表示
             const prev = $('.js-image-' + $('.image-modal-bg img').data('id')).prev('img');
-            $('.image-modal-bg').html(prev.prop('outerHTML'));
+            $('.image-modal-bg').html(prev.prop('outerHTML').replace(/resized-/i, ''));
             // 左右コントロールのdisabled更新
             toggleDisabled(prev);
         });
@@ -77,7 +77,7 @@
             }
             // 次の画像取得 & 表示
             const next = $('.js-image-' + $('.image-modal-bg img').data('id')).next('img');
-            $('.image-modal-bg').html(next.prop('outerHTML'));
+            $('.image-modal-bg').html(next.prop('outerHTML').replace(/resized-/i, ''));
             // 左右コントロールのdisabled更新
             toggleDisabled(next);
         });
