@@ -36,11 +36,18 @@ class FileController extends Controller
         foreach ($request->file('imgList') as $img) {
             $filename = Carbon::now()->format('YmdHis').rand(1, 9).".". $img->extension();
             $paths[] = Storage::url($img->storeAs($dir, $filename, 'public'));
+
             // リサイズした画像も保存する
-            InterventionImage::make($img)->resize(600, null,
+            $image = InterventionImage::make($img);
+            $image->orientate();
+            $image->resize(
+                ($image->width() > $image->height()) ? 600 : null,
+                ($image->width() > $image->height()) ? null : 600,
                 function ($constraint) {
-                $constraint->aspectRatio();
-            })->save(storage_path(). "/app/public/{$dir}/resized-{$filename}");
+                    $constraint->aspectRatio();
+                }
+            );
+            $image->save(storage_path(). "/app/public/{$dir}/resized-{$filename}");
         }
         return response()->json(['status' => 'ok', 'paths' => $paths]);
     }

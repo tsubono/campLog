@@ -41,7 +41,7 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
             });
         }
 
-        return $query->orderBy('created_at', 'desc')->paginate($paginationCount);
+        return $query->orderBy('date', 'desc')->paginate($paginationCount);
     }
 
     /**
