@@ -40,11 +40,10 @@ class FileController extends Controller
             // リサイズした画像も保存する
             $image = InterventionImage::make($img);
             $image->orientate();
-            $image->resize(
-                ($image->width() > $image->height()) ? 600 : null,
-                ($image->width() > $image->height()) ? null : 600,
+            $image->resize(600, null,
                 function ($constraint) {
                     $constraint->aspectRatio();
+                    $constraint->upsize();
                 }
             );
             $image->save(storage_path(). "/app/public/{$dir}/resized-{$filename}");

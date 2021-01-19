@@ -43,11 +43,10 @@ class ResizeImages extends Command
             if (!file_exists(public_path($resizedPath))) {
                 $image = InterventionImage::make(public_path($image->image_path));
                 $image->orientate();
-                $image->resize(
-                    ($image->width() > $image->height()) ? 600 : null,
-                    ($image->width() > $image->height()) ? null : 600,
+                $image->resize(600, null,
                     function ($constraint) {
                         $constraint->aspectRatio();
+                        $constraint->upsize();
                     }
                 );
                 $image->save(public_path($resizedPath));
