@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Models\CampScheduleImage;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
-use \InterventionImage;
 
 class ResizeImages extends Command
 {
@@ -41,7 +40,7 @@ class ResizeImages extends Command
         CampScheduleImage::all()->each (function($image) {
             $resizedPath = str_replace("camp-schedule/", "camp-schedule/resized-", $image->image_path);
             if (!file_exists(public_path($resizedPath))) {
-                $image = InterventionImage::make(public_path($image->image_path));
+                $image = \Image::make(public_path($image->image_path));
                 $image->orientate();
                 $image->resize(600, null,
                     function ($constraint) {
