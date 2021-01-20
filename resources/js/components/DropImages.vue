@@ -58,6 +58,7 @@
             onDrop (event) {
                 this.isDrag = null;
                 this.isLoading = true;
+                document.body.classList.toggle('is-modal')
                 this.msg = '';
                 let fileList = event.target.files || event.dataTransfer.files;
                 let files  = [];
@@ -68,6 +69,7 @@
                 if (!files.length) {
                     this.msg = 'ファイル形式が不正です。';
                     this.isLoading = false;
+                    document.body.classList.toggle('is-modal')
                     return false;
                 }
                 let totalSize = 0;
@@ -75,6 +77,7 @@
                     if (!file.type.match('image.*')) {
                         this.msg = 'ファイル形式が不正です。';
                         this.isLoading = false;
+                        document.body.classList.toggle('is-modal')
                         return false;
                     }
                     totalSize = totalSize + file.size;
@@ -83,6 +86,7 @@
                 if(totalSize > 8000000){
                     this.msg = '一度にアップロードできる画像サイズの容量を超えました。';
                     this.isLoading = false;
+                    document.body.classList.toggle('is-modal')
                     return false;
                 }
 
@@ -104,9 +108,11 @@
                         self.imgDatas = self.imgDatas.concat(json.paths)
                     }
                     self.isLoading = false;
+                    document.body.classList.toggle('is-modal')
                 }).catch((error) => {
                     console.error('Error:', error);
                     this.isLoading = false;
+                    document.body.classList.toggle('is-modal')
                 });
             },
             onDelete (index) {
