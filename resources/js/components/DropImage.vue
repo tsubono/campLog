@@ -20,9 +20,9 @@
         </div>
         <br>
         <input type="hidden" :name="name" :value="imgData"/>
-        <div>
+        <div class="preview-content">
             <img v-if="imgData" :src="imgData" class="preview">
-            <a v-if="imgData" v-on:click="onDelete" class="delete-btn">削除する</a>
+            <a v-if="imgData" v-on:click="onDelete" class="delete-btn">×</a>
         </div>
         <div v-if="msg" class="error-txt">
             <span>{{msg}}</span>
@@ -158,16 +158,25 @@
         top: 20px;
     }
 
-    .delete-btn {
-        cursor: pointer;
-        background: #e88b79;
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        padding: 10px;
-        font-size: 0.9rem;
+    .preview-content {
         position: relative;
-        top: -27px;
+        width: 300px;
+
+        .delete-btn {
+            cursor: pointer;
+            background: #e88b79;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            font-size: 0.9rem;
+            position: absolute;
+            top: -10px;
+            right: -20px;
+            font-weight: bold;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
     }
 
     .loader-container {

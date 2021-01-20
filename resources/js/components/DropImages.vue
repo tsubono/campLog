@@ -23,7 +23,7 @@
             <div v-for="(imgData, index) in imgDatas" class="image-item">
                 <img v-bind:src="imgData.replace('camp-schedule/', 'camp-schedule/resized-')" class="preview">
                 <input type="hidden" :name="name" :value="imgData"/>
-                <a v-on:click="onDelete(index)" class="delete-btn">削除する</a>
+                <a v-on:click="onDelete(index)" class="delete-btn">×</a>
             </div>
         </div>
         <div v-if="msg" class="error-txt">
@@ -170,7 +170,8 @@
         flex-wrap: wrap;
 
         .image-item {
-            margin: 5px;
+            margin: 5px 15px;
+            position: relative;
 
             img {
                 width: 100px;
@@ -183,11 +184,15 @@
                 background: #e88b79;
                 color: #fff;
                 border: none;
-                border-radius: 10px;
                 padding: 10px;
                 font-size: 0.9rem;
-                position: relative;
-                top: -27px;
+                position: absolute;
+                top: -10px;
+                right: -20px;
+                font-weight: bold;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
             }
         }
     }
