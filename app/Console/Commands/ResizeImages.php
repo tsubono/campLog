@@ -37,10 +37,20 @@ class ResizeImages extends Command
      */
     public function handle()
     {
-        CampScheduleImage::all()->each (function($image) {
-            $resizedPath = str_replace("camp-schedule/", "camp-schedule/resized-", $image->image_path);
+        CampScheduleImage::all()->each (function($scheduleImage) {
+            $image = \Image::make(public_path($scheduleImage->image_path));
+            $image->orientate();
+            $image->resize(1200, null,
+                function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                }
+            );
+            $image->save(public_path($scheduleImage->image_path));
+
+            $resizedPath = str_replace("camp-schedule/", "camp-schedule/resized-", $scheduleImage->image_path);
             if (!file_exists(public_path($resizedPath))) {
-                $image = \Image::make(public_path($image->image_path));
+                $image = \Image::make(public_path($scheduleImage->image_path));
                 $image->orientate();
                 $image->resize(600, null,
                     function ($constraint) {
