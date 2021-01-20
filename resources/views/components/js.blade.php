@@ -27,10 +27,14 @@
          */
         $('.js-show-popup').click (function() {
             $('#' + $(this).data('id')).fadeIn();
+            if (!$('body').hasClass('is-modal')) {
+                $('body').addClass('is-modal')
+            }
         })
 
         $('.js-popup-close').on('click',function(){
             $(this).parents('.js-popup').fadeOut();
+            $('body').removeClass('is-modal')
             return false;
         });
 
@@ -49,11 +53,15 @@
             // 画像表示
             $('.image-modal-bg .image-content').html($(this).prop('outerHTML').replace(/resized-/i, ''));
             $('.image-modal-bg').fadeIn(200);
+            if (!$('body').hasClass('is-modal')) {
+                $('body').addClass('is-modal')
+            }
         });
         $('.image-modal-bg').click(function(event) {
             event.stopPropagation()
             // 画像非表示
             $(".image-modal-bg").removeClass('active').fadeOut(200);
+            $('body').removeClass('is-modal')
         });
         $('.image-modal-prev').click(function(event) {
             event.stopPropagation()
