@@ -14,6 +14,7 @@
     @include('components.js')
 
     <!-- Styles -->
+    <link href="{{ secure_asset('css/loading.min.css') }}" rel="stylesheet">
     <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-186172042-1"></script>
