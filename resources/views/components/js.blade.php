@@ -44,20 +44,16 @@
          */
         $('.js-modal-image').click(function(event) {
             event.stopPropagation();
-            // 左右コントロール表示
-            $('.image-modal-prev, .image-modal-next').css('display', 'block');
             // 左右コントロールのdisabled更新
             toggleDisabled($(this));
             // 画像表示
-            $('.image-modal-bg').html($(this).prop('outerHTML').replace(/resized-/i, ''));
+            $('.image-modal-bg .image-content').html($(this).prop('outerHTML').replace(/resized-/i, ''));
             $('.image-modal-bg').fadeIn(200);
         });
         $('.image-modal-bg, .image-modal-bg img').click(function(event) {
             event.stopPropagation()
-            // 左右コントロール非表示
-            $('.image-modal-prev, .image-modal-next').css('display', 'none').removeClass('disabled');
             // 画像非表示
-            $(".image-modal-bg").fadeOut(200);
+            $(".image-modal-bg").removeClass('active').fadeOut(200);
         });
         $('.image-modal-prev').click(function(event) {
             event.stopPropagation()
@@ -66,7 +62,7 @@
             }
             // 前の画像取得 & 表示
             const prev = $('.js-image-' + $('.image-modal-bg img').data('id')).prev('img');
-            $('.image-modal-bg').html(prev.prop('outerHTML').replace(/resized-/i, ''));
+            $('.image-modal-bg .image-content').html(prev.prop('outerHTML').replace(/resized-/i, ''));
             // 左右コントロールのdisabled更新
             toggleDisabled(prev);
         });
@@ -77,7 +73,7 @@
             }
             // 次の画像取得 & 表示
             const next = $('.js-image-' + $('.image-modal-bg img').data('id')).next('img');
-            $('.image-modal-bg').html(next.prop('outerHTML').replace(/resized-/i, ''));
+            $('.image-modal-bg .image-content').html(next.prop('outerHTML').replace(/resized-/i, ''));
             // 左右コントロールのdisabled更新
             toggleDisabled(next);
         });

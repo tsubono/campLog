@@ -137,7 +137,10 @@
         </div>
     </div>
 </div>
-<div class="image-modal-prev">＜</div>
-<div class="image-modal-bg"></div>
-<div class="image-modal-next">＞</div>
+<div class="image-modal-bg">
+    <div class="image-content"></div>
+    <div class="image-modal-prev">＜</div>
+    <div class="image-modal-next">＞</div>
+    <div class="image-modal-close">×</div>
+</div>
 

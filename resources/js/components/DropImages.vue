@@ -11,7 +11,7 @@
                 <label class="file-select-btn">
                     ファイルを選択
                     <input type="file" class="drop__input" style="display:none;"
-                           v-on:change="onDrop">
+                           v-on:change="onDrop" multiple>
                 </label>
             </div>
         </div>
