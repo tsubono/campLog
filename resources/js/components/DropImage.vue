@@ -1,6 +1,6 @@
-<template>
+<div class="file-area"><template>
     <div class="file-area">
-        <div v-if="!uploaded" :class="[{'drag': isDrag == 'new'}]"
+        <div v-if="!uploaded" :class="{'drag': isDrag === 'new'}"
              @dragover.prevent="checkDrag($event, 'new', true)"
              @dragleave.prevent="checkDrag($event, 'new', false)"
              @drop.prevent="onDrop" class="drop-area">
