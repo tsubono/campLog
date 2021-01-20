@@ -57,26 +57,81 @@
         });
         $('.image-modal-prev').click(function(event) {
             event.stopPropagation()
-            if ($(this).hasClass('disabled')) {
-                return false;
-            }
-            // 前の画像取得 & 表示
-            const prev = $('.js-image-' + $('.image-modal-bg img').data('id')).prev('img');
-            $('.image-modal-bg .image-content').html(prev.prop('outerHTML').replace(/resized-/i, ''));
-            // 左右コントロールのdisabled更新
-            toggleDisabled(prev);
+            moveImage('prev')
         });
         $('.image-modal-next').click(function(event) {
             event.stopPropagation()
-            if ($(this).hasClass('disabled')) {
+            moveImage('next')
+        });
+        /**
+         * 画像を左右に移動する
+         */
+        function moveImage(direction) {
+            if ($('.image-modal-' + direction).hasClass('disabled')) {
                 return false;
             }
-            // 次の画像取得 & 表示
-            const next = $('.js-image-' + $('.image-modal-bg img').data('id')).next('img');
-            $('.image-modal-bg .image-content').html(next.prop('outerHTML').replace(/resized-/i, ''));
-            // 左右コントロールのdisabled更新
-            toggleDisabled(next);
-        });
+            // 画像取得 & 表示
+            let target = null
+            if (direction === 'next') {
+                target = $('.js-image-' + $('.image-modal-bg img').data('id')).next('img');
+            } else if (direction === 'prev') {
+                target = $('.js-image-' + $('.image-modal-bg img').data('id')).prev('img');
+            }
+
+            if (target !== null) {
+                $('.image-modal-bg .image-content').html(target.prop('outerHTML').replace(/resized-/i, ''));
+                // 左右コントロールのdisabled更新
+                toggleDisabled(target);
+            }
+        }
+        document.onkeydown = function(e) {
+            e.stopPropagation()
+            if (e.keyCode) {
+                // 右
+                if (e.keyCode === 39) {
+                    moveImage('next')
+                }
+                // 左
+                if (e.keyCode === 37) {
+                    moveImage('prev')
+                }
+            }
+        };
+
+        /**
+         * 画像スワイプ対応
+         */
+        $('.image-modal-bg').on('touchstart', onTouchStart);
+        $('.image-modal-bg').on('touchmove', onTouchMove);
+        $('.image-modal-bg').on('touchend', onTouchEnd);
+        let direction, position;
+
+        // スワイプ開始時の横方向の座標を格納
+        function onTouchStart(event) {
+            direction = '';
+            position = event.originalEvent.touches[0].pageX;
+        }
+
+        // スワイプの方向（left or right）を取得
+        function onTouchMove(event) {
+            // 閾値は70pxとする
+            if (position - event.originalEvent.touches[0].pageX > 70) {
+                direction = 'left';
+            } else if (position - event.originalEvent.touches[0].pageX < -70){
+                direction = 'right';
+            }
+        }
+
+        function onTouchEnd() {
+            // 右スワイプ
+            if (direction === 'right'){
+                moveImage('next')
+            // 左スワイプ
+            } else if (direction === 'left'){
+                moveImage('prev')
+            }
+        }
+
         /**
          * 横に画像がなければdisabledにする
          */

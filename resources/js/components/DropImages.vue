@@ -21,7 +21,7 @@
         <br>
         <div class="image-list">
             <div v-for="(imgData, index) in imgDatas" class="image-item">
-                <img v-bind:src="imgData" class="preview">
+                <img v-bind:src="imgData.replace('camp-schedule/', 'camp-schedule/resized-')" class="preview">
                 <input type="hidden" :name="name" :value="imgData"/>
                 <a v-on:click="onDelete(index)" class="delete-btn">削除する</a>
             </div>
