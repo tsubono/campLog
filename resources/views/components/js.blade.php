@@ -133,10 +133,10 @@
         function onTouchEnd() {
             // 右スワイプ
             if (direction === 'right'){
-                moveImage('next')
+                moveImage('prev')
             // 左スワイプ
             } else if (direction === 'left'){
-                moveImage('prev')
+                moveImage('next')
             }
         }
 
