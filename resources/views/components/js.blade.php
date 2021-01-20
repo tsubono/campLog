@@ -50,7 +50,7 @@
             $('.image-modal-bg .image-content').html($(this).prop('outerHTML').replace(/resized-/i, ''));
             $('.image-modal-bg').fadeIn(200);
         });
-        $('.image-modal-bg, .image-modal-bg img').click(function(event) {
+        $('.image-modal-bg').click(function(event) {
             event.stopPropagation()
             // 画像非表示
             $(".image-modal-bg").removeClass('active').fadeOut(200);
@@ -101,9 +101,9 @@
         /**
          * 画像スワイプ対応
          */
-        $('.image-modal-bg').on('touchstart', onTouchStart);
-        $('.image-modal-bg').on('touchmove', onTouchMove);
-        $('.image-modal-bg').on('touchend', onTouchEnd);
+        $('.image-modal-bg .image-content').on('touchstart', onTouchStart);
+        $('.image-modal-bg .image-content').on('touchmove', onTouchMove);
+        $('.image-modal-bg .image-content').on('touchend', onTouchEnd);
         let direction, position;
 
         // スワイプ開始時の横方向の座標を格納
@@ -114,10 +114,10 @@
 
         // スワイプの方向（left or right）を取得
         function onTouchMove(event) {
-            // 閾値は70pxとする
-            if (position - event.originalEvent.touches[0].pageX > 70) {
+            // 閾値は30pxとする
+            if (position - event.originalEvent.touches[0].pageX > 30) {
                 direction = 'left';
-            } else if (position - event.originalEvent.touches[0].pageX < -70){
+            } else if (position - event.originalEvent.touches[0].pageX < -30){
                 direction = 'right';
             }
         }
