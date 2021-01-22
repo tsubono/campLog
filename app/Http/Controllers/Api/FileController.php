@@ -31,7 +31,7 @@ class FileController extends Controller
         $dir = $request->get('dir');
         $paths = [];
         foreach ($request->file('imgList') as $img) {
-            $filename = now()->format('YmdHis').rand(1, 9).".". $img->extension();
+            $filename = now()->format('YmdHis').uniqid('', true).".". $img->extension();
             $image = \Image::make($img);
             $image->resize(1200, null,
                 function ($constraint) {
