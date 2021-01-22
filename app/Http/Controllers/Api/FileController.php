@@ -36,25 +36,25 @@ class FileController extends Controller
             foreach ($request->file('imgList') as $img) {
                 $filename = now()->format('YmdHis').uniqid('', true).".". $img->extension();
                 $image = \Image::make($img)->setFileInfoFromPath($img);
+                $image->orientate();
                 $image->resize(1200, null,
                     function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     }
                 );
-                $image->orientate();
                 $image->save(storage_path(). "/app/public/{$dir}/{$filename}");
                 $paths[] = Storage::url("{$dir}/{$filename}");
 
                 // リサイズした画像も保存する
                 $resizedImage = \Image::make($img)->setFileInfoFromPath($img);
+                $resizedImage->orientate();
                 $resizedImage->resize(600, null,
                     function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     }
                 );
-                $resizedImage->orientate();
                 $resizedImage->save(storage_path(). "/app/public/{$dir}/resized-{$filename}");
             }
         } catch (\Exception $e) {
