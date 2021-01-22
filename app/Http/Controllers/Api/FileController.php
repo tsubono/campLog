@@ -36,6 +36,7 @@ class FileController extends Controller
             foreach ($request->file('imgList') as $img) {
                 $filename = now()->format('YmdHis').uniqid('', true).".". $img->extension();
                 $image = \Image::make($img)->setFileInfoFromPath($img);
+                Log::info($image->exif());
                 $image->orientate();
                 $image->resize(1200, null,
                     function ($constraint) {
