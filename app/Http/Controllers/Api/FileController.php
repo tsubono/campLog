@@ -35,7 +35,7 @@ class FileController extends Controller
         try {
             foreach ($request->file('imgList') as $img) {
                 $filename = now()->format('YmdHis').uniqid('', true).".". $img->extension();
-                $image = \Image::make($img);
+                $image = \Image::make($img)->setFileInfoFromPath($img);
                 $image->resize(1200, null,
                     function ($constraint) {
                         $constraint->aspectRatio();
@@ -47,7 +47,7 @@ class FileController extends Controller
                 $paths[] = Storage::url("{$dir}/{$filename}");
 
                 // リサイズした画像も保存する
-                $resizedImage = \Image::make($img);
+                $resizedImage = \Image::make($img)->setFileInfoFromPath($img);
                 $resizedImage->resize(600, null,
                     function ($constraint) {
                         $constraint->aspectRatio();
