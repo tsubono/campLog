@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
@@ -30,30 +31,36 @@ class FileController extends Controller
     public function uploadImages(Request $request) {
         $dir = $request->get('dir');
         $paths = [];
-        foreach ($request->file('imgList') as $img) {
-            $filename = now()->format('YmdHis').uniqid('', true).".". $img->extension();
-            $image = \Image::make($img);
-            $image->resize(1200, null,
-                function ($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                }
-            );
-            $image->orientate();
-            $image->save(storage_path(). "/app/public/{$dir}/{$filename}");
-            $paths[] = Storage::url("{$dir}/{$filename}");
+        Log::info($request->file('imgList'));
+        try {
+            foreach ($request->file('imgList') as $img) {
+                $filename = now()->format('YmdHis').uniqid('', true).".". $img->extension();
+                $image = \Image::make($img);
+                $image->resize(1200, null,
+                    function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    }
+                );
+                $image->orientate();
+                $image->save(storage_path(). "/app/public/{$dir}/{$filename}");
+                $paths[] = Storage::url("{$dir}/{$filename}");
 
-            // リサイズした画像も保存する
-            $resizedImage = \Image::make($img);
-            $resizedImage->resize(600, null,
-                function ($constraint) {
-                    $constraint->aspectRatio();
-                    $constraint->upsize();
-                }
-            );
-            $resizedImage->orientate();
-            $resizedImage->save(storage_path(). "/app/public/{$dir}/resized-{$filename}");
+                // リサイズした画像も保存する
+                $resizedImage = \Image::make($img);
+                $resizedImage->resize(600, null,
+                    function ($constraint) {
+                        $constraint->aspectRatio();
+                        $constraint->upsize();
+                    }
+                );
+                $resizedImage->orientate();
+                $resizedImage->save(storage_path(). "/app/public/{$dir}/resized-{$filename}");
+            }
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
         }
+
         return response()->json(['status' => 'ok', 'paths' => $paths]);
     }
 }
