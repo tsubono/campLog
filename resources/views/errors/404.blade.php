@@ -5,7 +5,7 @@
         <div class="content">
             <div class="login-form">
                 <h2>Page Not Found</h2>
-
+                <br>
                 <p>ページが見つかりませんでした</p>
             </div>
         </div>
