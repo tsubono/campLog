@@ -66,13 +66,17 @@ class LoginController extends Controller
             return redirect('/login')->with('error-message', 'ログインに失敗しました');
         }
 
+        $name =
+            User::query()->where('name', $user->nickname)->exists() ?
+                $user->nickname. "_". now()->format('YmdHis') : $user->nickname;
+
         $registerUser = User::firstOrCreate(
             [
                 'twitter_token' => $user->token
             ],
             [
                 'twitter_token' => $user->token,
-                'name' => $user->nickname,
+                'name' => $name,
                 'handle_name' => $user->name,
                 'avatar_path' => $user->avatar_original,
                 'background_path' => $user['profile_banner_url'] ?? asset('img/default-image.png'),
@@ -83,7 +87,7 @@ class LoginController extends Controller
         );
         Auth::login($registerUser);
 
-        return redirect()->to('/mypage/profile');
+        return redirect()->to('/mypage/profile')->with('message');
     }
 
     /**
