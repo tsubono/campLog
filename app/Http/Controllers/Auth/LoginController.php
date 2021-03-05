@@ -66,9 +66,12 @@ class LoginController extends Controller
             return redirect('/login')->with('error-message', 'ログインに失敗しました');
         }
 
-        $name =
-            User::query()->where('name', $user->nickname)->exists() ?
+        $isSameName = User::query()->where('name', $user->nickname)->exists();
+        $isSameToken = User::query()->where('twitter_token', $user->token)->exists();
+        $name = $isSameName ?
                 $user->nickname. "_". now()->format('YmdHis') : $user->nickname;
+        $message = $isSameName && !$isSameToken ?
+                '※ 同じ名前のユーザーが存在するので名前を変更しています。ご希望の名前に更新してください。' : '';
 
         $registerUser = User::firstOrCreate(
             [
@@ -87,7 +90,8 @@ class LoginController extends Controller
         );
         Auth::login($registerUser);
 
-        return redirect()->to('/mypage/profile')->with('message');
+
+        return redirect()->to('/mypage/profile')->with('message', $message);
     }
 
     /**
