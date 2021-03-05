@@ -93,3 +93,18 @@
         </div>
     </section>
 @endsection
+
+@section('js')
+<script>
+    $(function() {
+      if ($('.text-error').length !== 0) {
+        $("html,body").animate({
+          scrollTop : $("#register").offset().top
+        }, {
+          queue : false
+        });
+      }
+    })
+</script>
+@endsection
+
