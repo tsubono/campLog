@@ -1,7 +1,7 @@
 <div class="form-group">
     <camp-place-select-box
         :items="{{ $campPlaces }}"
-        :default-name="'{{ old('camp_place_name', $campSchedule->camp_place_name) }}'"
+        :default-name='"{{ old('camp_place_name', $campSchedule->camp_place_name) }}"'
         :default-id="'{{ old('camp_place_id', $campSchedule->camp_place_id) }}'"
     />
 </div>
