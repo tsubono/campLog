@@ -12,7 +12,7 @@
       <a v-if="!imgData" class="round-btn edit-btn" @click="onClickFileEdit()">
         <img :src="'/img/edit.svg'" width="15px" />
       </a>
-      <a v-else @click="onDelete()" class="round-btn delete-btn">×</a>
+      <a v-else-if="canEdit" @click="onDelete()" class="round-btn delete-btn">×</a>
       <input type="hidden" :name="name" :value="imgData"/>
   </div>
 </template>
@@ -20,7 +20,7 @@
 <script>
     export default {
         name: "DropImage",
-        props: ['name', 'path', 'url', 'dir'],
+        props: ['name', 'path', 'url', 'dir', 'canEdit'],
         data() {
             return {
                 'host': '',

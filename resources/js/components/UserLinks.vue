@@ -8,7 +8,9 @@
               :name="`links[${index}][icon_path]`"
               :path="link.icon_path"
               :url="'/api/uploadImage'"
-              :dir="'uploaded/link-icon'">
+              :dir="'uploaded/link-icon'"
+              :can-edit="!link.is_static"
+          >
           </drop-image-round>
           <input
               :id="`link${index}name`"
