@@ -34,45 +34,17 @@
             </p>
         @endif
     </div>
-    @if (
-    (!empty($user->twitter_url) && $user->is_public_twitter_url) ||
-    (!empty($user->instagram_url) && $user->is_public_instagram_url) ||
-    (!empty($user->facebook_url) && $user->is_public_facebook_url) ||
-    (!empty($user->youtube_url) && $user->is_public_youtube_url) ||
-    (!empty($user->blog_url) && $user->is_public_blog_url)
-    )
+    @if ($user->is_public_link)
         <div class="sns-list">
             <div class="sns-wrapper">
-                @if (!empty($user->twitter_url) && $user->is_public_twitter_url)
-                    <a class="sns-item" href="{{ $user->twitter_url }}" target="_blank" rel="noopener">
-                        <img src="{{ asset('img/icon_twitter.svg') }}" class="icon">
-                        <span>Twitter</span>
-                    </a>
-                @endif
-                @if (!empty($user->instagram_url) && $user->is_public_instagram_url)
-                     <a class="sns-item" href="{{ $user->instagram_url }}" target="_blank" rel="noopener">
-                         <img src="./img/icon_instagram.svg" class="icon">
-                         <span>Instagram</span>
-                     </a>
-                @endif
-                @if (!empty($user->youtube_url) && $user->is_public_youtube_url)
-                    <a class="sns-item" href="{{ $user->youtube_url }}" target="_blank" rel="noopener">
-                        <img src="./img/icon_youtube.svg" class="icon">
-                        <span>Youtube</span>
-                    </a>
-                @endif
-                @if (!empty($user->blog_url) && $user->is_public_blog_url)
-                    <a class="sns-item" href="{{ $user->blog_url }}" target="_blank" rel="noopener">
-                        <img src="./img/icon_blog.svg" class="icon">
-                        <span>Blog</span>
-                    </a>
-                @endif
-                @if (!empty($user->facebook_url) && $user->is_public_facebook_url)
-                     <a class="sns-item" href="{{ $user->facebook_url }}" target="_blank" rel="noopener">
-                         <img src="./img/icon_facebook.svg" class="icon">
-                         <span>Facebook</span>
-                     </a>
-                @endif
+                @foreach ($user->links as $link)
+                    @if ($link['is_public'] && !empty($link['url']))
+                        <a class="sns-item" href="{{ $link['url'] }}" target="_blank" rel="noopener">
+                            <img src="{{ $link['icon_path'] }}" class="icon">
+                            <span>{{ $link['name'] }}</span>
+                        </a>
+                   @endif
+                @endforeach
             </div>
         </div>
     @endif

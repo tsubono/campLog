@@ -2,67 +2,67 @@
   自己紹介
 ================================*/
 .header-image {
-    width: 100%;
-    height: 200px;
-    position: relative;
-    z-index: 1;
+  width: 100%;
+  height: 200px;
+  position: relative;
+  z-index: 1;
 
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .profile {
-    display: flex;
-    padding: 0 30px;
-    margin: 0 0 30px;
-    height: 90px;
+  display: flex;
+  padding: 0 30px;
+  margin: 0 0 30px;
+  height: 90px;
 
-    .avatar {
-        width: 167px;
-        margin-right: 16px;
-        position: relative;
+  .avatar {
+    width: 167px;
+    margin-right: 16px;
+    position: relative;
 
-        img {
-            position: absolute;
-            top: -40px;
-            z-index: 1;
-        }
+    img {
+      position: absolute;
+      top: -40px;
+      z-index: 1;
     }
+  }
 
-    .text {
-        width: 80%;
-        padding: 0 20px;
-    }
+  .text {
+    width: 80%;
+    padding: 0 20px;
+  }
 
-    .name {
-        font-size: 20px;
-        margin: 20px 0 10px 0;
-    }
+  .name {
+    font-size: 20px;
+    margin: 20px 0 10px 0;
+  }
 
-    .introduction {
-        font-size: 14px;
-
-        p {
-            margin: 0;
-        }
-    }
-}
-
-.self-introduction {
+  .introduction {
     font-size: 14px;
 
     p {
-        margin: 0;
+      margin: 0;
     }
+  }
 }
 
 .self-introduction {
-    position: relative;
-    top: 20px;
-    margin: auto 15px;
+  font-size: 14px;
+
+  p {
+    margin: 0;
+  }
+}
+
+.self-introduction {
+  position: relative;
+  top: 20px;
+  margin: auto 15px;
 }
 
 /*===============================
@@ -70,419 +70,419 @@
 ================================*/
 
 .sns-list {
-    overflow-x: scroll;
-    white-space: nowrap;
-    margin-top: 65px;
+  overflow-x: scroll;
+  white-space: nowrap;
+  margin-top: 65px;
+  display: flex;
+  padding: 10px 30px;
+
+  .sns-wrapper {
     display: flex;
-    padding: 10px 30px;
 
-    .sns-wrapper {
-        display: flex;
+    .sns-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 150px;
+      padding: 15px 0;
+      margin-right: 16px;
+      border-radius: 4px;
+      background: $white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      color: #1a1a1a;
+      box-shadow: 0 0 8px gray;
 
-        .sns-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            width: 150px;
-            padding: 15px 0;
-            margin-right: 16px;
-            border-radius: 4px;
-            background: $white;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            color: #1a1a1a;
-            box-shadow: 0 0 8px gray;
+      img {
+        margin-right: auto;
+        margin-left: 15px;
+        width: 20px;
+      }
 
-            img {
-                margin-right: auto;
-                margin-left: 15px;
-                width: 10%;
-            }
-
-            span {
-                width: 60%;
-            }
-        }
+      span {
+        width: 60%;
+      }
     }
+  }
 }
 
 /*===============================
   日数まとめ
 ================================*/
 .summary {
-    overflow-x: scroll;
-    white-space: nowrap;
-    margin-top: 10px;
+  overflow-x: scroll;
+  white-space: nowrap;
+  margin-top: 10px;
+  display: flex;
+  padding: 30px;
+
+  .summary-title {
+    font-size: 20px;
+    position: relative;
+    padding: 15px 0;
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 1px solid #ebebeb;
+      width: 85%;
+      left: 13%;
+    }
+  }
+
+  .cards {
     display: flex;
-    padding: 30px;
+    margin: 0 20px 0 0;
 
-    .summary-title {
-        font-size: 20px;
-        position: relative;
-        padding: 15px 0;
+    .card {
+      display: inline-block;
+      text-align: center;
+      width: 150px;
+      min-width: 150px;
+      font-size: 14px;
+      border-radius: 10px;
+      background: $blue;
+      color: $white;
+      margin: 0 12px 0 0;
 
-        &:after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            border: 1px solid #ebebeb;
-            width: 85%;
-            left: 13%;
+      &.long {
+        width: 200px;
+        min-width: 200px;
+      }
+
+      &.yellow {
+        background: $yellow;
+
+        .card-title {
+          background: #db9e60;
+
+          &:before {
+            content: url("/img/icon_day.svg");
+          }
         }
-    }
+      }
 
-    .cards {
+      &.red {
+        background: $red;
+
+        .card-title {
+          background: #d57a6a;
+
+          &:before {
+            content: url("/img/icon_camp_place.svg");
+          }
+        }
+      }
+
+      .card-title {
         display: flex;
-        margin: 0 20px 0 0;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 0;
+        background: $blue-dark;
+        border-radius: 10px 10px 0 0;
 
-        .card {
-            display: inline-block;
-            text-align: center;
-            width: 150px;
-            min-width: 150px;
-            font-size: 14px;
-            border-radius: 10px;
-            background: $blue;
-            color: $white;
-            margin: 0 12px 0 0;
-
-            &.long {
-                width: 200px;
-                min-width: 200px;
-            }
-
-            &.yellow {
-                background: $yellow;
-
-                .card-title {
-                    background: #db9e60;
-
-                    &:before {
-                        content: url("/img/icon_day.svg");
-                    }
-                }
-            }
-
-            &.red {
-                background: $red;
-
-                .card-title {
-                    background: #d57a6a;
-
-                    &:before {
-                        content: url("/img/icon_camp_place.svg");
-                    }
-                }
-            }
-
-            .card-title {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 6px 0;
-                background: $blue-dark;
-                border-radius: 10px 10px 0 0;
-
-                &:before {
-                    content: url("/img/icon_stay.svg");
-                    width: 14px;
-                    height: 14px;
-                    margin-top: -4px;
-                    margin-right: 5px;
-                }
-            }
-
-            .card-data {
-                font-family: Arial;
-                display: flex;
-                justify-content: center;
-                align-items: baseline;
-                height: 78px;
-                font-size: 60px;
-
-                .unit {
-                    font-size: 18px;
-                    margin-left: 7px;
-
-                    &.place {
-                        display: flex;
-                        flex-direction: column;
-                        align-self: center;
-
-                        span {
-                            margin: -3px 0;
-                        }
-                    }
-                }
-            }
+        &:before {
+          content: url("/img/icon_stay.svg");
+          width: 14px;
+          height: 14px;
+          margin-top: -4px;
+          margin-right: 5px;
         }
+      }
 
-        .monthly-list {
+      .card-data {
+        font-family: Arial;
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        height: 78px;
+        font-size: 60px;
+
+        .unit {
+          font-size: 18px;
+          margin-left: 7px;
+
+          &.place {
             display: flex;
-            color: white;
+            flex-direction: column;
+            align-self: center;
 
-            .list-title {
-                height: 110px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 10px 0 0 10px;
-                background: $blue-dark;
-                font-size: 14px;
-                padding: 0 25px;
-                position: relative;
-
-                &.camping {
-                    display: flex;
-                    flex-direction: column;
-                    height: 100%;
-
-                    img {
-                        margin-bottom: 4px;
-                    }
-                }
+            span {
+              margin: -3px 0;
             }
-
-            .list {
-                display: flex;
-                border-radius: 0 10px 10px 0;
-                background: $blue;
-
-                .item {
-                    font-size: 14px;
-                    width: 56px;
-                    min-width: 56px;
-                    padding: 0 8px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    flex-direction: column;
-
-                    .stays {
-                        font-size: 30px;
-                    }
-                }
-            }
+          }
         }
+      }
     }
+
+    .monthly-list {
+      display: flex;
+      color: white;
+
+      .list-title {
+        height: 110px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px 0 0 10px;
+        background: $blue-dark;
+        font-size: 14px;
+        padding: 0 25px;
+        position: relative;
+
+        &.camping {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+
+          img {
+            margin-bottom: 4px;
+          }
+        }
+      }
+
+      .list {
+        display: flex;
+        border-radius: 0 10px 10px 0;
+        background: $blue;
+
+        .item {
+          font-size: 14px;
+          width: 56px;
+          min-width: 56px;
+          padding: 0 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+
+          .stays {
+            font-size: 30px;
+          }
+        }
+      }
+    }
+  }
 }
 
 /*===============================
 	ログ
 ================================*/
 .camp-schedules {
-    margin-top: 35px;
+  margin-top: 35px;
 
-    .grid-tab-content {
-        .list {
-            display: flex;
-            flex-wrap: wrap;
+  .grid-tab-content {
+    .list {
+      display: flex;
+      flex-wrap: wrap;
 
-            .item {
-                width: calc(100% / 3);
-                position: relative;
-                cursor: pointer;
+      .item {
+        width: calc(100% / 3);
+        position: relative;
+        cursor: pointer;
 
-                &:before{
-                    content: "";
-                    display: block;
-                    padding-top: 100%;
-                }
-
-                .eye-catch {
-                    position: absolute;
-                    width: 100%;
-                    height: 100%;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    left: 0;
-                    margin: auto;
-                    object-fit: cover;
-                    pointer-events: none;
-                }
-            }
+        &:before {
+          content: "";
+          display: block;
+          padding-top: 100%;
         }
 
-        .date {
-            color: $white;
-            position: absolute;
-            top: 15px;
-            left: 20px;
-            font-size: 30px;
-
-            .slash {
-                border: 1px solid $white;
-                width: 40px;
-                transform: rotate(-45deg);
-                position: absolute;
-                top: 40px;
-                left: 24px;
-            }
-
-            .day {
-                position: absolute;
-                top: 40px;
-                left: 48px;
-            }
+        .eye-catch {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          margin: auto;
+          object-fit: cover;
+          pointer-events: none;
         }
+      }
     }
 
-    .list-tab-content {
-        .item {
-            padding: 30px;
-            border-right: 1px solid #ddd;
-            border-left: 1px solid #ddd;
-            border-bottom: 1px solid #ddd;
+    .date {
+      color: $white;
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      font-size: 30px;
 
-            &:first-child {
-                border-top: 1px solid #ddd;
-            }
+      .slash {
+        border: 1px solid $white;
+        width: 40px;
+        transform: rotate(-45deg);
+        position: absolute;
+        top: 40px;
+        left: 24px;
+      }
 
-            .title {
-                font-size: 16px;
-                font-weight: bold;
-            }
-
-            .date {
-                color: #5e5e5e;
-            }
-
-            .address,
-            .tel,
-            .check-in-out {
-                font-size: 0.8rem;
-                margin-top: 10px;
-            }
-        }
+      .day {
+        position: absolute;
+        top: 40px;
+        left: 48px;
+      }
     }
+  }
 
-    .tab-content {
-        display: none;
+  .list-tab-content {
+    .item {
+      padding: 30px;
+      border-right: 1px solid #ddd;
+      border-left: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
 
-        &.show {
-            display: block;
-        }
+      &:first-child {
+        border-top: 1px solid #ddd;
+      }
+
+      .title {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .date {
+        color: #5e5e5e;
+      }
+
+      .address,
+      .tel,
+      .check-in-out {
+        font-size: 0.8rem;
+        margin-top: 10px;
+      }
     }
+  }
+
+  .tab-content {
+    display: none;
+
+    &.show {
+      display: block;
+    }
+  }
 }
 
 @media screen and (max-width: 480px) {
-    .header-image {
+  .header-image {
+    height: 120px;
+  }
+
+  .profile {
+    padding: 0 10px;
+    margin-bottom: 0;
+
+    .avatar {
+      position: relative;
+      margin: 10px auto;
+      width: 130px;
+
+      img {
+        width: 120px;
         height: 120px;
+      }
     }
 
-    .profile {
-        padding: 0 10px;
-        margin-bottom: 0;
-
-        .avatar {
-            position: relative;
-            margin: 10px auto;
-            width: 130px;
-
-            img {
-                width: 120px;
-                height: 120px;
-            }
-        }
-
-        .text {
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            padding: 0 10px;
-        }
-
-        .name {
-            font-size: 17px;
-            margin: 10px 0 10px 0;
-        }
-
-        .introduction {
-            font-size: 12px;
-            text-align: left;
-            margin: 0 5px;
-        }
+    .text {
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      padding: 0 10px;
     }
 
-    .self-introduction {
-        font-size: 12px;
-        text-align: left;
-        max-height: 100px;
-        overflow-y: auto;
-        top: 0;
-        margin: auto 15px;
+    .name {
+      font-size: 17px;
+      margin: 10px 0 10px 0;
     }
 
-    .summary {
-        padding: 10px;
+    .introduction {
+      font-size: 12px;
+      text-align: left;
+      margin: 0 5px;
     }
+  }
 
-    .sns-list {
-        margin-top: 15px;
-        margin-bottom: -20px;
-        padding: 10px;
+  .self-introduction {
+    font-size: 12px;
+    text-align: left;
+    max-height: 100px;
+    overflow-y: auto;
+    top: 0;
+    margin: auto 15px;
+  }
 
-        .sns-wrapper {
-            .sns-item {
-                width: 100px;
-                font-size: 13px;
-                margin-right: 9px;
+  .summary {
+    padding: 10px;
+  }
 
-                img {
-                    margin-right: 5px;
-                    margin-left: 5px;
-                    width: 15px;
-                }
-            }
+  .sns-list {
+    margin-top: 15px;
+    margin-bottom: -20px;
+    padding: 10px;
+
+    .sns-wrapper {
+      .sns-item {
+        width: 100px;
+        font-size: 13px;
+        margin-right: 9px;
+
+        img {
+          margin-right: 5px;
+          margin-left: 5px;
+          width: 15px;
         }
+      }
     }
+  }
 
-    .summary {
-        .cards {
-            .card {
-                &.long {
-                    width: 145px;
-                    min-width: 145px;
-                }
-
-                .card-data {
-                    height: 45px;
-                    font-size: 35px;
-                }
-            }
+  .summary {
+    .cards {
+      .card {
+        &.long {
+          width: 145px;
+          min-width: 145px;
         }
-    }
 
-    .tab-menu {
-        .tab-item {
-            padding: 16px 0;
+        .card-data {
+          height: 45px;
+          font-size: 35px;
         }
+      }
     }
+  }
 
-    .camp-schedules {
-        margin-top: 0;
+  .tab-menu {
+    .tab-item {
+      padding: 16px 0;
+    }
+  }
 
-        .grid-tab-content {
-            .date {
-                top: 10px;
-                left: 5px;
-                font-size: 23px;
+  .camp-schedules {
+    margin-top: 0;
 
-                .slash {
-                    width: 35px;
-                    top: 35px;
-                    left: 19px;
-                }
+    .grid-tab-content {
+      .date {
+        top: 10px;
+        left: 5px;
+        font-size: 23px;
 
-                .day {
-                    top: 35px;
-                    left: 43px;
-                }
-            }
+        .slash {
+          width: 35px;
+          top: 35px;
+          left: 19px;
         }
+
+        .day {
+          top: 35px;
+          left: 43px;
+        }
+      }
     }
+  }
 }

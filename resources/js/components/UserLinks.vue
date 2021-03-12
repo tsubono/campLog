@@ -1,0 +1,159 @@
+<template>
+  <div class="links">
+    <div class="link-item" v-for="(link, index) in links" :key="index">
+      <div class="form-group">
+        <div class="form-item">
+          <drop-image-round
+              class="drop-image"
+              :name="`links[${index}][icon_path]`"
+              :path="link.icon_path"
+              :url="'/api/uploadImage'"
+              :dir="'uploaded/link-icon'">
+          </drop-image-round>
+          <input
+              :id="`link${index}name`"
+              type="text"
+              :name="`links[${index}][name]`"
+              placeholder="リンク名を入力"
+              :disabled="link.is_static"
+              class="input-name"
+              v-model="link.name"
+          />
+          <input
+              :id="`link${index}Url`"
+              type="text"
+              :name="`links[${index}][url]`"
+              placeholder="URLを入力"
+              class="input-url"
+              v-model="link.url"
+          />
+        </div>
+        <input type="hidden" :name="`links[${index}][name]`" :value="link.name" v-if="link.is_static" />
+        <div class="form-check-group is-public">
+          <input type="hidden" :name="`links[${index}][is_public]`" value="1" />
+          <input
+              :id="`link${index}IsPublic`"
+              type="checkbox"
+              :name="`links[${index}][is_public]`"
+              value=""
+              :checked="link.is_public != 1"
+          />
+          <label
+              class="form-check-label"
+              :for="`link${index}IsPublic`">
+            非公開にする
+          </label>
+        </div>
+      </div>
+      <div class="controls" v-if="!link.is_static">
+        <a class="btn danger-btn remove-btn" @click="onClickRemoveLink(index)">削除</a>
+      </div>
+      <input type="hidden" :name="`links[${index}][id]`" :value="link.id" />
+    </div>
+    <a class="btn success-btn" @click="onClickAddLink()"> + リンクを追加</a>
+    <input
+        type="hidden"
+        name="deleted_link_ids"
+        v-model="deleted_link_ids"
+    />
+  </div>
+</template>
+
+<script>
+const link = {
+  id: '',
+  name: '',
+  url: '',
+  icon_path: '',
+  is_public: 1,
+}
+export default {
+  data () {
+    return {
+      links: [],
+      deleted_link_ids: [],
+    }
+  },
+  props: ['propLinks'],
+  methods: {
+    onClickAddLink() {
+      this.links.push(_.cloneDeep(link))
+      this.$forceUpdate();
+    },
+    onClickRemoveLink(index) {
+      const deleted_links = this.links.splice(index, 1)
+      if (deleted_links[0].id !== null) {
+        this.deleted_link_ids.push(deleted_links[0].id)
+      }
+    },
+  },
+  mounted () {
+    this.links = this.propLinks
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.links {
+  width: 100%;
+
+  .link-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .form-group {
+      border: 1px solid #959ba2;
+      border-radius: 10px;
+      padding: 5px 10px;
+
+      .form-item {
+        display: flex;
+        align-items: center;
+
+        input {
+          margin-right: 10px;
+
+          &.input-name {
+            width: 150px;
+          }
+
+          &.input-url {
+            width: 300px
+          }
+        }
+
+        @media (max-width: 480px) {
+          flex-direction: column;
+
+          .drop-image {
+            margin-top: 20px;
+          }
+
+          input {
+            &.input-name,
+            &.input-url {
+              width: 90%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .remove-btn {
+    width: 50px;
+    font-size: .8em;
+    margin-left: 10px;
+
+    @media (max-width: 480px) {
+      font-size: .6em;
+      width: 40px;
+    }
+  }
+
+  .drop-image {
+    width: 35%;
+  }
+}
+</style>

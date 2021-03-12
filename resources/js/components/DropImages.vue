@@ -224,5 +224,9 @@
         .drop-area {
             width: 100%;
         }
+
+        .preview-content {
+          width: 250px;
+        }
     }
 </style>

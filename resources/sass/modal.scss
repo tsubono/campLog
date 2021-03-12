@@ -1,149 +1,150 @@
 .popup {
-    display: none;
-    height: 100vh;
-    position: fixed;
-    top: 0;
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+
+  .popup-bg {
     width: 100%;
-    z-index: 1;
-
-    .popup-bg {
-        width:100%;
-        height:100%;
-        background-color: rgba(0,0,0,0.5);
-        position:fixed;
-        top:0;
-        left:0;
-        z-index: 1;
-    }
-
-    .popup-content {
-        h3 {
-            color: $yellow;
-        }
-        background: #fff;
-        left: 50%;
-        padding: 20px;
-        position: fixed;
-        top: 50%;
-        transform: translate(-50%,-50%);
-        width: 400px;
-        border-radius: 10px;
-        z-index: 2;
-
-        .popup-buttons {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            margin-top: 20px;
-
-            a, button {
-                margin: 5px auto !important;
-                width: 90%;
-            }
-        }
-    }
-}
-
-.camp-schedule-show {
-    .popup-content {
-        width: 70%;
-    }
-
-    .camp-schedule-show-wrapper {
-        overflow: auto;
-
-        .camp-schedule-show {
-            margin: 10px auto;
-            max-height: 400px;
-
-            .show-item {
-                margin: 10px;
-
-                label {
-                    color: $gray-dark;
-                    font-size: .9rem;
-                    padding: 5px;
-                }
-
-                .item-value {
-                    font-weight: bold;
-
-                    &.images {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: center;
-
-                        img {
-                            width: 100px;
-                            height: 100px;
-                            margin: 5px;
-                            object-fit: cover;
-                            cursor: pointer;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-.image-modal-bg {
-    display: none;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    max-width: 100%!important;
-    height: 100%;
-    background: rgba(0,0,0,0.45);
     z-index: 1;
+  }
 
-    img {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        max-width: 90%;
-        max-height: 90%;
-        height: auto;
+  .popup-content {
+    h3 {
+      color: $yellow;
     }
+
+    background: #fff;
+    left: 50%;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    border-radius: 10px;
+    z-index: 2;
+
+    .popup-buttons {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 20px;
+
+      a, button {
+        margin: 5px auto !important;
+        width: 90%;
+      }
+    }
+  }
+}
+
+.camp-schedule-show {
+  .popup-content {
+    width: 70%;
+  }
+
+  .camp-schedule-show-wrapper {
+    overflow: auto;
+
+    .camp-schedule-show {
+      margin: 10px auto;
+      max-height: 400px;
+
+      .show-item {
+        margin: 10px;
+
+        label {
+          color: $gray-dark;
+          font-size: .9rem;
+          padding: 5px;
+        }
+
+        .item-value {
+          font-weight: bold;
+
+          &.images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            img {
+              width: 100px;
+              height: 100px;
+              margin: 5px;
+              object-fit: cover;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.image-modal-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 100% !important;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+
+  img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 90%;
+    max-height: 90%;
+    height: auto;
+  }
 }
 
 .image-modal-prev,
 .image-modal-next,
 .image-modal-close {
-    cursor: pointer;
-    color: $white;
-    position: fixed;
-    font-weight: bold;
-    font-size: 40px;
-    z-index: 10;
+  cursor: pointer;
+  color: $white;
+  position: fixed;
+  font-weight: bold;
+  font-size: 40px;
+  z-index: 10;
 
-    &.disabled {
-        cursor: not-allowed;
-        color: $gray-dark
-    }
+  &.disabled {
+    cursor: not-allowed;
+    color: $gray-dark
+  }
 }
 
 .image-modal-prev {
-    top: 50%;
-    left: 25px;
+  top: 50%;
+  left: 25px;
 }
 
 .image-modal-next {
-    top: 50%;
-    right: 25px;
+  top: 50%;
+  right: 25px;
 }
 
 .image-modal-close {
-    top: 10px;
-    right: 25px;
+  top: 10px;
+  right: 25px;
 }
 
 @media screen and (max-width: 480px) {
-    .popup-content {
-        width: 95% !important;
-    }
+  .popup-content {
+    width: 95% !important;
+  }
 }

@@ -55,6 +55,14 @@ class User extends Authenticatable
     }
 
     /**
+     * @return HasMany
+     */
+    public function links(): HasMany
+    {
+        return $this->hasMany(UserLink::class);
+    }
+
+    /**
      * アバター画像パス
      *
      * @return string
@@ -159,7 +167,7 @@ class User extends Authenticatable
     /**
      * キャンプ歴を算出する
      *
-     * @return int|null
+     * @return string|null
      * @throws \Exception
      */
     public function getCampHistoryAttribute()
@@ -183,5 +191,85 @@ class User extends Authenticatable
         }
 
         return "{$interval->y}年{$interval->m}ヶ月";
+    }
+
+    /**
+     * リンク一覧を取得する
+     *
+     * @return array
+     */
+    public function getLinksAttribute(): array
+    {
+        $links = $this->links()->get()->toArray();
+
+        $links = array_merge($links, [
+            [
+                'name' => 'Twitter',
+                'url' => $this->twitter_url,
+                'icon_path' => asset('img/icon_twitter.svg'),
+                'is_public' => $this->is_public_twitter_url,
+                'sort' => $this->sort_twitter_url,
+                'is_static' => true,
+            ], [
+                'name' => 'Instagram',
+                'url' => $this->instagram_url,
+                'icon_path' => asset('img/icon_instagram.svg'),
+                'is_public' => $this->is_public_instagram_url,
+                'sort' => $this->sort_instagram_url,
+                'is_static' => true,
+            ], [
+                'name' => 'Youtube',
+                'url' => $this->youtube_url,
+                'icon_path' => asset('img/icon_youtube.svg'),
+                'is_public' => $this->is_public_youtube_url,
+                'sort' => $this->sort_youtube_url,
+                'is_static' => true,
+            ], [
+                'name' => 'Blog',
+                'url' => $this->blog_url,
+                'icon_path' => asset('img/icon_blog.svg'),
+                'is_public' => $this->is_public_blog_url,
+                'sort' => $this->sort_blog_url,
+                'is_static' => true,
+            ], [
+                'name' => 'Facebook',
+                'url' => $this->facebook_url,
+                'icon_path' => asset('img/icon_facebook.svg'),
+                'is_public' => $this->is_public_facebook_url,
+                'sort' => $this->sort_facebook_url,
+                'is_static' => true,
+            ]
+        ]);
+
+
+        foreach ($links as $index => &$link) {
+            $sort[$index] = $link['sort'];
+            $link['name'] = old("links.$index.name", $link['name']);
+            $link['url'] = old("links.$index.url", $link['url']);
+            $link['icon_path'] = old("links.$index.icon_path", $link['icon_path']);
+            $link['is_public'] = old("links.$index.is_public", $link['is_public']);
+            $link['sort'] = old("links.$index.sort", $link['sort']);
+        }
+
+        array_multisort($sort, SORT_ASC, $links);
+
+        return $links;
+    }
+
+    /**
+     * 公開中のリンクがあるかどうか
+     *
+     * @return bool
+     */
+    public function getIsPublicLinkAttribute(): bool
+    {
+        $isPublicLink = false;
+        foreach ($this->links as $link) {
+            if ($link['is_public'] && !empty($link['url'])) {
+                $isPublicLink = true;
+            }
+        }
+
+        return  $isPublicLink;
     }
 }

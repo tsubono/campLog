@@ -2,128 +2,128 @@
   キャンプ予定
 ================================*/
 .camp-schedule-section {
-    min-height: 500px;
+  min-height: 500px;
 
-    .content {
-        padding: 10px;
-    }
+  .content {
+    padding: 10px;
+  }
 
-    .camp-schedule-list {
-        border: 1px solid $black;
-        padding: 10px;
+  .camp-schedule-list {
+    border: 1px solid $black;
+    padding: 10px;
 
-        .camp-schedule-item {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            align-items: center;
-            margin: 10px auto;
+    .camp-schedule-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 10px auto;
 
-            .content-part {
-                margin-right: 10px;
-            }
+      .content-part {
+        margin-right: 10px;
+      }
 
-            .eye-catch-image {
-                width: 120px;
-                height: 120px;
-                object-fit: cover;
-            }
+      .eye-catch-image {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+      }
 
-            .buttons {
-                margin-left: auto;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 30%;
+      .buttons {
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30%;
 
-                .content-part {
-                    width: 50%;
+        .content-part {
+          width: 50%;
 
-                    a {
-                        margin: 5px 0;
-                    }
-                }
-            }
+          a {
+            margin: 5px 0;
+          }
         }
+      }
     }
+  }
 }
 
 /*===============================
   プロフィール設定
 ================================*/
 .profile-edit-section {
-    .top-content {
-        margin: 10px;
-        align-items: center;
+  .top-content {
+    margin: 10px;
+    align-items: center;
 
-        .qr-note {
-            font-size: 0.6rem;
-        }
+    .qr-note {
+      font-size: 0.6rem;
     }
+  }
 }
 
 /*===============================
   アクセスコード
 ================================*/
 .access-code {
-    color: $green;
-    font-weight: bold;
-    margin-top: 10px;
+  color: $green;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 .copy {
-    margin: 15px;
-    width: 80%;
+  margin: 15px;
+  width: 80%;
 }
 
 .logout-btn {
-    width: 100px;
-    margin-top: 30px;
+  width: 100px;
+  margin-top: 30px;
 }
 
 .profile-delete-link {
-    color: $gray-dark;
-    font-size: 0.9rem;
-    position: relative;
-    top: 25px;
-    cursor: pointer;
-    text-decoration: underline;
+  color: $gray-dark;
+  font-size: 0.9rem;
+  position: relative;
+  top: 25px;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 480px) {
-    .profile-edit-section {
-        .top-content {
-            justify-content: center;
-            align-items: center;
-        }
-
-        .profile-form {
-            width: 90%;
-        }
+  .profile-edit-section {
+    .top-content {
+      justify-content: center;
+      align-items: center;
     }
 
-    .camp-schedule-section {
-        .camp-schedule-form {
-            width: 90%;
-        }
-
-        .camp-schedule-list {
-            .camp-schedule-item {
-                flex-direction: column;
-
-                .content-part {
-                    margin: 10px auto;
-                }
-
-                .buttons {
-                    width: 100%;
-
-                    .content-part {
-                        width: 45%;
-                    }
-                }
-            }
-        }
+    .profile-form {
+      width: 90%;
     }
+  }
+
+  .camp-schedule-section {
+    .camp-schedule-form {
+      width: 90%;
+    }
+
+    .camp-schedule-list {
+      .camp-schedule-item {
+        flex-direction: column;
+
+        .content-part {
+          margin: 10px auto;
+        }
+
+        .buttons {
+          width: 100%;
+
+          .content-part {
+            width: 45%;
+          }
+        }
+      }
+    }
+  }
 }
 

@@ -29,7 +29,8 @@
                         <input type="hidden" name="twitter_token" value="{{ $user->twitter_token }}" />
                     @endif
 
-                    <div class="form-content">
+                    <div class="form-content block">
+                        <h4 class="form-subhead">基本情報</h4>
                         <div class="form-group">
                             <label class="form-label" for="avatar_path">アイコン画像</label>
                             <drop-image v-bind:name="'avatar_path'" v-bind:path="'{{ old('avatar_path', $user->display_avatar_path) }}'"
@@ -165,67 +166,14 @@
                                 <label class="form-check-label" for="is_public_introduction">非公開にする</label>
                             </div>
                         </div>
+                    </div>
+                    <div class="form-content block">
+                        <h4 class="form-subhead">リンク一覧</h4>
+                        <user-links :prop-links="{{ json_encode($user->links) }}"></user-links>
+                    </div>
 
-                        <div class="form-group">
-                            <input id="twitter_url" type="text"
-                                   name="twitter_url" value="{{ old('twitter_url', $user->twitter_url) }}">
-                            <label class="form-label" for="twitter_url">Twitter URL</label>
-                            <div class="form-check-group is-public">
-                                <input type="hidden" name="is_public_twitter_url" value="1" />
-                                <input id="is_public_twitter_url" type="checkbox" name="is_public_twitter_url" value=""
-                                    {{ old('is_public_twitter_url', $user->is_public_twitter_url) != 1 ? 'checked' : '' }}/>
-                                <label class="form-check-label" for="is_public_twitter_url">非公開にする</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <input id="instagram_url" type="text"
-                                   name="instagram_url" value="{{ old('instagram_url', $user->instagram_url) }}">
-                            <label class="form-label" for="instagram_url">Instagram URL</label>
-                            <div class="form-check-group is-public">
-                                <input type="hidden" name="is_public_instagram_url" value="1" />
-                                <input id="is_public_instagram_url" type="checkbox" name="is_public_instagram_url" value=""
-                                    {{ old('is_public_instagram_url', $user->is_public_instagram_url) != 1 ? 'checked' : '' }}/>
-                                <label class="form-check-label" for="is_public_instagram_url">非公開にする</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <input id="facebook_url" type="text"
-                                   name="facebook_url" value="{{ old('facebook_url', $user->facebook_url) }}">
-                            <label class="form-label" for="facebook_url">Facebook URL</label>
-                            <div class="form-check-group is-public">
-                                <input type="hidden" name="is_public_facebook_url" value="1" />
-                                <input id="is_public_facebook_url" type="checkbox" name="is_public_facebook_url" value=""
-                                    {{ old('is_public_facebook_url', $user->is_public_facebook_url) != 1 ? 'checked' : '' }}/>
-                                <label class="form-check-label" for="is_public_facebook_url">非公開にする</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <input id="youtube_url" type="text"
-                                   name="youtube_url" value="{{ old('youtube_url', $user->youtube_url) }}">
-                            <label class="form-label" for="youtube_url">Youtube URL</label>
-                            <div class="form-check-group is-public">
-                                <input type="hidden" name="is_public_youtube_url" value="1" />
-                                <input id="is_public_youtube_url" type="checkbox" name="is_public_youtube_url" value=""
-                                    {{ old('is_public_youtube_url', $user->is_public_youtube_url) != 1 ? 'checked' : '' }}/>
-                                <label class="form-check-label" for="is_public_youtube_url">非公開にする</label>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <input id="blog_url" type="text"
-                                   name="blog_url" value="{{ old('blog_url', $user->blog_url) }}">
-                            <label class="form-label" for="blog_url">Blog URL</label>
-                            <div class="form-check-group is-public">
-                                <input type="hidden" name="is_public_blog_url" value="1" />
-                                <input id="is_public_blog_url" type="checkbox" name="is_public_blog_url" value=""
-                                    {{ old('is_public_blog_url', $user->is_public_blog_url) != 1 ? 'checked' : '' }}/>
-                                <label class="form-check-label" for="is_public_blog_url">非公開にする</label>
-                            </div>
-                        </div>
-
+                    <div class="form-content block">
+                        <h4 class="form-subhead">認証情報</h4>
                         <div class="form-group">
                             <input id="email" type="text" class="@error('email') is-invalid @enderror"
                                    name="email" value="{{ old('email', $user->email) }}">

@@ -1,23 +1,23 @@
 @import url(https://fonts.googleapis.com/earlyaccess/notosansjp.css);
 
 * {
-    box-sizing: border-box;
-    margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 body {
-    font-family: "Noto Sans JP", sans-serif;
-    width: 100%;
-    color: $black;
-    margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  width: 100%;
+  color: $black;
+  margin: 0;
 
-    &.is-modal {
-        overflow: hidden;
-    }
+  &.is-modal {
+    overflow: hidden;
+  }
 }
 
 h2 {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 /*===============================
@@ -25,361 +25,365 @@ h2 {
 ================================*/
 
 ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
 }
 
 .container {
-    max-width: 800px;
-    width: 100%;
-    margin: 0 auto;
-    border: 1px solid $gray;
-    min-height: 100vh;
-    position: relative;
-    padding-bottom: 100px;
-    box-sizing: border-box;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid $gray;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 115px;
+  box-sizing: border-box;
 }
 
 .btn {
-    text-decoration: none;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    border: none;
-    border-radius: 3px;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
-    margin: auto;
-    width: 100%;
-    justify-content: center;
-    font-size: 1rem;
-    cursor: pointer;
-    outline: none;
+  text-decoration: none;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  margin: auto;
+  width: 100%;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
 
-    &.default-btn {
-        color: $black;
-        background: $gray;
-    }
+  &.default-btn {
+    color: $black;
+    background: $gray;
+  }
 
-    &.primary-btn {
-        color: $white;
-        background: $blue-dark;
-    }
+  &.primary-btn {
+    color: $white;
+    background: $blue-dark;
+  }
 
-    &.warning-btn {
-        color: $white;
-        background: $yellow;
-    }
+  &.warning-btn {
+    color: $white;
+    background: $yellow;
+  }
 
-    &.success-btn {
-        color: $white;
-        background: $green;
-    }
+  &.success-btn {
+    color: $white;
+    background: $green;
+  }
 
-    &.danger-btn {
-        color: $white;
-        background: $red;
-    }
+  &.danger-btn {
+    color: $white;
+    background: $red;
+  }
 
-    &:hover {
-        box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
-        transform: translateY(-3px);
-    }
+  &:hover {
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+  }
 }
 
 .text-error {
-    color: $red;
-    font-size: .9rem;
+  color: $red;
+  font-size: .9rem;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .flex-right {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 
-    .item {
-        margin: 20px 0 20px auto;
-        max-width: 200px;
-    }
+  .item {
+    margin: 20px 0 20px auto;
+    max-width: 200px;
+  }
 }
 
 .flex-left {
-    display: flex;
-    justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .header-nav {
-    background: $red;
-    color: $white;
+  background: $red;
+  color: $white;
+  display: flex;
+  padding: 10px 15px;
+  justify-content: center;
+  align-items: center;
+
+  .logo-img {
+    width: 250px;
+  }
+
+  .right {
+    margin-left: auto;
     display: flex;
-    padding: 10px 15px;
     justify-content: center;
     align-items: center;
+    width: 45%;
+
+    a {
+      margin: 0 10px;
+      font-size: .9rem;
+    }
+
+    .header-avatar {
+      width: 100px;
+    }
+  }
+
+  &.profile {
+    background: $white;
+    padding: 5px 15px;
+    justify-content: start;
+    margin: 0;
+    border-bottom: 1px solid #ededed;
+
+    h1 {
+      text-align: left;
+    }
 
     .logo-img {
-        width: 250px;
+      width: 200px;
     }
-
-    .right {
-        margin-left: auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 45%;
-
-        a {
-            margin: 0 10px;
-            font-size: .9rem;
-        }
-
-        .header-avatar {
-            width: 100px;
-        }
-    }
-
-    &.profile {
-        background: $white;
-        padding: 5px 15px;
-        justify-content: start;
-        margin: 0;
-        border-bottom: 1px solid #ededed;
-
-        h1 {
-            text-align: left;
-        }
-
-        .logo-img {
-            width: 200px;
-        }
-    }
+  }
 }
 
 footer {
-    background: $gray-dark;
-    color: #FFFFFF;
+  background: $gray-dark;
+  color: #FFFFFF;
+  padding: 10px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 115px;
+
+  .links {
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
     padding: 10px;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    height: 100px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.9rem;
 
-    .links {
-        display: flex;
-        margin: 0 auto;
-        width: 90%;
-        padding: 10px;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        align-items: center;
-        font-size: 0.9rem;
-
-        a {
-            text-decoration: none;
-            color: #FFFFFF;
-        }
+    a {
+      text-decoration: none;
+      color: #FFFFFF;
     }
+  }
 
-    .copy-write {
-        font-size: 0.8rem;
-        text-align: center;
-    }
+  .copy-write {
+    font-size: 0.8rem;
+    text-align: center;
+  }
 }
 
 .avatar-img {
-    border-radius: 50%;
-    object-fit: cover;
-    width: 180px;
-    height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  width: 180px;
+  height: 180px;
 
-    &.small {
-        width: 80px;
-        height: 80px;
-    }
+  &.small {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .content {
-    margin: 35px auto;
-    text-align: center;
+  margin: 35px auto;
+  text-align: center;
 }
 
 .my-10 {
-    margin: 10px auto;
+  margin: 10px auto;
 }
 
 .my-5 {
-    margin: 5px auto;
+  margin: 5px auto;
 }
 
 .mx-10 {
-    margin: auto 10px;
+  margin: auto 10px;
 }
 
 .mx-5 {
-    margin: auto 5px;
+  margin: auto 5px;
 }
 
 .tab-menu {
+  display: flex;
+
+  .tab-item {
+    flex: 1;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 26px 0;
+    background-color: $gray;
+    cursor: pointer;
+    color: $black;
 
-    .tab-item {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 26px 0;
-        background-color: $gray;
-        cursor: pointer;
-        color: $black;
-
-        &:before {
-            width: 25px;
-            height: 18px;
-            margin-right: 5px;
-        }
-
-        &.active {
-            background-color: $gray-dark;
-            color: $gray;
-
-            a {
-                color: $gray;
-            }
-        }
-
-        &.type-grid {
-            &:before {
-                content: url("/img/icon_image_bk.svg");
-            }
-
-            &.active:before {
-                content: url("/img/icon_image_white.svg");
-            }
-        }
-
-        &.type-person {
-            &:before {
-                content: url("/img/icon_person_bk.svg");
-            }
-
-            &.active:before {
-                content: url("/img/icon_person_white.svg");
-            }
-        }
-
-        &.type-list {
-            &:before {
-                content: url("/img/icon_list_bk.svg");
-            }
-
-            &.active:before {
-                content: url("/img/icon_list_white.svg");
-            }
-        }
+    @media (max-width: 480px) {
+      font-size: .8em;
     }
+
+    &:before {
+      width: 25px;
+      height: 18px;
+      margin-right: 5px;
+    }
+
+    &.active {
+      background-color: $gray-dark;
+      color: $gray;
+
+      a {
+        color: $gray;
+      }
+    }
+
+    &.type-grid {
+      &:before {
+        content: url("/img/icon_image_bk.svg");
+      }
+
+      &.active:before {
+        content: url("/img/icon_image_white.svg");
+      }
+    }
+
+    &.type-person {
+      &:before {
+        content: url("/img/icon_person_bk.svg");
+      }
+
+      &.active:before {
+        content: url("/img/icon_person_white.svg");
+      }
+    }
+
+    &.type-list {
+      &:before {
+        content: url("/img/icon_list_bk.svg");
+      }
+
+      &.active:before {
+        content: url("/img/icon_list_white.svg");
+      }
+    }
+  }
 }
 
 .require {
-    color: $red;
-    font-size: .9rem;
+  color: $red;
+  font-size: .9rem;
 }
 
 .flash-message {
-    padding: 10px;
-    text-align: center;
-    background: $green;
-    color: $white;
+  padding: 10px;
+  text-align: center;
+  background: $green;
+  color: $white;
 
-    &.error {
-        background: $yellow;
-    }
+  &.error {
+    background: $yellow;
+  }
 }
 
 .flex-column {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .auth-btn {
-    margin-right: 16px;
-    border-radius: 4px;
-    background: $white;
-    text-decoration: none;
-    font-size: 14px;
-    box-shadow: 0 0 8px gray;
-    border: 1px solid $blue;
-    color: $blue;
-    padding: 10px;
+  margin-right: 16px;
+  border-radius: 4px;
+  background: $white;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 0 8px gray;
+  border: 1px solid $blue;
+  color: $blue;
+  padding: 10px;
 
-    img {
-        margin-right: auto;
-        width: 20px;
-        position: relative;
-        top: 4px;
-    }
+  img {
+    margin-right: auto;
+    width: 20px;
+    position: relative;
+    top: 4px;
+  }
 
-    .micro-txt {
-        font-size: 0.6rem;
-        padding-top: 5px;
-    }
+  .micro-txt {
+    font-size: 0.6rem;
+    padding-top: 5px;
+  }
 }
 
 .register-btn {
-    width: 300px;
-    margin: 0 auto;
-    padding: 10px 25px;
-    font-size: 1.1rem;
+  width: 300px;
+  margin: 0 auto;
+  padding: 10px 25px;
+  font-size: 1.1rem;
 }
 
 @media screen and (max-width: 1024px) {
-    .container {
-        max-width: 100%;
-    }
+  .container {
+    max-width: 100%;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    .header-nav {
-        display: block;
+  .header-nav {
+    display: block;
 
-        h1 {
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        .right {
-            width: 100%;
-        }
-
-        &.profile {
-            padding: 0 15px;
-            margin: 0;
-
-            h1 {
-                padding: 5px 0 0 0;
-            }
-
-            .logo-img {
-                width: 150px;
-            }
-        }
+    h1 {
+      text-align: center;
+      padding: 10px 0;
     }
 
-    footer {
-        .links {
-            justify-content: start;
-
-            a {
-                margin: 0 5px;
-            }
-        }
+    .right {
+      width: 100%;
     }
+
+    &.profile {
+      padding: 0 15px;
+      margin: 0;
+
+      h1 {
+        padding: 5px 0 0 0;
+      }
+
+      .logo-img {
+        width: 150px;
+      }
+    }
+  }
+
+  footer {
+    .links {
+      justify-content: start;
+
+      a {
+        margin: 0 5px;
+      }
+    }
+  }
 }
