@@ -87,6 +87,7 @@ export default {
       if (deleted_links[0].id !== null) {
         this.deleted_link_ids.push(deleted_links[0].id)
       }
+      this.$forceUpdate();
     },
   },
   mounted () {
