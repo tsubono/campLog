@@ -17,7 +17,8 @@ class UserRepository implements UserRepositoryInterface
     private User $user;
     private UserLink $userLink;
 
-    public function __construct(User $user, UserLink $userLink) {
+    public function __construct(User $user, UserLink $userLink)
+    {
         $this->user = $user;
         $this->userLink = $userLink;
     }
@@ -46,10 +47,12 @@ class UserRepository implements UserRepositoryInterface
         DB::beginTransaction();
         try {
             $user = $this->user->findOrFail($id);
-            foreach ($data['links'] as $index => $linkData) {
+
+            foreach ($data['links'] ?? [] as $index => $linkData) {
                 $data['links'][$index]['sort'] = $index + 1;
             }
             $data = $this->_setStaticLinks($data);
+
             $user->update($data);
 
             if (!empty($data['deleted_link_ids'])) {
@@ -62,8 +65,8 @@ class UserRepository implements UserRepositoryInterface
                     ->delete();
             }
 
-            foreach ($data['links'] as $linkData) {
-                $linkData['user_id'] = auth()->user()->id;
+            foreach ($data['links'] ?? [] as $linkData) {
+                $linkData['user_id'] = $id;
                 if (empty($linkData['icon_path'])) {
                     $linkData['icon_path'] = '/img/url.png';
                 }
@@ -91,7 +94,7 @@ class UserRepository implements UserRepositoryInterface
      */
     private function _setStaticLinks($data)
     {
-        foreach ($data['links'] as $index => $link) {
+        foreach ($data['links'] ?? [] as $index => $link) {
             if ($link['name'] === 'Twitter') {
                 $data['twitter_url'] = $link['url'];
                 $data['is_public_twitter_url'] = $link['is_public'];
