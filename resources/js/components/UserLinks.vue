@@ -6,7 +6,7 @@
     </p>
     <draggable v-model="links" :options="options">
       <div class="link-item" v-for="(link, index) in links" :key="index">
-        <div class="form-group">
+        <div class="form-group" :class="{'has-delete': !link.is_static}">
           <div class="form-item">
             <drop-image-round
                 class="drop-image"
@@ -130,12 +130,16 @@ export default {
     align-items: center;
     justify-content: space-between;
     cursor: grab;
-    width: calc(100% + 60px);
+    width: 100%;
 
     .form-group {
       border: 1px solid #959ba2;
       border-radius: 10px;
       padding: 5px 10px;
+
+      &.has-delete {
+        width: calc(100% - 60px);
+      }
 
       .form-item {
         display: flex;
