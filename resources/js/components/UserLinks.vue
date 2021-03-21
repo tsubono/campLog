@@ -1,11 +1,11 @@
 <template>
   <div class="links">
     <p class="description">
-      <img src="/img/icon_incandescent.svg" alt="ヒント" />
-      ドラッグ&ドロップで順番の並べ替えができます
+      <img src="/img/icon_more_vert.svg" alt="drag_handle" />ボタンを動かすと順番の並べ替えができます
     </p>
-    <draggable v-model="links" :options="options">
+    <draggable v-model="links" :options="options" handle=".handle">
       <div class="link-item" v-for="(link, index) in links" :key="index">
+        <img class="handle" src="/img/icon_more_vert.svg" alt="drag_handle" />
         <div class="form-group" :class="{'has-delete': !link.is_static}">
           <div class="form-item">
             <drop-image-round
@@ -114,7 +114,7 @@ export default {
 
   .description {
     color: #5c6066;
-    font-size: .9em;
+    font-size: .8em;
     text-align: left;
     margin: 12px 10px 5px 10px;
     display: flex;
@@ -125,11 +125,14 @@ export default {
     }
   }
 
+  .handle {
+    cursor: grab;
+  }
+
   .link-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: grab;
     width: 100%;
 
     .form-group {
