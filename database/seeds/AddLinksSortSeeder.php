@@ -11,8 +11,7 @@ class AddLinksSortSeeder extends Seeder
      */
     public function run()
     {
-		// $users = \App\Models\User::query()->whereNull('sort_twitter_url')->get();
-		$users = \App\Models\User::query()->get();
+		$users = \App\Models\User::query()->whereNull('sort_twitter_url')->get();
 
 		foreach ($users as $user) {
             $user->update([
