@@ -86,6 +86,7 @@ class LoginController extends Controller
                 'introduction' => $user['description'],
                 'email' => $user->email,
                 'twitter_url' => "https://twitter.com/{$user->nickname}",
+                'email_verified_at' => now(),
             ]
         );
         Auth::login($registerUser);

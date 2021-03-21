@@ -70,7 +70,6 @@ class UserRepository implements UserRepositoryInterface
                 $targetLink = $this->userLink->find($linkData['id']);
 
                 if (!empty($targetLink)) {
-                    print_r($linkData);
                     $targetLink->update($linkData);
                 } else {
                     $this->userLink->create($linkData);
@@ -121,6 +120,12 @@ class UserRepository implements UserRepositoryInterface
                 $data['facebook_url'] = $link['url'];
                 $data['is_public_facebook_url'] = $link['is_public'];
                 $data['sort_facebook_url'] = $link['sort'];
+                unset($data['links'][$index]);
+            }
+            if ($link['name'] === 'Clubhouse') {
+                $data['clubhouse_url'] = $link['url'];
+                $data['is_public_clubhouse_url'] = $link['is_public'];
+                $data['sort_clubhouse_url'] = $link['sort'];
                 unset($data['links'][$index]);
             }
         }

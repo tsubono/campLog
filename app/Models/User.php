@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use App\Notifications\PasswordReset;
+use App\Notifications\VerifyEmail;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
     use SoftDeletes;
@@ -238,6 +240,13 @@ class User extends Authenticatable
                 'is_public' => $this->is_public_facebook_url,
                 'sort' => $this->sort_facebook_url,
                 'is_static' => true,
+            ], [
+                'name' => 'Clubhouse',
+                'url' => $this->clubhouse_url,
+                'icon_path' => asset('img/icon_clubhouse.JPG'),
+                'is_public' => $this->is_public_clubhouse_url,
+                'sort' => $this->sort_clubhouse_url,
+                'is_static' => true,
             ]
         ]);
 
@@ -272,4 +281,13 @@ class User extends Authenticatable
 
         return  $isPublicLink;
     }
+
+    /**
+     * 認証メールを日本語化
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail());
+    }
+
 }

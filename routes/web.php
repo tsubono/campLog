@@ -17,7 +17,7 @@ Route::middleware('access-code-check')->group(function() {
     /**
      * 認証
      */
-    Auth::routes();
+    Auth::routes(['verify' => true]);
     Route::get('/', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('/', 'Auth\RegisterController@register');
 
@@ -30,7 +30,7 @@ Route::middleware('access-code-check')->group(function() {
     /**
      * ログイン後マイページ
      */
-    Route::middleware('auth')->prefix('mypage')->namespace('Mypage')->as('mypage.')->group(function () {
+    Route::middleware(['auth', 'verified'])->prefix('mypage')->namespace('Mypage')->as('mypage.')->group(function () {
         // キャンプ予定CRUD
         Route::resource('/camp-schedules', 'CampScheduleController', ['except' => ['show']]);
         // プロフィール設定
