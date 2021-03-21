@@ -14,6 +14,11 @@
         {{ session('message') }}
     </div>
 @endif
+@if (session('verified'))
+    <div class="flash-message">
+        本登録が完了しました！
+    </div>
+@endif
 @if (session('message-error'))
     <div class="flash-message error">
         {{ session('message-error') }}
