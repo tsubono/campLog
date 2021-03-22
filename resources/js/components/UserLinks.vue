@@ -1,11 +1,11 @@
 <template>
   <div class="links">
     <p class="description">
-      <img src="/img/icon_more_vert.svg" alt="drag_handle" />ボタンを動かすと順番の並べ替えができます
+      <i class="fas fa-ellipsis-v handle"></i> ボタンを動かすと順番の並べ替えができます
     </p>
     <draggable v-model="links" :options="options" handle=".handle">
       <div class="link-item" v-for="(link, index) in links" :key="index">
-        <img class="handle" src="/img/icon_more_vert.svg" alt="drag_handle" />
+        <i class="fas fa-ellipsis-v handle"></i>
         <div class="form-group" :class="{'has-delete': !link.is_static}">
           <div class="form-item">
             <drop-image-round
@@ -127,6 +127,7 @@ export default {
 
   .handle {
     cursor: grab;
+    padding: 15px;
   }
 
   .link-item {
