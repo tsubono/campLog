@@ -59,10 +59,10 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
      * 登録する
      *
      * @param array $data
-     * @retusn void
+     * @retusn CampSchedule
      * @throws \Exception
      */
-    public function store(array $data): void
+    public function store(array $data): CampSchedule
     {
         DB::beginTransaction();
         try {
@@ -82,6 +82,8 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
 
             DB::commit();
 
+            return $campSchedule;
+
         } catch (\Exception $e) {
             DB::rollback();
             Log::error($e->getMessage());
@@ -94,10 +96,10 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
      *
      * @param int $id
      * @param array $data
-     * @retusn void
+     * @retusn CampSchedule
      * @throws \Exception
      */
-    public function update(int $id, array $data): void
+    public function update(int $id, array $data): CampSchedule
     {
         DB::beginTransaction();
         try {
@@ -132,6 +134,8 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
             }
 
             DB::commit();
+
+            return $campSchedule;
 
         } catch (\Exception $e) {
             DB::rollback();

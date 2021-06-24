@@ -83,4 +83,16 @@ class CampSchedule extends Model
         }
         return $res;
     }
+
+    /**
+     * 文字列のリンク部分に<a>タグを埋め込むよ
+     *
+     * @return string
+     */
+    public function getNoteWithLinkAttribute(): string
+    {
+        $pattern = '/((?:https?|ftp):\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)/';
+        $replace = '<a href="$1">$1</a>';
+        return preg_replace($pattern, $replace, $this->note);
+    }
 }

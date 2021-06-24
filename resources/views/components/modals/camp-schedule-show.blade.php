@@ -116,7 +116,7 @@
                     <div class="show-item">
                         <label>備考</label>
                         <div class="item-value">
-                            {!! nl2br(e($campSchedule->note)) !!}
+                            {!! nl2br($campSchedule->note_with_link) !!}
                         </div>
                     </div>
                 @endif

@@ -143,6 +143,29 @@
   right: 25px;
 }
 
+.camp-schedule-share {
+  .popup-content {
+    width: 400px;
+
+    h3 {
+      text-align: center;
+    }
+
+    .camp-schedule-share-wrapper {
+      margin: 20px auto;
+      text-align: center;
+
+      .twitter-share-button {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  .camp-schedule-show-wrapper {
+    overflow: auto;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .popup-content {
     width: 95% !important;

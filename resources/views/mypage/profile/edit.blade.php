@@ -16,7 +16,18 @@
                    class="twitter-share-button item mx-10"
                    data-url="{{ route('profile.index', ['userName' => auth()->user()->name]) }}"
                    data-size="large"
-                   data-text="キャンログでプロフィールを作成しました！">
+                   data-text="名前：{{ auth()->user()->handle_name }}
+性別：{{ auth()->user()->gender_txt }}
+年齢：{{ auth()->user()->age }}歳
+キャンプ歴：{{ auth()->user()->camp_history }}
+拠点：{{ auth()->user()->location }}
+スタイル：
+好き：
+テント：
+
+#キャンログ
+#キャンプ好きと繋がりたい
+#キャンプ好きとして軽く自己紹介">
                     ツイートする
                 </a>
             </div>

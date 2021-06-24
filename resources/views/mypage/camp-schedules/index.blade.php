@@ -38,3 +38,19 @@
         </div>
     </section>
 @endsection
+
+@include('components.modals.share-modal')
+
+@section('js')
+    <script>
+      $(function() {
+        if ("{{ session('showSharePopup') }}") {
+          $('#sharePopup').fadeIn();
+          if (!$('body').hasClass('is-modal')) {
+            $('body').addClass('is-modal')
+          }
+        }
+      })
+    </script>
+@endsection
+

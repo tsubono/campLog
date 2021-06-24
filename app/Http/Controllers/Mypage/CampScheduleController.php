@@ -7,6 +7,7 @@ use App\Http\Requests\ServiceRequest;
 use App\Models\CampSchedule;
 use App\Repositories\CampPlace\CampPlaceRepositoryInterface;
 use App\Repositories\CampSchedule\CampScheduleRepositoryInterface;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -87,7 +88,19 @@ class CampScheduleController extends Controller
      */
     public function update(CampSchedule $campSchedule, CampScheduleRequest $request)
     {
-        $this->campScheduleRepository->update($campSchedule->id, $request->all());
+        $campSchedule = $this->campScheduleRepository->update($campSchedule->id, $request->all());
+
+        if ($request->is_public == 1) {
+            $shareTitle = null;
+            $dateText = Carbon::parse($campSchedule->date)->isoFormat('YYYY年MM/DD(ddd)');
+            if (Carbon::parse($campSchedule->date)->isPast()) {
+                $shareTitle = "{$dateText}、{$campSchedule->place->name}に行ってきました！";
+            } else {
+                $shareTitle = "{$dateText}、{$campSchedule->place->name}に行きます！";
+            }
+            session()->flash('showSharePopup', true);
+            session()->flash('shareTitle', $shareTitle);
+        }
 
         return redirect(route('mypage.camp-schedules.index'))->with('message', 'キャンプ予定を更新しました');
     }
