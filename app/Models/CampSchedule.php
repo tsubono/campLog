@@ -92,7 +92,7 @@ class CampSchedule extends Model
     public function getNoteWithLinkAttribute(): string
     {
         $pattern = '/((?:https?|ftp):\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)/';
-        $replace = '<a href="$1">$1</a>';
+        $replace = '<a href="$1" target="_blank" rel="nofollow">$1</a>';
         return preg_replace($pattern, $replace, $this->note);
     }
 }
