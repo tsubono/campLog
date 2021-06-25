@@ -30,15 +30,12 @@
     </script>
 
     <!-- OGP -->
-    @if (auth()->check())
-        <meta property="og:url" content="{{ route('profile.index', ['userName' => auth()->user()->name]) }}" />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="キャンログ" />
-        <meta property="og:description" content="キャンプの記録＆予定管理ツール｢キャンログ｣" />
-        <meta property="og:site_name" content="キャンログ" />
-        <meta property="og:image" content="{{ secure_asset('img/ogp-img.jpg') }}" />
-        <meta name="twitter:card" content="summary_large_image" />
-    @endif
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="キャンログ" />
+    <meta property="og:description" content="キャンプの記録＆予定管理ツール｢キャンログ｣" />
+    <meta property="og:site_name" content="キャンログ" />
+    <meta property="og:image" content="{{ secure_asset('img/ogp-img.jpg') }}" />
+    <meta name="twitter:card" content="summary_large_image" />
 </head>
 <body>
 <div class="container">
