@@ -37,6 +37,7 @@
         <meta property="og:description" content="キャンプの記録＆予定管理ツール｢キャンログ｣" />
         <meta property="og:site_name" content="キャンログ" />
         <meta property="og:image" content="{{ secure_asset('img/ogp-img.jpg') }}" />
+        <meta name="twitter:card" content="summary_large_image" />
     @endif
 </head>
 <body>
