@@ -61,7 +61,9 @@ class CampScheduleController extends Controller
      */
     public function store(CampScheduleRequest $request)
     {
-        $this->campScheduleRepository->store($request->all() + ['user_id' => auth()->user()->id]);
+        $campSchedule = $this->campScheduleRepository->store($request->all() + ['user_id' => auth()->user()->id]);
+
+        $this->setSharePopup($request, $campSchedule);
 
         return redirect(route('mypage.camp-schedules.index'))->with('message', 'キャンプ予定を登録しました');
     }
@@ -90,19 +92,30 @@ class CampScheduleController extends Controller
     {
         $campSchedule = $this->campScheduleRepository->update($campSchedule->id, $request->all());
 
+        $this->setSharePopup($request, $campSchedule);
+
+        return redirect(route('mypage.camp-schedules.index'))->with('message', 'キャンプ予定を更新しました');
+    }
+
+    /**
+     * @param Request $request
+     * @param CampSchedule $campSchedule
+     */
+    protected function setSharePopup(Request $request, CampSchedule $campSchedule)
+    {
         if ($request->is_public == 1) {
             $shareTitle = null;
             $dateText = Carbon::parse($campSchedule->date)->isoFormat('YYYY年MM/DD(ddd)');
             if (Carbon::parse($campSchedule->date)->isPast()) {
+                session()->flash('shareIsPast', true);
                 $shareTitle = "{$dateText}、{$campSchedule->place->name}に行ってきました！";
             } else {
+                session()->flash('shareIsPast', false);
                 $shareTitle = "{$dateText}、{$campSchedule->place->name}に行きます！";
             }
             session()->flash('showSharePopup', true);
             session()->flash('shareTitle', $shareTitle);
         }
-
-        return redirect(route('mypage.camp-schedules.index'))->with('message', 'キャンプ予定を更新しました');
     }
 
     /**

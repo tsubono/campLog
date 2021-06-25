@@ -1,9 +1,19 @@
 <div class="popup js-popup camp-schedule-share" id="sharePopup">
     <div class="popup-bg js-popup-close"></div>
     <div class="popup-content">
-        <h3>予定をシェアしませんか？</h3>
+        <h3>
+            @if (session('shareIsPast'))
+                キャンプ記録をシェアしませんか？
+            @else
+                キャンプ予定をシェアしませんか？
+            @endif
+        </h3>
         <div class="camp-schedule-share-wrapper">
-            <p>登録したキャンプ予定を<br>ツイートでシェアしてみましょう！</p>
+            @if (session('shareIsPast'))
+                <p>登録したキャンプ記録を<br>ツイートでシェアしてみましょう！</p>
+            @else
+                <p>登録したキャンプ予定を<br>ツイートでシェアしてみましょう！</p>
+            @endif
             <a href="https://twitter.com/share"
                target="_blank"
                rel="nofollow noopener"
@@ -15,7 +25,11 @@
 #キャンログ
 #キャンプ記録
 ">
-                予定をシェアする
+                @if (session('shareIsPast'))
+                    記録をシェアする
+                @else
+                    予定をシェアする
+                @endif
             </a>
         </div>
         <div class="popup-buttons">
