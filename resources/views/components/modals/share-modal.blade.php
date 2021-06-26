@@ -10,9 +10,9 @@
         </h3>
         <div class="camp-schedule-share-wrapper">
             @if (session('shareIsPast'))
-                <p>登録したキャンプ記録を<br>ツイートでシェアしてみましょう！</p>
+                <p>登録したキャンプ記録を<br>Twitterでシェアしてみましょう！</p>
             @else
-                <p>登録したキャンプ予定を<br>ツイートでシェアしてみましょう！</p>
+                <p>登録したキャンプ予定を<br>Twitterでシェアしてみましょう！</p>
             @endif
             <a href="https://twitter.com/share"
                target="_blank"
