@@ -332,7 +332,7 @@
       text-align: center;
       z-index: 2;
 
-      &::before {
+      &::after {
         content: "";
         position: absolute;
         top: 9px;
