@@ -20,10 +20,42 @@ h2 {
   font-weight: 500;
 }
 
+h3.head-with-border {
+  font-weight: bold;
+  font-size: 30px;
+  position: relative;
+  display: inline-block;
+
+  .accent {
+    color: $orange;
+  }
+
+  &.small {
+    font-size: 16px;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    display: inline-block;
+    width: 28px;
+    height: 2px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background-color: $black;
+    border-radius: 2px;
+  }
+}
+
+.bg-gray {
+  background: $gray-2;
+}
+
 /*===============================
   全体設定
 ================================*/
-
 ul {
   list-style: none;
   padding-left: 0;
@@ -34,11 +66,26 @@ ul {
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
-  border: 1px solid $gray;
   min-height: 100vh;
   position: relative;
-  padding-bottom: 115px;
+  padding-bottom: 116px;
   box-sizing: border-box;
+}
+
+.front-header-nav {
+  display: flex;
+  align-items: center;
+  padding: 10px 5px;
+
+  img {
+    @media screen and (max-width: 480px) {
+      width: 190px;
+    }
+  }
+
+  .links {
+    margin-left: auto;
+  }
 }
 
 .btn {
@@ -47,8 +94,6 @@ ul {
   display: flex;
   align-items: center;
   border: none;
-  border-radius: 3px;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
   margin: auto;
   width: 100%;
@@ -56,10 +101,12 @@ ul {
   font-size: 1rem;
   cursor: pointer;
   outline: none;
+  border-radius: 23px;
 
   &.default-btn {
     color: $black;
-    background: $gray;
+    background: $white;
+    border: 1px solid $black;
   }
 
   &.primary-btn {
@@ -69,7 +116,7 @@ ul {
 
   &.warning-btn {
     color: $white;
-    background: $yellow;
+    background: $orange-2;
   }
 
   &.success-btn {
@@ -82,23 +129,136 @@ ul {
     background: $red;
   }
 
-  &:hover {
+  &.gray-btn {
+    color: #666666;
+    background: #DDDDDD;
+  }
+
+  &:not(:disabled):hover,
+  &:not(.disabled):hover {
     box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
     transform: translateY(-3px);
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.twitter-btn {
+  background: $blue-light-2;
+  color: $white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 43px;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  width: 200px;
+  height: 44px;
+  margin: 0 auto;
+
+  img {
+    margin-right: 10px;
+  }
+}
+
+.micro-txt {
+  font-size: 13px;
+  line-height: 23px;
+  margin-top: 10px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 11px;
+  }
+
+  a {
+    color: $blue-light;
+    text-decoration: none;
+  }
+}
+
+.or-txt {
+  font-size: 14px;
+  position: relative;
+  margin: 28px auto;
+
+  @media screen and (max-width: 480px) {
+    font-size: 12px;
+  }
+
+  &::before, &::after {
+    content: "";
+    background: #CCCCCC;
+    width: 90px;
+    height: 1px;
+    position: absolute;
+  }
+
+  &::before {
+    left: 0;
+    top: 8px;
+  }
+
+  &::after {
+    right: 0;
+    top: 8px;
+  }
+}
+
+.link-txt {
+  font-size: 15px;
+  color: $blue-light;
+  text-decoration: none;
+  padding: 10px;
+
+  &.large {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 12px;
+
+    &.large {
+      font-size: 16px;
+    }
+  }
+}
+
+.small-txt {
+  font-size: 14px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 13px;
   }
 }
 
 .text-error {
   color: $red;
-  font-size: .9rem;
+  font-size: .8rem;
 }
 
 .text-center {
   text-align: center;
 }
 
+.text-left {
+  text-align: left;
+}
+
 .flex {
   display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-right {
@@ -116,48 +276,65 @@ ul {
   justify-content: flex-start;
 }
 
-.header-nav {
-  background: $red;
-  color: $white;
+.pagination {
   display: flex;
-  padding: 10px 15px;
   justify-content: center;
   align-items: center;
+  margin: 10px auto;
+
+  a.page-link {
+    color: $blue-light;
+    text-decoration: none;
+  }
+
+  .page-item {
+    margin: 0 10px;
+    font-size: 15px;
+  }
+}
+
+.auth-container {
+  padding: 80px 0;
 
   .logo-img {
-    width: 250px;
-  }
-
-  .right {
-    margin-left: auto;
+    width: 300px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45%;
+    margin: 0 auto 20px;
 
-    a {
-      margin: 0 10px;
-      font-size: .9rem;
-    }
-
-    .header-avatar {
-      width: 100px;
+    @media (max-width: 480px) {
+      width: auto;
     }
   }
 
-  &.profile {
-    background: $white;
-    padding: 5px 15px;
-    justify-content: start;
-    margin: 0;
-    border-bottom: 1px solid #ededed;
+  .flash-message {
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 
-    h1 {
-      text-align: left;
+  .content {
+    background: $white;
+    border: 1px solid #DDDDDD;
+    width: 80%;
+    margin: 0 auto;
+    padding: 35px 0;
+
+    .login-form {
+      position: relative;
     }
 
-    .logo-img {
-      width: 200px;
+    .arrow-link {
+      position: absolute;
+      left: -10px;
+
+      img {
+        width: 15px;
+        height: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      width: 90%;
     }
   }
 }
@@ -190,6 +367,7 @@ footer {
   .copy-write {
     font-size: 0.8rem;
     text-align: center;
+    margin-top: 10px;
   }
 }
 
@@ -226,6 +404,38 @@ footer {
   margin: auto 5px;
 }
 
+.mt-10 {
+  margin-top: 10px !important;
+}
+
+.mt-20 {
+  margin-top: 20px !important;
+}
+
+.mt-30 {
+  margin-top: 30px !important;
+}
+
+.mt-40 {
+  margin-top: 40px !important;
+}
+
+.mb-10 {
+  margin-bottom: 10px !important;
+}
+
+.mb-20 {
+  margin-bottom: 20px !important;
+}
+
+.py-20 {
+  padding: 20px 0;
+}
+
+.py-30 {
+  padding: 30px 0;
+}
+
 .tab-menu {
   display: flex;
 
@@ -235,9 +445,10 @@ footer {
     align-items: center;
     justify-content: center;
     padding: 26px 0;
-    background-color: $gray;
+    background-color: $white;
     cursor: pointer;
     color: $black;
+    border-bottom: 5px solid $gray-dark;
 
     @media (max-width: 480px) {
       font-size: .8em;
@@ -330,11 +541,6 @@ footer {
     position: relative;
     top: 4px;
   }
-
-  .micro-txt {
-    font-size: 0.6rem;
-    padding-top: 5px;
-  }
 }
 
 .register-btn {
@@ -351,35 +557,9 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
-  .header-nav {
-    display: block;
-
-    h1 {
-      text-align: center;
-      padding: 10px 0;
-    }
-
-    .right {
-      width: 100%;
-    }
-
-    &.profile {
-      padding: 0 15px;
-      margin: 0;
-
-      h1 {
-        padding: 5px 0 0 0;
-      }
-
-      .logo-img {
-        width: 150px;
-      }
-    }
-  }
-
   footer {
     .links {
-      justify-content: start;
+      justify-content: center;
 
       a {
         margin: 0 5px;

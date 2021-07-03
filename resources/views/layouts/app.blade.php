@@ -16,40 +16,55 @@
     <!-- Styles -->
     <link href="{{ secure_asset('css/loading.min.css') }}" rel="stylesheet">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.13.0/css/all.css"
+          integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-186172042-1"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || []
 
-        gtag('config', 'UA-186172042-1');
+      function gtag () {dataLayer.push(arguments)}
+
+      gtag('js', new Date())
+
+      gtag('config', 'UA-186172042-1')
     </script>
 
     <!-- OGP -->
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="キャンログ" />
-    <meta property="og:description" content="キャンプの記録＆予定管理ツール｢キャンログ｣" />
-    <meta property="og:site_name" content="キャンログ" />
-    <meta property="og:image" content="{{ secure_asset('img/ogp-img.jpg') }}" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="キャンログ"/>
+    <meta property="og:description" content="キャンプの記録＆予定管理ツール｢キャンログ｣"/>
+    <meta property="og:site_name" content="キャンログ"/>
+    <meta property="og:image" content="{{ secure_asset('img/ogp-img.jpg') }}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
 </head>
-<body>
-<div class="container">
-    <div id="app">
-        @if (empty($isNotHeaderNav))
-            @include('components.header-nav')
+<body class="{{ $isAuth ?? false ? 'bg-gray' : '' }}">
+@if ($isAuth ?? false)
+    <div class="container auth-container" id="app">
+        @if (session('status'))
+            <div class="flash-message">
+                {{ session('status') }}
+            </div>
         @endif
-        @if (!empty($isPageHeaderNav))
-            @include('components.header-nav-page')
-        @endif
+        <img src="{{ asset('img/head-logo.svg') }}" alt="ロゴ" class="logo-img"/>
         @yield('content')
     </div>
-    @include('components.footer')
-</div>
+@else
+    <div class="container">
+        <div id="app">
+            @if ($isMypage ?? false)
+                @include('components.mypage-header')
+            @endif
+            @if ($isFront ?? false)
+                @include('components.front-header')
+            @endif
+
+            @yield('content')
+        </div>
+        @include('components.footer')
+    </div>
+@endif
 
 @yield('js')
 </body>

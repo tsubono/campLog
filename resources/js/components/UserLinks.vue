@@ -6,56 +6,60 @@
     <draggable v-model="links" :options="options" handle=".handle">
       <div class="link-item" v-for="(link, index) in links" :key="index">
         <i class="fas fa-ellipsis-v handle"></i>
-        <div class="form-group" :class="{'has-delete': !link.is_static}">
+        <div class="form-group">
           <div class="form-item">
-            <drop-image-round
-                class="drop-image"
-                :name="`links[${index}][icon_path]`"
-                :path="link.icon_path"
-                :url="'/api/uploadImage'"
-                :dir="'uploaded/link-icon'"
-                :can-edit="!link.is_static"
-            >
-            </drop-image-round>
-            <input
-                :id="`link${index}name`"
-                type="text"
-                :name="`links[${index}][name]`"
-                placeholder="リンク名を入力"
-                :disabled="link.is_static"
-                class="input-name"
-                v-model="link.name"
-            />
-            <input
-                :id="`link${index}Url`"
-                type="text"
-                :name="`links[${index}][url]`"
-                placeholder="URLを入力"
-                class="input-url"
-                v-model="link.url"
-            />
-          </div>
-          <input type="hidden" :name="`links[${index}][name]`" :value="link.name" v-if="link.is_static"/>
-          <div class="form-check-group is-public">
-            <input type="hidden" :name="`links[${index}][is_public]`" value="1"/>
-            <input
-                :id="`link${index}IsPublic`"
-                type="checkbox"
-                :name="`links[${index}][is_public]`"
-                value=""
-                :checked="link.is_public != 1"
-            />
-            <label
-                class="form-check-label"
-                :for="`link${index}IsPublic`">
-              非公開にする
-            </label>
+            <div class="link-content">
+              <drop-image-round
+                  class="drop-image"
+                  :name="`links[${index}][icon_path]`"
+                  :path="link.icon_path"
+                  :url="'/api/uploadImage'"
+                  :dir="'uploaded/link-icon'"
+                  :can-edit="!link.is_static"
+              >
+              </drop-image-round>
+              <div>
+                <input
+                    :id="`link${index}name`"
+                    type="text"
+                    :name="`links[${index}][name]`"
+                    placeholder="リンク名を入力"
+                    :disabled="link.is_static"
+                    class="input-name"
+                    v-model="link.name"
+                />
+                <input
+                    :id="`link${index}Url`"
+                    type="text"
+                    :name="`links[${index}][url]`"
+                    placeholder="URLを入力"
+                    class="input-url"
+                    v-model="link.url"
+                />
+                <input type="hidden" :name="`links[${index}][name]`" :value="link.name" v-if="link.is_static"/>
+                <div class="form-check-group is-public">
+                  <input type="hidden" :name="`links[${index}][is_public]`" value="1"/>
+                  <input
+                      :id="`link${index}IsPublic`"
+                      type="checkbox"
+                      :name="`links[${index}][is_public]`"
+                      value=""
+                      :checked="link.is_public != 1"
+                  />
+                  <label
+                      class="form-check-label"
+                      :for="`link${index}IsPublic`">
+                    非公開にする
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <input type="hidden" :name="`links[${index}][id]`" :value="link.id"/>
         <div class="controls" v-if="!link.is_static">
           <a class="btn danger-btn remove-btn" @click="onClickRemoveLink(index)">削除</a>
         </div>
-        <input type="hidden" :name="`links[${index}][id]`" :value="link.id"/>
       </div>
     </draggable>
     <a class="btn success-btn" @click="onClickAddLink()"> + リンクを追加</a>
@@ -135,19 +139,22 @@ export default {
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    position: relative;
 
     .form-group {
       border: 1px solid #959ba2;
       border-radius: 10px;
       padding: 5px 10px;
 
-      &.has-delete {
-        width: calc(100% - 60px);
-      }
-
       .form-item {
         display: flex;
         align-items: center;
+
+        .link-content {
+          display: flex;
+          align-items: center;
+          width: 100%;
+        }
 
         input {
           margin-right: 10px;
@@ -164,10 +171,6 @@ export default {
         @media (max-width: 480px) {
           flex-direction: column;
 
-          .drop-image {
-            margin-top: 20px;
-          }
-
           input {
             &.input-name,
             &.input-url {
@@ -180,9 +183,15 @@ export default {
   }
 
   .remove-btn {
-    width: 50px;
     font-size: .8em;
     margin-left: 10px;
+    position: absolute;
+    background: #FFE5E5;
+    color: #E05656;
+    right: 20px;
+    bottom: 35px;
+    width: 44px;
+    padding: 5px;
 
     @media (max-width: 480px) {
       font-size: .6em;
@@ -191,7 +200,8 @@ export default {
   }
 
   .drop-image {
-    width: 35%;
+    width: 27%;
+    margin-right: 10px;
   }
 }
 </style>

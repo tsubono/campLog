@@ -1,36 +1,42 @@
+@php
+    $isMypage = true;
+@endphp
+
 @extends('layouts.app')
 
 @section('content')
     <section class="profile-edit-section">
         @include('mypage._tab')
         <div class="content">
-            閲覧: {{ auth()->user()->access_count }}
-            <div class="flex-right mx-10 top-content">
+            <div class="mx-10 top-content">
                 <div class="mx-5">
+                    <p class="qr-note">あなたのページ</p>
                     {!! QrCode::generate(route('profile.index', ['userName' => auth()->user()->name])) !!}
-                    <p class="qr-note">カメラで撮るとあなたのページが表示されます。</p>
                 </div>
-                <a href="https://twitter.com/share"
-                   target="_blank"
-                   rel="nofollow noopener"
-                   class="twitter-share-button item mx-10"
-                   data-url="{{ route('profile.index', ['userName' => auth()->user()->name]) }}"
-                   data-size="large"
-                   data-text="名前：{{ auth()->user()->handle_name }}
-性別：{{ auth()->user()->gender_txt }}
-年齢：{{ auth()->user()->age }}歳
+                <div>
+                    <p class="mb-10">閲覧数：{{ auth()->user()->access_count }}</p>
+                    <a href="https://twitter.com/share"
+                       target="_blank"
+                       rel="nofollow noopener"
+                       class="twitter-share-button item mx-10"
+                       data-url="{{ route('profile.index', ['userName' => auth()->user()->name]) }}"
+                       data-size="large"
+                       data-text="名前：{{ auth()->user()->handle_name }}
+                               性別：{{ auth()->user()->gender_txt }}
+                               年齢：{{ auth()->user()->age }}歳
 キャンプ歴：{{ auth()->user()->camp_history }}
-拠点：{{ auth()->user()->location }}
-スタイル：
-好き：
-テント：
+                               拠点：{{ auth()->user()->location }}
+                               スタイル：
+                               好き：
+                               テント：
 
-#キャンログ
-#キャンプ好きと繋がりたい
-#キャンプ好きとして軽く自己紹介
+                               #キャンログ
+                               #キャンプ好きと繋がりたい
+                               #キャンプ好きとして軽く自己紹介
 ">
-                    ツイートする
-                </a>
+                        ツイートする
+                    </a>
+                </div>
             </div>
             <div class="profile-form">
                 <form method="POST">
@@ -188,7 +194,7 @@
                         <h4 class="form-subhead">認証情報</h4>
                         <div class="form-group">
                             <input id="email" type="text" class="@error('email') is-invalid @enderror"
-                                   name="email" value="{{ old('email', $user->email) }}">
+                                   name="email" value="{{ old('email', $user->email) }}" placeholder="sample@camplog.in">
                             <label class="form-label" for="email">メールアドレス <span class="require">*</span></label>
 
                             @error('email')
@@ -201,7 +207,7 @@
                         <div class="form-group">
                             <input id="password" type="password" class="@error('password') is-invalid @enderror"
                                    name="password">
-                            <label class="form-label" for="password">パスワード</label>
+                            <label class="form-label" for="password">パスワード<span class="small-txt">*半角英数字8文字以上</span></label>
                             <p class="form-item-note">変更する場合のみ入力してください</p>
 
                             @error('password')
@@ -217,13 +223,11 @@
                     </div>
                 </form>
             </div>
-            <div class="flex-right">
-                <a class="btn default-btn logout-btn" onclick="document.logoutForm.submit()">ログアウト</a>
-                <form action="{{ route('logout') }}" name="logoutForm" method="post">
-                    @csrf
-                </form>
-            </div>
-            <a class="profile-delete-link js-profile-delete-link">アカウントを削除する</a>
+            <a class="btn default-btn logout-btn" onclick="document.logoutForm.submit()">ログアウト</a>
+            <form action="{{ route('logout') }}" name="logoutForm" method="post">
+                @csrf
+            </form>
+            <a class="profile-delete-link js-profile-delete-link">アカウントを削除</a>
             <form action="{{ route('mypage.profile.destroy') }}" id="profile-delete-form" method="post">
                 @csrf
                 @method('DELETE')

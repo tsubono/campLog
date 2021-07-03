@@ -1,3 +1,7 @@
+@php
+    $isMypage = true;
+@endphp
+
 @extends('layouts.app')
 
 @section('content')

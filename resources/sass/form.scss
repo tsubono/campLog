@@ -19,6 +19,11 @@ $md-checkbox-size: 1.25em;
     cursor: text;
     transition: 0.2s;
     left: 0;
+
+    .small-txt {
+      font-size: 11px;
+      margin-left: 8px;
+    }
   }
 
   .form-group {
@@ -38,6 +43,11 @@ $md-checkbox-size: 1.25em;
       border-bottom: solid 1px $yellow;
       font-size: 15px;
       transition: all 0.3s;
+
+      &::placeholder {
+        color: #CCCCCC;
+        font-size: 13px;
+      }
 
       &.is-invalid {
         background: linear-gradient(to bottom, transparent 92%, $red 8%) no-repeat;
@@ -284,6 +294,10 @@ $md-checkbox-size: 1.25em;
 
   .file-area {
     margin-top: 35px;
+
+    &.hasImg {
+      margin-top: 15px;
+    }
   }
 
   .is-public {

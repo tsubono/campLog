@@ -1,4 +1,41 @@
 /*===============================
+  共通
+================================*/
+.header-nav {
+  height: 70px;
+
+  h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 16px;
+    font-weight: normal;
+  }
+}
+
+.profile-block {
+  width: 97%;
+  margin: 0 auto;
+  height: 130px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  .user-info {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+
+    .btn {
+      width: 200px;
+      margin-top: 10px;
+    }
+  }
+}
+
+/*===============================
   キャンプ予定
 ================================*/
 .camp-schedule-section {
@@ -8,8 +45,12 @@
     padding: 10px;
   }
 
+  .create-btn {
+    width: 200px;
+    margin: 35px auto 30px;
+  }
+
   .camp-schedule-list {
-    border: 1px solid $black;
     padding: 10px;
 
     .camp-schedule-item {
@@ -17,10 +58,57 @@
       flex-wrap: wrap;
       justify-content: flex-start;
       align-items: center;
-      margin: 10px auto;
+      margin: 20px auto;
+      border: 1px solid;
+      position: relative;
+      padding: 10px;
+
+      @media screen and (max-width: 480px) {
+        padding: 0;
+      }
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &:nth-child(odd) {
+        background: #FFFDF0;
+      }
+
+      .delete-btn {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        background: #CCCCCC;
+        color: #fff;
+        border-radius: 50%;
+        padding: 10px;
+        line-height: 15px;
+        font-weight: bold;
+      }
+
+      .schedule-content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+        padding: 5px;
+      }
 
       .content-part {
         margin-right: 10px;
+
+        &.eye-catch-image {
+          margin: 20px !important;
+
+          @media screen and (max-width: 480px) {
+            margin: 10px !important;
+          }
+        }
       }
 
       .eye-catch-image {
@@ -52,12 +140,19 @@
   プロフィール設定
 ================================*/
 .profile-edit-section {
+  .content {
+    margin-bottom: 60px;
+  }
+
   .top-content {
     margin: 10px;
+    display: flex;
     align-items: center;
+    justify-content: space-evenly;
 
     .qr-note {
-      font-size: 0.6rem;
+      font-size: 11px;
+      margin-bottom: 5px;
     }
   }
 }
@@ -77,26 +172,22 @@
 }
 
 .logout-btn {
-  width: 100px;
-  margin-top: 30px;
+  width: 200px;
+  margin-top: 10px;
+  color: #AAAAAA !important;
+  border-color: #AAAAAA !important;
 }
 
 .profile-delete-link {
-  color: $gray-dark;
+  color: $red;
   font-size: 0.9rem;
   position: relative;
   top: 25px;
   cursor: pointer;
-  text-decoration: underline;
 }
 
 @media screen and (max-width: 480px) {
   .profile-edit-section {
-    .top-content {
-      justify-content: center;
-      align-items: center;
-    }
-
     .profile-form {
       width: 90%;
     }

@@ -1,17 +1,24 @@
+@php
+    $isAuth = true;
+@endphp
+
 @extends('layouts.app')
 
 @section('content')
     <section>
         <div class="content">
             <div class="login-form">
-                <h2>ログイン</h2>
+                <h3 class="head-with-border small">ログイン</h3>
 
-                <div class="flex-right">
-                    <a class="auth-btn item" href="{{ route('twitter.auth') }}">
-                        <img src="{{ asset('img/icon_twitter.svg') }}" />
-                        <span>Twitterで認証</span>
-                    </a>
+                <a class="twitter-btn mt-40 mb-20" href="{{ route('twitter.auth') }}">
+                    <img src="{{ asset('img/icon_twitter_white.svg') }}" />
+                    <span>Twitterで認証</span>
+                </a>
+                <div class="micro-txt">
+                    ※許可なく投稿されることはありません。<br>
                 </div>
+
+                <p class="or-txt">または</p>
 
                 <form method="POST" action="{{ route('login') }}" >
                     @csrf
@@ -40,13 +47,20 @@
                         </div>
 
                         <div class="form-buttons">
-                            <button class="btn primary-btn" type="submit">ログイン</button>
+                            <button class="btn warning-btn" type="submit">ログイン</button>
 
                             @if (Route::has('password.request'))
-                                <a class="btn default-btn my-10" href="{{ route('password.request') }}">
+                                <a class="mt-10 link-txt" href="{{ route('password.request') }}">
                                     パスワードを忘れた方はこちら
                                 </a>
                             @endif
+
+                            <div class="mb-10">
+                                <span class="small-txt">アカウントをお持ちでない方は</span> <br>
+                                <a class="link-txt large my-5" href="{{ route('register') }}">
+                                    無料新規登録へ
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </form>

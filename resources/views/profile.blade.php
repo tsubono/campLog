@@ -1,6 +1,5 @@
 @php
-    $isNotHeaderNav = true;
-    $isPageHeaderNav = true;
+    $isFront = true;
 @endphp
 
 @extends('layouts.app')
@@ -49,9 +48,17 @@
         </div>
     @endif
     <div class="summary">
+        <div class="arrows" id="moveArrows">
+            <a class="summary-arrow-link js-summary-link">
+                <img src="{{ asset('img/left-arrow-round.svg') }}" alt="左矢印" />
+            </a>
+            <a class="summary-arrow-link js-summary-link">
+                <img src="{{ asset('img/right-arrow-round.svg') }}" alt="右矢印" />
+            </a>
+        </div>
         @foreach ($user->summary as $year => $summaryData)
             <div class="summary-wrapper">
-                <h2 class="summary-title">{{ $year }} ACTIVITY</h2>
+                <h2 class="summary-title" id="summary-{{ $year }}">{{ $year }} ACTIVITY</h2>
                 <div class="cards">
                     <div class="card long">
                         <div class="card-title">宿泊</div>
@@ -105,9 +112,7 @@
                         @include('components.modals.camp-schedule-show', ['campSchedule' => $campSchedule])
                         <img class="eye-catch" src="{{ $campSchedule->eye_catch_image_path }}" alt="アイキャッチ画像" />
                         <div class="date">
-                            <span class="month">{{ $campSchedule->date->format('m') }}</span>
-                            <div class="slash"></div>
-                            <span class="day">{{ $campSchedule->date->format('d') }}</span>
+                            {{ $campSchedule->date->format('Y.m.d') }}
                         </div>
                     </div>
                 @endforeach

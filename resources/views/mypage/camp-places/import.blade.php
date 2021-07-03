@@ -1,3 +1,7 @@
+@php
+    $isMypage = true;
+@endphp
+
 @extends('layouts.app')
 
 @section('content')
@@ -5,7 +9,8 @@
         @include('mypage._tab')
         <div class="content">
             <div class="import-form">
-                <h2>キャンプ場CSVインポート</h2>
+                <h3 class="head-with-border small">キャンプ場CSVインポート</h3>
+
                 <div class="form-content">
                     <form method="POST" action="{{ route('mypage.camp-places.import') }}" enctype="multipart/form-data">
                         @csrf

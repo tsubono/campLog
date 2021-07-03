@@ -1,29 +1,30 @@
 <template>
-    <div class="file-area">
+    <div class="file-area" :class="{'hasImg': imgData !== null}">
         <div class="loader-container" v-if="isLoading">
             <img src="/img/favicon.ico" class="ld ld-bounce">
         </div>
+      <div class="file-content">
         <div v-if="!uploaded" :class="{'drag': isDrag === 'new'}"
              @dragover.prevent="checkDrag($event, 'new', true)"
              @dragleave.prevent="checkDrag($event, 'new', false)"
              @drop.prevent="onDrop" class="drop-area">
-            <i aria-hidden="true" class="fa fa-plus"></i>
-            <div class="drop">
-                <p class="drag-drop-info">ここにファイルをドロップ</p>
-                <p>または</p>
-                <label class="file-select-btn">
-                    ファイルを選択
-                    <input type="file" class="drop__input" style="display:none;"
-                           v-on:change="onDrop">
-                </label>
-            </div>
         </div>
+        <div class="preview-content" v-if="imgData">
+          <img :src="imgData" class="preview">
+        </div>
+        <div class="buttons">
+          <label class="btn file-select-btn">
+            編集
+            <input type="file" class="drop__input" style="display:none;"
+                   v-on:change="onDrop">
+          </label>
+          <a v-on:click="onDelete" class="btn default-btn delete-btn" :class="{'disabled': imgData === null}" :disabled="imgData === null">削除</a>
+        </div>
+      </div>
+
         <br>
         <input type="hidden" :name="name" :value="imgData"/>
-        <div class="preview-content">
-            <img v-if="imgData" :src="imgData" class="preview">
-            <a v-if="imgData" v-on:click="onDelete" class="delete-btn">×</a>
-        </div>
+
         <div v-if="msg" class="error-txt">
             <span>{{msg}}</span>
         </div>
@@ -142,40 +143,48 @@
         }
     }
 
+    .file-content {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      margin-top: 35px;
+
+      .buttons {
+        margin-left: auto;
+        margin-right: 20px;
+        width: 120px;
+
+        a {
+          margin-top: 15px;
+        }
+      }
+    }
+
     img.preview {
-        max-width: 300px;
+        max-width: 100%;
     }
 
     .file-select-btn {
-        cursor: pointer;
-        background: #799bd1;
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        padding: 10px;
-        font-size: 1rem;
-        position: relative;
-        top: 20px;
+      color: #1A1A1A;
+      background: #fff;
+      border: 1px solid #1A1A1A;
     }
 
-    .preview-content {
+    .preview-content, .drop-area {
         position: relative;
-        width: 300px;
+        width: 150px;
+        height: 150px;
+
+        img {
+          object-fit: cover;
+        }
 
         .delete-btn {
-            cursor: pointer;
-            background: #e88b79;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            font-size: 0.9rem;
-            position: absolute;
-            top: -10px;
-            right: -20px;
-            font-weight: bold;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+          margin-top: 10px;
+
+          &:disabled {
+            opacity: 0.5;
+          }
         }
     }
 
@@ -201,14 +210,6 @@
     @media (max-width: 480px) {
         img.preview {
             max-width: 100%;
-        }
-
-        .drop-area {
-            width: 100%;
-        }
-
-        .preview-content {
-            width: 250px;
         }
     }
 </style>

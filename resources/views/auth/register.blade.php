@@ -6,45 +6,75 @@
 
 @section('content')
     <section class="top-section">
-        <div class="head">
-            <img src="{{ asset('img/head-logo.png') }}" alt="ロゴ" />
-        </div>
         <div class="top-content">
-            <img class="bg-image" src="{{ asset('img/top-content-bg.jpeg') }}" alt="背景画像"/>
+            <img class="bg-image" src="{{ asset('img/top.svg') }}" alt="背景画像"/>
             <div class="buttons">
-                <a href="#register" class="btn success-btn">無料登録</a>
-                <a href="{{ route('login') }}" class="btn primary-btn">ログイン</a>
+                <a href="#register" class="btn register-btn">無料登録</a>
+                <a href="{{ route('login') }}" class="login-link">ログインはこちら</a>
             </div>
         </div>
-        <div class="middle-content">
-            <div class="description">
-                キャンプの記録をカンタンに管理！ <br>
-                宿泊記録やこれからの予定まで<br>
-                無料で管理してキャンプライフを楽しもう<br>
+        <div class="about-content">
+            <h3 class="head-with-border"><span class="accent">A</span>bout</h3>
+            <div class="about-text">
+                <p class="heading">キャンプの記録をカンタンに管理！</p>
+                <p>宿泊記録やこれからの予定まで<br />無料で管理してキャンプライフを楽しもう！</p>
             </div>
-            <img src="{{ asset('img/merits.png') }}" alt="メリット" />
+            <img class="about-img" src="{{ asset('img/img-01.jpg') }}" alt="About" />
         </div>
-        <div class="bottom-content">
-            <div class="head-text">\ あなただけの専用ページを無料作成！ /</div>
-            <img src="{{ asset('img/mobile-img.png') }}" alt="スマホ画像" />
-        </div>
-        <div class="content" id="register">
-            <div class="register-form">
-                <a class="auth-btn item register-btn flex-column" href="{{ route('twitter.auth') }}">
-                    <div>
-                        <img src="{{ asset('img/icon_twitter.svg') }}" />
-                        <span>Twitterで登録</span>
-                    </div>
-                    <div class="micro-txt">※許可なく投稿されることはありません。</div>
+
+        <a href="https://camplog.in/takeshi" rel="nofollow" target="_blank">
+            <img class="sample-img" src="{{ asset('img/img-02.jpg') }}" alt="Sample" />
+        </a>
+
+        <div class="link-content">
+            <h3 class="head-with-border"><span class="accent">L</span>ink</h3>
+            <div class="link-list">
+                <a href="#">
+                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
                 </a>
-                <p class="middle-txt">または</p>
-                <p class="middle-txt">メールアドレスで登録</p>
+                <a href="#">
+                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
+                </a>
+                <a href="#">
+                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
+                </a>
+                <a href="#">
+                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
+                </a>
+                <a href="#">
+                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
+                </a>
+                <a href="#">
+                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
+                </a>
+                <a href="#">
+                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
+                </a>
+            </div>
+        </div>
+
+        <div class="signup-content" id="register">
+            <h3 class="head-with-border"><span class="accent">S</span>ign up</h3>
+
+            <div class="register-form">
+                <a class="twitter-btn" href="{{ route('twitter.auth') }}">
+                    <img src="{{ asset('img/icon_twitter_white.svg') }}" />
+                    <span>Twitterで登録</span>
+                </a>
+                <div class="micro-txt">
+                    ※許可なく投稿されることはありません。<br>
+                    登録することで<a href="{{ route('rules') }}" target="_blank">利用規約</a>に同意したものとします。
+                </div>
+
+                <p class="or-txt">または</p>
+
+                <p>メールアドレスで登録</p>
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="form-content">
                         <div class="form-group">
                             <input id="name" type="text" class="@error('name') is-invalid @enderror"
-                                   name="name" value="{{ old('name') }}">
+                                   name="name" value="{{ old('name') }}" placeholder="半角英数字">
                             <label class="form-label" for="name">ユーザー名 (URLに使用されます)</label>
 
                             @error('name')
@@ -56,7 +86,7 @@
 
                         <div class="form-group">
                             <input id="email" type="text" class="@error('email') is-invalid @enderror"
-                                   name="email" value="{{ old('email') }}">
+                                   name="email" value="{{ old('email') }}" placeholder="sample@camplog.in">
                             <label class="form-label" for="email">メールアドレス</label>
 
                             @error('email')
@@ -69,7 +99,7 @@
                         <div class="form-group">
                             <input id="password" type="password" class="@error('password') is-invalid @enderror"
                                    name="password">
-                            <label class="form-label" for="password">パスワード</label>
+                            <label class="form-label" for="password">パスワード<span class="small-txt">*半角英数字8文字以上</span></label>
 
                             @error('password')
                             <div class="text-error my-5">
@@ -84,8 +114,17 @@
                             <label class="form-label" for="password-confirmation">パスワード (確認用)</label>
                         </div>
 
+                        <div class="term-check">
+                            <div class="form-check-group is-public">
+                                <input id="agreeCheckbox" type="checkbox" name="term_check" value="1" />
+                                <label class="form-check-label" for="agreeCheckbox">
+                                    <a href="{{ route('rules') }}" target="_blank">利用規約</a>に同意する
+                                </label>
+                            </div>
+                        </div>
+
                         <div class="form-buttons">
-                            <button class="btn primary-btn" type="submit">無料登録する</button>
+                            <button class="btn warning-btn disabled" type="submit" id="submitButton" disabled>無料登録する</button>
                         </div>
                     </div>
                 </form>

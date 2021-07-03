@@ -27,7 +27,7 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
      * @param int $paginationCount
      * @return LengthAwarePaginator
      */
-    public function getByCondition(array $condition, int $paginationCount = 20): LengthAwarePaginator
+    public function getByCondition(array $condition, int $paginationCount = 5): LengthAwarePaginator
     {
         $query = $this->campSchedule->query();
 

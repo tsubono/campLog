@@ -1,10 +1,14 @@
+@php
+    $isAuth = true;
+@endphp
+
 @extends('layouts.app')
 
 @section('content')
     <section>
         <div class="content">
             <div class="login-form">
-                <h2>パスワード再設定</h2>
+                <h3 class="head-with-border small">パスワード再設定</h3>
 
                 <form method="POST" action="{{ route('password.update') }}">
                     @csrf
