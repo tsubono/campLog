@@ -339,10 +339,11 @@
         right: 0;
         bottom: 0;
         left: 0;
-        z-index: -1;
         background-color: rgba(55, 55, 55, 0.7);
-        transform: scaleY(1.3) perspective(.6em) rotateX(357deg) ;
+        -webkit-transform: scaleY(1.3) perspective(.6em) rotateX(357deg);
+        transform: scaleY(1.3) perspective(.6em) rotateX(357deg);
         transform-origin: bottom left;
+        z-index: -1;
       }
     }
   }
