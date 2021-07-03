@@ -9,8 +9,8 @@
         ref="input"
         @change="onChangeFile"
     />
-    <a v-if="!imgData" class="round-btn edit-btn" @click="onClickFileEdit()">
-      <img :src="'/img/edit.svg'" width="15px"/>
+    <a v-if="!imgData" class="edit-btn" @click="onClickFileEdit()">
+      編集
     </a>
     <a v-else-if="canEdit" @click="onDelete()" class="round-btn delete-btn">×</a>
     <input type="hidden" :name="name" :value="imgData"/>
@@ -98,6 +98,8 @@ export default {
 }
 
 .icon-area {
+  position: relative;
+
   .icon {
     width: 40px;
     height: 40px;
@@ -121,8 +123,22 @@ export default {
 }
 
 .edit-btn {
-  background: #62b882;
-  right: 12px;
-  top: 5px;
+  background: #E8E8E8;
+  color: #666666;
+  text-decoration: none;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 28px;
+  display: block;
+  margin: 5px auto 0;
+  font-size: .7em;
+  width: 44px;
+
+  @media (max-width: 480px) {
+    font-size: .6em;
+    width: 40px;
+  }
 }
 </style>

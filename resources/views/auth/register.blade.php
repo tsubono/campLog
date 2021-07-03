@@ -29,26 +29,20 @@
         <div class="link-content">
             <h3 class="head-with-border"><span class="accent">L</span>ink</h3>
             <div class="link-list">
-                <a href="#">
-                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
+                <a href="https://ryucamp.com/camplog/" target="_blank" rel="nofollow">
+                    <img src="{{ asset('img/RYUCAMP.jpg') }}" alt="アイコン" class="icon-img" />
                 </a>
-                <a href="#">
-                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
+                <a href="https://camp-quests.com/35219/" target="_blank" rel="nofollow">
+                    <img src="{{ asset('img/camp-quests.png') }}" alt="アイコン" class="icon-img" />
                 </a>
-                <a href="#">
-                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
+                <a href="http://slowcamp.net/blog/other/otherwise/camplog" target="_blank" rel="nofollow">
+                    <img src="{{ asset('img/attyan.jpg') }}" alt="アイコン" class="icon-img" />
                 </a>
-                <a href="#">
-                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
+                <a href="https://www.camp-tokyo.org/csp-members/1054/" target="_blank" rel="nofollow">
+                    <img src="{{ asset('img/tokyo-camp.png') }}" alt="アイコン" class="icon-img" />
                 </a>
-                <a href="#">
-                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
-                </a>
-                <a href="#">
-                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
-                </a>
-                <a href="#">
-                    <img src="{{ asset('img/icon-sample.png') }}" alt="アイコン" class="icon-img" />
+                <a href="https://note.com/camptakeshi/n/nc072f1ee5810" target="_blank" rel="nofollow">
+                    <img src="{{ asset('img/note.jpg') }}" alt="アイコン" class="icon-img" />
                 </a>
             </div>
         </div>

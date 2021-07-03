@@ -183,7 +183,7 @@ export default {
   }
 
   .remove-btn {
-    font-size: .8em;
+    font-size: .7em;
     margin-left: 10px;
     position: absolute;
     background: #FFE5E5;
