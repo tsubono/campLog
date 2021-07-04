@@ -121,7 +121,7 @@
         <div class="list-tab-content tab-content">
             <ul class="list">
                 @foreach ($user->campSchedulesDesc as $campSchedule)
-                    <li class="item">
+                    <li class="item {{ Carbon\Carbon::parse($campSchedule->date)->isFuture() ? 'is-future' : '' }}">
                         <p class="date">{{ $campSchedule->date->format('Y-m-d') }}</p>
                         <p class="title">
                             @if (!empty($campSchedule->place->url))

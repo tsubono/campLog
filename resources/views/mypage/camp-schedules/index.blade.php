@@ -18,7 +18,7 @@
 
             <div class="camp-schedule-list">
                 @forelse ($campSchedules as $campSchedule)
-                    <div class="camp-schedule-item">
+                    <div class="camp-schedule-item {{ Carbon\Carbon::parse($campSchedule->date)->isFuture() ? 'is-future' : '' }}">
                         <a class="js-show-popup delete-btn" data-id="campScheduleDeletePopup-{{ $campSchedule->id }}">
                             ×
                         </a>
