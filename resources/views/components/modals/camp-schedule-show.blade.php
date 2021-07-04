@@ -34,7 +34,7 @@
                     <div class="show-item">
                         <label>住所</label>
                         <div class="item-value">
-                            {{ $campSchedule->place->address }}
+                            <a href="https://www.google.com/maps/search/?api=1&query={{ $campSchedule->place->address }}" target="_blank" rel="noopener">{{ $campSchedule->place->address }}</a>
                         </div>
                     </div>
                 @endif
@@ -66,7 +66,7 @@
                     <div class="show-item">
                         <label>電話番号</label>
                         <div class="item-value">
-                            {{ $campSchedule->place->tel_number }}
+                            <a href="tel:{{ $campSchedule->place->tel_number }}">{{ $campSchedule->place->tel_number }}</a>
                         </div>
                     </div>
                 @endif
@@ -102,7 +102,7 @@
                         </div>
                     </div>
                 @endif
-                @if (!empty($campSchedule->url))
+                @if (!empty($campSchedule->place->url))
                     <div class="show-item">
                         <label>URL</label>
                         <div class="item-value">

@@ -129,6 +129,10 @@
       border: 1px solid #ebebeb;
       width: 85%;
       left: 13%;
+
+      @media screen and (max-width: 480px) {
+        left: 15%;
+      }
     }
   }
 
@@ -331,6 +335,10 @@
       padding: 0 5px;
       text-align: center;
       z-index: 2;
+
+      &.is-future {
+        color: #FFF8A5;
+      }
 
       &::after {
         content: "";

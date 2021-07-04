@@ -5,7 +5,7 @@
     </li>
     <li class="tab-item type-list {{ request()->is('mypage/camp-schedules', 'mypage/camp-schedules/*') ? 'active' : '' }}"
         onclick="location.href='{{ route('mypage.camp-schedules.index') }}'">
-        キャンプ予定管理
+        キャンプ記録/予定管理
     </li>
 </ul>
 

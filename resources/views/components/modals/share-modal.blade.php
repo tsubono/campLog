@@ -3,13 +3,17 @@
     <div class="popup-content">
         <h3>
             @if (session('shareIsPast'))
-                キャンプ記録をシェアできます。
+                キャンプ記録をシェアしませんか？
             @else
                 キャンプ予定をシェアできます。
             @endif
         </h3>
         <div class="camp-schedule-share-wrapper">
-            <p>※防犯を意識して慎重に行って下さい。<br>キャンプへ行ったあとの記録もシェアできます。</p>
+            @if (session('shareIsPast'))
+                <p>キャンプ記録をシェアしませんか？<br>登録したキャンプ記録をツイートでシェアしてみましょう！</p>
+            @else
+                <p>※防犯を意識して慎重に行って下さい。<br>キャンプへ行ったあとの記録もシェアできます。</p>
+            @endif
             <a href="https://twitter.com/share"
                target="_blank"
                rel="nofollow noopener"

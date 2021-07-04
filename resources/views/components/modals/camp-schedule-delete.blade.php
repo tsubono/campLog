@@ -2,7 +2,7 @@
     <div class="popup-bg js-popup-close"></div>
     <div class="popup-content">
         <h3>削除確認</h3>
-        <p class="my-10">{{ $campSchedule->title }}の予定を本当に削除してもよろしいですか？</p>
+        <p class="my-10">この予定を本当に削除してもよろしいですか？</p>
         <div class="popup-buttons">
             <form action="{{ route('mypage.camp-schedules.destroy', ['camp_schedule' => $campSchedule]) }}" method="post">
                 @csrf

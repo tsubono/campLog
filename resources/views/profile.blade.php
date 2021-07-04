@@ -111,7 +111,7 @@
                     <div class="item js-show-popup" data-id="campScheduleShowPopup-{{ $campSchedule->id }}">
                         @include('components.modals.camp-schedule-show', ['campSchedule' => $campSchedule])
                         <img class="eye-catch" src="{{ $campSchedule->eye_catch_image_path }}" alt="アイキャッチ画像" />
-                        <div class="date">
+                        <div class="date {{ Carbon\Carbon::parse($campSchedule->date)->isFuture() ? 'is-future' : '' }}">
                             {{ $campSchedule->date->format('Y.m.d') }}
                         </div>
                     </div>
