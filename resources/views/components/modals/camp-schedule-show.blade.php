@@ -14,7 +14,11 @@
                     <div class="show-item">
                         <label>キャンプ場</label>
                         <div class="item-value">
-                            {{ $campSchedule->place->name }}
+                            @if (!empty($campSchedule->place->url))
+                                <a href="{{ $campSchedule->place->url }}" target="_blank" rel="noopener">{{ $campSchedule->place->name }}</a>
+                            @else
+                                {{ $campSchedule->place->name }}
+                            @endif
                         </div>
                     </div>
                 @endif
@@ -102,16 +106,16 @@
                         </div>
                     </div>
                 @endif
-                @if (!empty($campSchedule->place->url))
-                    <div class="show-item">
-                        <label>URL</label>
-                        <div class="item-value">
-                            <a href="{{ $campSchedule->place->url }}" target="_blank">
-                                {{ $campSchedule->place->url }}
-                            </a>
-                        </div>
-                    </div>
-                @endif
+{{--                @if (!empty($campSchedule->place->url))--}}
+{{--                    <div class="show-item">--}}
+{{--                        <label>URL</label>--}}
+{{--                        <div class="item-value">--}}
+{{--                            <a href="{{ $campSchedule->place->url }}" target="_blank">--}}
+{{--                                {{ $campSchedule->place->url }}--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                @endif--}}
                 @if (!empty($campSchedule->note))
                     <div class="show-item">
                         <label>備考</label>
