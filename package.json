@@ -26,6 +26,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "animated-scroll-to": "^2.2.0",
         "vuedraggable": "^2.24.3"
     }
 }

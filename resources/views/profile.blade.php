@@ -48,14 +48,17 @@
         </div>
     @endif
     <div class="summary">
-        <div class="arrows" id="moveArrows">
-            <a class="summary-arrow-link js-summary-link">
-                <img src="{{ asset('img/left-arrow-round.svg') }}" alt="左矢印" />
-            </a>
-            <a class="summary-arrow-link js-summary-link">
-                <img src="{{ asset('img/right-arrow-round.svg') }}" alt="右矢印" />
-            </a>
+        <div class="sticky">
+            <div class="arrows" id="moveArrows">
+                <a class="summary-arrow-link js-scrollto-prev-summary">
+                    <img src="{{ asset('img/left-arrow-round.svg') }}" alt="左矢印" />
+                </a>
+                <a class="summary-arrow-link js-scrollto-next-summary">
+                    <img src="{{ asset('img/right-arrow-round.svg') }}" alt="右矢印" />
+                </a>
+            </div>
         </div>
+        <div class="scrolled">
         @foreach ($user->summary as $year => $summaryData)
             <div class="summary-wrapper">
                 <h2 class="summary-title" id="summary-{{ $year }}">{{ $year }} ACTIVITY</h2>
@@ -99,6 +102,7 @@
                 </div>
             </div>
         @endforeach
+        </div>
     </div>
     <div class="camp-schedules">
         <ul class="tab-menu">
@@ -154,4 +158,44 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('js')
+<script>
+$(function() {
+    // scroll to next/previous activity
+    (function() {
+        const summary = document.querySelector('.summary');
+        const marginTop = 40;
+
+        let currentSummary = document.querySelector('.summary-wrapper');
+        let isLeftEnd = true;
+        summary.addEventListener('scroll', () => {
+            const { x, y } = summary.getBoundingClientRect();
+            const pointElement = document.elementFromPoint(x, y + marginTop);
+            currentSummary = pointElement.closest('.summary-wrapper');
+            isLeftEnd = currentSummary.offsetLeft === summary.scrollLeft;
+        });
+
+        // to previous
+        document.querySelector('.js-scrollto-prev-summary').addEventListener('click', () => {
+            const scrollToElement = isLeftEnd ? currentSummary.previousElementSibling : currentSummary;
+            if (scrollToElement) {
+                animateScrollTo(scrollToElement, {
+                    elementToScroll: summary
+                });
+            }
+        });
+
+        // to next
+        document.querySelector('.js-scrollto-next-summary').addEventListener('click', () => {
+            if (currentSummary.nextElementSibling) {
+                animateScrollTo(currentSummary.nextElementSibling, {
+                    elementToScroll: summary
+                });
+            }
+        });
+    })();
+})
+</script>
 @endsection
