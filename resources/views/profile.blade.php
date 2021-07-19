@@ -48,16 +48,18 @@
         </div>
     @endif
     <div class="summary">
-        <div class="sticky">
-            <div class="arrows" id="moveArrows">
-                <a class="summary-arrow-link js-scrollto-prev-summary">
-                    <img src="{{ asset('img/left-arrow-round.svg') }}" alt="左矢印" />
-                </a>
-                <a class="summary-arrow-link js-scrollto-next-summary">
-                    <img src="{{ asset('img/right-arrow-round.svg') }}" alt="右矢印" />
-                </a>
+        @if (!empty($user->summary))
+            <div class="sticky">
+                <div class="arrows" id="moveArrows">
+                    <a class="summary-arrow-link js-scrollto-prev-summary">
+                        <img src="{{ asset('img/left-arrow-round.svg') }}" alt="左矢印" />
+                    </a>
+                    <a class="summary-arrow-link js-scrollto-next-summary">
+                        <img src="{{ asset('img/right-arrow-round.svg') }}" alt="右矢印" />
+                    </a>
+                </div>
             </div>
-        </div>
+        @endif
         <div class="scrolled">
         @foreach ($user->summary as $year => $summaryData)
             <div class="summary-wrapper">
@@ -176,23 +178,27 @@ $(function() {
         });
 
         // to previous
+      if (document.querySelector('.js-scrollto-prev-summary') !== null) {
         document.querySelector('.js-scrollto-prev-summary').addEventListener('click', () => {
-            const scrollToElement = currentSummary.offsetLeft === summary.scrollLeft ? currentSummary.previousElementSibling : currentSummary;
-            if (scrollToElement) {
-                animateScrollTo(scrollToElement, {
-                    elementToScroll: summary,
-                });
-            }
+          const scrollToElement = currentSummary.offsetLeft === summary.scrollLeft ? currentSummary.previousElementSibling : currentSummary;
+          if (scrollToElement) {
+            animateScrollTo(scrollToElement, {
+              elementToScroll: summary,
+            });
+          }
         });
+      }
 
+      if (document.querySelector('.js-scrollto-next-summary') !== null) {
         // to next
         document.querySelector('.js-scrollto-next-summary').addEventListener('click', () => {
-            if (currentSummary.nextElementSibling) {
-                animateScrollTo(currentSummary.nextElementSibling, {
-                    elementToScroll: summary,
-                });
-            }
+          if (currentSummary.nextElementSibling) {
+            animateScrollTo(currentSummary.nextElementSibling, {
+              elementToScroll: summary,
+            });
+          }
         });
+      }
     })();
 })
 </script>
