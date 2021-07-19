@@ -158,8 +158,8 @@
     flex-wrap: nowrap;
   }
 
-  .summary-wrapper {
-    padding-left: 20px;
+  .summary-wrapper:not(:last-of-type) {
+    padding-right: 20px;
   }
 
   .cards {

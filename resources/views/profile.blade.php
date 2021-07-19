@@ -169,20 +169,18 @@ $(function() {
         const marginTop = 40;
 
         let currentSummary = document.querySelector('.summary-wrapper');
-        let isLeftEnd = true;
         summary.addEventListener('scroll', () => {
             const { x, y } = summary.getBoundingClientRect();
             const pointElement = document.elementFromPoint(x, y + marginTop);
             currentSummary = pointElement.closest('.summary-wrapper');
-            isLeftEnd = currentSummary.offsetLeft === summary.scrollLeft;
         });
 
         // to previous
         document.querySelector('.js-scrollto-prev-summary').addEventListener('click', () => {
-            const scrollToElement = isLeftEnd ? currentSummary.previousElementSibling : currentSummary;
+            const scrollToElement = currentSummary.offsetLeft === summary.scrollLeft ? currentSummary.previousElementSibling : currentSummary;
             if (scrollToElement) {
                 animateScrollTo(scrollToElement, {
-                    elementToScroll: summary
+                    elementToScroll: summary,
                 });
             }
         });
@@ -191,7 +189,7 @@ $(function() {
         document.querySelector('.js-scrollto-next-summary').addEventListener('click', () => {
             if (currentSummary.nextElementSibling) {
                 animateScrollTo(currentSummary.nextElementSibling, {
-                    elementToScroll: summary
+                    elementToScroll: summary,
                 });
             }
         });
