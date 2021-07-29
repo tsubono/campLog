@@ -7,7 +7,7 @@
 @section('content')
     <section class="top-section">
         <div class="top-content">
-            <img class="bg-image" src="{{ asset('img/top.svg') }}" alt="背景画像"/>
+            <img class="bg-image" src="{{ asset('img/top.svg') }}" alt="背景画像" width="auto" height="auto" />
             <div class="buttons">
                 <a href="#register" class="btn register-btn">無料登録</a>
                 <a href="{{ route('login') }}" class="login-link">ログインはこちら</a>
@@ -19,30 +19,30 @@
                 <h1 class="heading">キャンプの記録をカンタンに管理！</h1>
                 <h2 class="heading-h2">宿泊記録やこれからの予定まで<br />無料で管理してキャンプライフを楽しもう！</h2>
             </div>
-            <img class="about-img" src="{{ asset('img/img-01.jpg') }}" alt="About" />
+            <img class="about-img" src="{{ asset('img/img-01.jpg') }}" alt="About" width="auto" height="auto" />
         </div>
 
         <a href="https://camplog.in/takeshi" rel="nofollow" target="_blank">
-            <img class="sample-img" src="{{ asset('img/img-new01.jpg') }}" alt="Sample" />
+            <img class="sample-img" src="{{ asset('img/img-new01.jpg') }}" alt="Sample" width="auto" height="auto" />
         </a>
 
         <div class="link-content">
             <h3 class="head-with-border"><span class="accent">L</span>ink</h3>
             <div class="link-list">
                 <a href="https://ryucamp.com/camplog/" target="_blank" rel="nofollow">
-                    <img src="{{ asset('img/RYUCAMP.jpg') }}" alt="アイコン" class="icon-img" />
+                    <img src="{{ asset('img/RYUCAMP.jpg') }}" alt="アイコン" class="icon-img" width="auto" height="auto" />
                 </a>
                 <a href="https://camp-quests.com/35219/" target="_blank" rel="nofollow">
-                    <img src="{{ asset('img/camp-quests.png') }}" alt="アイコン" class="icon-img" />
+                    <img src="{{ asset('img/camp-quests.png') }}" alt="アイコン" class="icon-img" width="auto" height="auto" />
                 </a>
                 <a href="http://slowcamp.net/blog/other/otherwise/camplog" target="_blank" rel="nofollow">
-                    <img src="{{ asset('img/attyan.jpg') }}" alt="アイコン" class="icon-img" />
+                    <img src="{{ asset('img/attyan.jpg') }}" alt="アイコン" class="icon-img" width="auto" height="auto" />
                 </a>
                 <a href="https://www.camp-tokyo.org/csp-members/1054/" target="_blank" rel="nofollow">
-                    <img src="{{ asset('img/tokyo-camp.png') }}" alt="アイコン" class="icon-img" />
+                    <img src="{{ asset('img/tokyo-camp.png') }}" alt="アイコン" class="icon-img" width="auto" height="auto" />
                 </a>
                 <a href="https://note.com/camptakeshi/n/nc072f1ee5810" target="_blank" rel="nofollow">
-                    <img src="{{ asset('img/note.jpg') }}" alt="アイコン" class="icon-img" />
+                    <img src="{{ asset('img/note.jpg') }}" alt="アイコン" class="icon-img" width="auto" height="auto" />
                 </a>
             </div>
         </div>
@@ -52,7 +52,7 @@
 
             <div class="register-form">
                 <a class="twitter-btn" href="{{ route('twitter.auth') }}">
-                    <img alt="Twitterアイコン" src="{{ asset('img/icon_twitter_white.svg') }}" />
+                    <img alt="Twitterアイコン" src="{{ asset('img/icon_twitter_white.svg') }}" width="auto" height="auto" />
                     <span>Twitterで登録</span>
                 </a>
                 <div class="micro-txt">

@@ -9,11 +9,11 @@
 <h2 style="display: none">{{ now()->year }}年のキャンプ記録</h2>
 <section>
     <header class="header-image">
-        <img alt="背景画像" src="{{ $user->display_background_path }}">
+        <img alt="背景画像" src="{{ $user->display_background_path }}" width="auto" height="auto" />
     </header>
     <div class="profile">
         <div class="avatar">
-            <img alt="アバター画像" class="avatar-img" src="{{ $user->display_avatar_path }}">
+            <img alt="アバター画像" class="avatar-img" src="{{ $user->display_avatar_path }}" width="auto" height="auto">
         </div>
         <div class="text">
             <h2 class="name">{{ $user->handle_name }}</h2>
@@ -41,7 +41,7 @@
                 @foreach ($user->links as $link)
                     @if ($link['is_public'] && !empty($link['url']))
                         <a class="sns-item" href="{{ $link['url'] }}" target="_blank" rel="noopener">
-                            <img alt="アイコン" src="{{ $link['icon_path'] }}" class="icon">
+                            <img alt="アイコン" src="{{ $link['icon_path'] }}" class="icon" width="auto" height="auto">
                             <span>{{ $link['name'] }}</span>
                         </a>
                    @endif
@@ -54,10 +54,10 @@
             <div class="sticky">
                 <div class="arrows" id="moveArrows">
                     <a class="summary-arrow-link js-scrollto-prev-summary">
-                        <img src="{{ asset('img/left-arrow-round.svg') }}" alt="左矢印" />
+                        <img src="{{ asset('img/left-arrow-round.svg') }}" alt="左矢印" width="auto" height="auto" />
                     </a>
                     <a class="summary-arrow-link js-scrollto-next-summary">
-                        <img src="{{ asset('img/right-arrow-round.svg') }}" alt="右矢印" />
+                        <img src="{{ asset('img/right-arrow-round.svg') }}" alt="右矢印" width="auto" height="auto" />
                     </a>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                     </div>
                     <div class="monthly-list">
                         <div class="list-title camping">
-                            <img src="./img/icon_stay.svg" alt="宿泊月別アイコン">
+                            <img src="./img/icon_stay.svg" alt="宿泊月別アイコン" width="auto" height="auto" />
                             <span>宿泊</span>
                             <span>月別</span>
                         </div>
@@ -118,7 +118,7 @@
                 @foreach ($user->campSchedulesDesc as $campSchedule)
                     <div class="item js-show-popup" data-id="campScheduleShowPopup-{{ $campSchedule->id }}">
                         @include('components.modals.camp-schedule-show', ['campSchedule' => $campSchedule])
-                        <img class="eye-catch" src="{{ $campSchedule->eye_catch_image_path }}" alt="アイキャッチ画像" />
+                        <img class="eye-catch" src="{{ $campSchedule->eye_catch_image_path }}" alt="アイキャッチ画像" width="auto" height="auto" />
                         <div class="date {{ Carbon\Carbon::parse($campSchedule->date)->isFuture() ? 'is-future' : '' }}">
                             {{ $campSchedule->date->format('Y.m.d') }}
                         </div>

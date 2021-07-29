@@ -1,6 +1,6 @@
 <template>
   <div class="icon-area">
-    <img alt="アイコン画像" :src="imgData ? imgData : '/img/url.png'" class="icon">
+    <img alt="アイコン画像" :src="imgData ? imgData : '/img/url.png'" class="icon"  width="auto" height="auto">
     <input
         type="file"
         class="drop__input"

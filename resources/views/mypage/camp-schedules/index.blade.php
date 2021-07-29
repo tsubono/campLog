@@ -24,7 +24,7 @@
                         </a>
                         @include('components.modals.camp-schedule-delete', ['campSchedule' => $campSchedule])
                         <div class="schedule-content">
-                            <img class="eye-catch-image content-part" src="{{ $campSchedule->eye_catch_image_path }}" alt="アイキャッチ画像" />
+                            <img class="eye-catch-image content-part" src="{{ $campSchedule->eye_catch_image_path }}" alt="アイキャッチ画像"  width="auto" height="auto" />
                             <div class="text-left">
                                 <div class="content-part">日程：{{ $campSchedule->date->format('Y.m.d') }}</div>
                                 <div class="content-part">場所：{{ $campSchedule->place->name }}</div>
