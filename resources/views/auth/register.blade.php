@@ -16,14 +16,14 @@
         <div class="about-content">
             <h3 class="head-with-border"><span class="accent">A</span>bout</h3>
             <div class="about-text">
-                <p class="heading">キャンプの記録をカンタンに管理！</p>
-                <p>宿泊記録やこれからの予定まで<br />無料で管理してキャンプライフを楽しもう！</p>
+                <h1 class="heading">キャンプの記録をカンタンに管理！</h1>
+                <h2 class="heading-h2">宿泊記録やこれからの予定まで<br />無料で管理してキャンプライフを楽しもう！</h2>
             </div>
             <img class="about-img" src="{{ asset('img/img-01.jpg') }}" alt="About" />
         </div>
 
         <a href="https://camplog.in/takeshi" rel="nofollow" target="_blank">
-            <img class="sample-img" src="{{ asset('img/img-02.jpg') }}" alt="Sample" />
+            <img class="sample-img" src="{{ asset('img/img-new01.jpg') }}" alt="Sample" />
         </a>
 
         <div class="link-content">
@@ -52,7 +52,7 @@
 
             <div class="register-form">
                 <a class="twitter-btn" href="{{ route('twitter.auth') }}">
-                    <img src="{{ asset('img/icon_twitter_white.svg') }}" />
+                    <img alt="Twitterアイコン" src="{{ asset('img/icon_twitter_white.svg') }}" />
                     <span>Twitterで登録</span>
                 </a>
                 <div class="micro-txt">

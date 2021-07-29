@@ -19,6 +19,7 @@
         "laravel/socialite": "^5.1",
         "laravel/tinker": "^2.5",
         "laravel/ui": "2.*",
+        "laravelium/sitemap": "7.*",
         "simplesoftwareio/simple-qrcode": "^4.1"
     },
     "require-dev": {

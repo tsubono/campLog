@@ -62,7 +62,11 @@ Route::get('/rules', 'PageController@rules')->name('rules');
 Route::get('/privacy-policy', 'PageController@privacyPolicy')->name('privacy-policy');
 
 /**
+ * サイトマップ
+ */
+Route::get('/sitemap', [App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
+
+/**
  * プロフィール
  */
 Route::get('/{userName}', 'ProfileController@index')->name('profile.index');
-

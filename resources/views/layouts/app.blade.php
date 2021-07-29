@@ -9,7 +9,15 @@
     <link rel="icon" href="{{ secure_asset('img/favicon.ico') }}">
     <link rel="apple-touch-icon" href="{{ secure_asset('img/logo_favi_gray.jpg') }}" sizes="180x180">
 
-    <title>キャンログ</title>
+    @if (request()->route()->getName() === 'profile.index')
+        <title>{{ $user->handle_name }}のキャンプ記録-キャンログ</title>
+        <meta name="description" content="{{ $user->introduction }}">
+    @else
+        <title>キャンログ - キャンプの記録サイト</title>
+        <meta name="description" content="日本初のキャンプ記録管理サイト「キャンログ」は、過去のキャンプを記録、未来の予定を管理、現在利用中のSNSリンクひとまとめ、など3つの機能を無料で利用可能！全国4500件のキャンプ場を掲載。HPや住所、電話番号を網羅。新規登録は1分でカンタンに">
+    @endif
+    <meta name="keywords" content="キャンプ記録,キャンプ,キャンプ予定">
+    <link rel="canonical" href="{{ url()->current() }}" />
 
     <!-- Scripts -->
     @include('components.js')
@@ -37,8 +45,17 @@
     <meta property="og:title" content="キャンログ"/>
     <meta property="og:description" content="キャンプの記録＆予定管理ツール｢キャンログ｣"/>
     <meta property="og:site_name" content="キャンログ"/>
+    <meta property="og:url" content="{{ url()->current() }}" />
     <meta property="og:image" content="{{ secure_asset('img/ogp-img.jpg') }}"/>
     <meta name="twitter:card" content="summary_large_image"/>
+
+    @if (config('app.env') === 'production')
+        <!-- User Heat Tag -->
+        <script type="text/javascript">
+          (function(add, cla){window['UserHeatTag']=cla;window[cla]=window[cla]||function(){(window[cla].q=window[cla].q||[]).push(arguments)},window[cla].l=1*new Date();var ul=document.createElement('script');var tag = document.getElementsByTagName('script')[0];ul.async=1;ul.src=add;tag.parentNode.insertBefore(ul,tag);})('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');_uhtracker({id:'uhsm1bEe9F'});
+        </script>
+        <!-- End User Heat Tag -->
+    @endif
 </head>
 <body class="{{ $isAuth ?? false ? 'bg-gray' : '' }}">
 @if ($isAuth ?? false)

@@ -1,7 +1,7 @@
 <template>
     <div class="file-area">
         <div class="loader-container" v-if="isLoading">
-            <img src="/img/favicon.ico" class="ld ld-bounce">
+            <img alt="favicon" src="/img/favicon.ico" class="ld ld-bounce">
         </div>
         <div :class="{'drag': isDrag === 'new'}"
              @dragover.prevent="checkDrag($event, 'new', true)"
@@ -21,7 +21,7 @@
         <br>
         <div class="image-list">
             <div v-for="(imgData, index) in imgDatas" class="image-item">
-                <img v-bind:src="imgData.replace('camp-schedule/', 'camp-schedule/resized-')" class="preview">
+                <img alt="プレビュー画像" v-bind:src="imgData.replace('camp-schedule/', 'camp-schedule/resized-')" class="preview">
                 <input type="hidden" :name="name" :value="imgData"/>
                 <a v-on:click="onDelete(index)" class="delete-btn">×</a>
             </div>

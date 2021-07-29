@@ -5,13 +5,15 @@
 @extends('layouts.app')
 
 @section('content')
+<h1 style="display: none">{{ $user->handle_name }}のキャンプの記録</h1>
+<h2 style="display: none">{{ now()->year }}年のキャンプ記録</h2>
 <section>
     <header class="header-image">
-        <img src="{{ $user->display_background_path }}">
+        <img alt="背景画像" src="{{ $user->display_background_path }}">
     </header>
     <div class="profile">
         <div class="avatar">
-            <img class="avatar-img" src="{{ $user->display_avatar_path }}">
+            <img alt="アバター画像" class="avatar-img" src="{{ $user->display_avatar_path }}">
         </div>
         <div class="text">
             <h2 class="name">{{ $user->handle_name }}</h2>
@@ -39,7 +41,7 @@
                 @foreach ($user->links as $link)
                     @if ($link['is_public'] && !empty($link['url']))
                         <a class="sns-item" href="{{ $link['url'] }}" target="_blank" rel="noopener">
-                            <img src="{{ $link['icon_path'] }}" class="icon">
+                            <img alt="アイコン" src="{{ $link['icon_path'] }}" class="icon">
                             <span>{{ $link['name'] }}</span>
                         </a>
                    @endif

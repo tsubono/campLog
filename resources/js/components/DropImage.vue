@@ -1,7 +1,7 @@
 <template>
     <div class="file-area" :class="{'hasImg': imgData !== null}">
         <div class="loader-container" v-if="isLoading">
-            <img src="/img/favicon.ico" class="ld ld-bounce">
+            <img alt="favicon" src="/img/favicon.ico" class="ld ld-bounce">
         </div>
       <div class="file-content">
         <div v-if="!uploaded" :class="{'drag': isDrag === 'new'}"
@@ -10,7 +10,7 @@
              @drop.prevent="onDrop" class="drop-area">
         </div>
         <div class="preview-content" v-if="imgData">
-          <img :src="imgData" class="preview">
+          <img alt="プレビュー画像" :src="imgData" class="preview">
         </div>
         <div class="buttons">
           <label class="btn file-select-btn">
