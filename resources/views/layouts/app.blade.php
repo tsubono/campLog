@@ -6,7 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="icon" href="{{ secure_asset('img/favicon.ico') }}">
+    <link rel="icon" href="{{ secure_asset('img/logo_favi.ico') }}">
     <link rel="apple-touch-icon" href="{{ secure_asset('img/logo_favi_gray.jpg') }}" sizes="180x180">
 
     @if (request()->route()->getName() === 'profile.index')
