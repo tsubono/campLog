@@ -40,7 +40,7 @@ class ResizeImages extends Command
         CampScheduleImage::all()->each (function($scheduleImage) {
             $image = \Image::make(public_path($scheduleImage->image_path));
             $image->orientate();
-            $image->resize(1200, null,
+            $image->resize(1000, null,
                 function ($constraint) {
                     $constraint->aspectRatio();
                     $constraint->upsize();
@@ -49,17 +49,17 @@ class ResizeImages extends Command
             $image->save(public_path($scheduleImage->image_path));
 
             $resizedPath = str_replace("camp-schedule/", "camp-schedule/resized-", $scheduleImage->image_path);
-            if (!file_exists(public_path($resizedPath))) {
+            // if (!file_exists(public_path($resizedPath))) {
                 $image = \Image::make(public_path($scheduleImage->image_path));
                 $image->orientate();
-                $image->resize(600, null,
+                $image->resize(450, null,
                     function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     }
                 );
                 $image->save(public_path($resizedPath));
-            }
+            // }
         });
     }
 }

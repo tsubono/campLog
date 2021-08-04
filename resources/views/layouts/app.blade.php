@@ -28,18 +28,6 @@
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.13.0/css/all.css"
           integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-186172042-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || []
-
-      function gtag () {dataLayer.push(arguments)}
-
-      gtag('js', new Date())
-
-      gtag('config', 'UA-186172042-1')
-    </script>
-
     <!-- OGP -->
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="キャンログ"/>
@@ -50,6 +38,17 @@
     <meta name="twitter:card" content="summary_large_image"/>
 
     @if (config('app.env') === 'production')
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-186172042-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || []
+
+          function gtag () {dataLayer.push(arguments)}
+
+          gtag('js', new Date())
+
+          gtag('config', 'UA-186172042-1')
+        </script>
         <!-- User Heat Tag -->
         <script type="text/javascript">
           (function(add, cla){window['UserHeatTag']=cla;window[cla]=window[cla]||function(){(window[cla].q=window[cla].q||[]).push(arguments)},window[cla].l=1*new Date();var ul=document.createElement('script');var tag = document.getElementsByTagName('script')[0];ul.async=1;ul.src=add;tag.parentNode.insertBefore(ul,tag);})('//uh.nakanohito.jp/uhj2/uh.js', '_uhtracker');_uhtracker({id:'uhsm1bEe9F'});

@@ -1,7 +1,7 @@
 <template>
     <div class="file-area">
         <div class="loader-container" v-if="isLoading">
-            <img alt="favicon" src="/img/favicon.ico" class="ld ld-bounce" width="auto" height="auto">
+            <img alt="favicon" src="/img/logo_favi.ico" class="ld ld-bounce" width="auto" height="auto">
         </div>
         <div :class="{'drag': isDrag === 'new'}"
              @dragover.prevent="checkDrag($event, 'new', true)"
