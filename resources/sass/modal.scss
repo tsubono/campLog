@@ -70,6 +70,7 @@
 
         .item-value {
           font-weight: bold;
+          word-break: break-all;
 
           &.images {
             display: flex;
