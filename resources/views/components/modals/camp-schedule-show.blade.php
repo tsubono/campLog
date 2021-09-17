@@ -22,6 +22,16 @@
                         </div>
                     </div>
                 @endif
+                @if (count($campSchedule->images) !== 0)
+                    <div class="show-item">
+                        <label>画像</label>
+                        <div class="item-value images">
+                            @foreach ($campSchedule->images as $image)
+                                <img src="{{ str_replace("camp-schedule/", "camp-schedule/resized-", $image->image_path) }}" alt="画像" class="js-modal-image js-image-{{ $image->id }}" data-id="{{ $image->id }}" width="auto" height="auto" />
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
                 <div class="show-item">
                     <label>泊数</label>
                     <div class="item-value">
@@ -121,16 +131,6 @@
                         <label>備考</label>
                         <div class="item-value">
                             {!! nl2br($campSchedule->note_with_link) !!}
-                        </div>
-                    </div>
-                @endif
-                @if (count($campSchedule->images) !== 0)
-                    <div class="show-item">
-                        <label>画像</label>
-                        <div class="item-value images">
-                            @foreach ($campSchedule->images as $image)
-                                <img src="{{ str_replace("camp-schedule/", "camp-schedule/resized-", $image->image_path) }}" alt="画像" class="js-modal-image js-image-{{ $image->id }}" data-id="{{ $image->id }}" width="auto" height="auto" />
-                            @endforeach
                         </div>
                     </div>
                 @endif
