@@ -13,6 +13,10 @@
                 @if (!empty($campSchedule->place->name))
                     <div class="show-item">
                         <label>キャンプ場</label>
+                        <a class="review-link" target="_blank" href="{{ route('camp-places.show', ['campPlace' => $campSchedule->place]) }}">
+                           <img src="{{ asset('img/messenger.svg') }}" alt="口コミ一覧" width="15" />
+                           口コミ一覧
+                        </a>
                         <div class="item-value">
                             @if (!empty($campSchedule->place->url))
                                 <a href="{{ $campSchedule->place->url }}" target="_blank" rel="noopener">{{ $campSchedule->place->name }}</a>
@@ -116,16 +120,14 @@
                         </div>
                     </div>
                 @endif
-{{--                @if (!empty($campSchedule->place->url))--}}
-{{--                    <div class="show-item">--}}
-{{--                        <label>URL</label>--}}
-{{--                        <div class="item-value">--}}
-{{--                            <a href="{{ $campSchedule->place->url }}" target="_blank">--}}
-{{--                                {{ $campSchedule->place->url }}--}}
-{{--                            </a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                @endif--}}
+                @if (!empty($campSchedule->review))
+                    <div class="show-item">
+                        <label>レビュー</label>
+                        <div class="item-value">
+                            {!! nl2br($campSchedule->review) !!}
+                        </div>
+                    </div>
+                @endif
                 @if (!empty($campSchedule->note))
                     <div class="show-item">
                         <label>備考</label>

@@ -85,7 +85,7 @@ class CampSchedule extends Model
     }
 
     /**
-     * 文字列のリンク部分に<a>タグを埋め込むよ
+     * 文字列のリンク部分に<a>タグを埋め込む
      *
      * @return string
      */
@@ -94,5 +94,15 @@ class CampSchedule extends Model
         $pattern = '/((?:https?|ftp):\/\/[-_.!~*\'()a-zA-Z0-9;\/?:@&=+$,%#]+)/';
         $replace = '<a href="$1" target="_blank" rel="nofollow">$1</a>';
         return preg_replace($pattern, $replace, $this->note);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\HigherOrderBuilderProxy|mixed|null
+     */
+    public function getReviewImageAttribute()
+    {
+        $image = $this->images()->orderBy('created_at')->first();
+
+        return !empty($image) ? $image->image_path : asset('img/default-image.png');
     }
 }

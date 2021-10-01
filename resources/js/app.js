@@ -24,6 +24,7 @@ Vue.component('DropImage',require('./components/DropImage.vue').default);
 Vue.component('DropImageRound',require('./components/DropImageRound.vue').default);
 Vue.component('DropImages',require('./components/DropImages.vue').default);
 Vue.component('CampPlaceSelectBox', require('./components/CampPlaceSelectBox.vue').default);
+Vue.component('CampPlaceSelectBoxForSearch', require('./components/CampPlaceSelectBoxForSearch.vue').default);
 Vue.component('UserLinks', require('./components/UserLinks.vue').default);
 
 /**

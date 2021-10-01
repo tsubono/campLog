@@ -428,6 +428,10 @@ footer {
   margin-bottom: 20px !important;
 }
 
+.py-10 {
+  padding: 10px 0;
+}
+
 .py-20 {
   padding: 20px 0;
 }
@@ -548,6 +552,21 @@ footer {
   margin: 0 auto;
   padding: 10px 25px;
   font-size: 1.1rem;
+}
+
+.camp-places-keyword-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+
+  img {
+    margin: 0 15px;
+  }
+
+  .form-content {
+    flex-basis: 70%;
+  }
 }
 
 @media screen and (max-width: 1024px) {

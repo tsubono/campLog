@@ -12,6 +12,9 @@
     @if (request()->route()->getName() === 'profile.index')
         <title>{{ $user->handle_name }}のキャンプ記録-キャンログ</title>
         <meta name="description" content="{{ $user->introduction }}">
+    @elseif (request()->is('camp-schedules/*'))
+        <title>キャンプ場一覧 | キャンログ - キャンプの記録サイト</title>
+        <meta name="description" content="日本初のキャンプ記録管理サイト「キャンログ」は、過去のキャンプを記録、未来の予定を管理、現在利用中のSNSリンクひとまとめ、など3つの機能を無料で利用可能！全国4500件のキャンプ場を掲載。HPや住所、電話番号を網羅。新規登録は1分でカンタンに">
     @else
         <title>キャンログ - キャンプの記録サイト</title>
         <meta name="description" content="日本初のキャンプ記録管理サイト「キャンログ」は、過去のキャンプを記録、未来の予定を管理、現在利用中のSNSリンクひとまとめ、など3つの機能を無料で利用可能！全国4500件のキャンプ場を掲載。HPや住所、電話番号を網羅。新規登録は1分でカンタンに">

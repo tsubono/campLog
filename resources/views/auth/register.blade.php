@@ -19,11 +19,22 @@
                 <h1 class="heading">キャンプの記録をカンタンに管理！</h1>
                 <h2 class="heading-h2">宿泊記録やこれからの予定まで<br />無料で管理してキャンプライフを楽しもう！</h2>
             </div>
-            <img class="about-img" src="{{ asset('img/img-01.jpg') }}" alt="About" width="auto" height="auto" />
+            <img class="about-img" src="{{ asset('img/img-01.svg') }}" alt="About" width="auto" height="auto" />
+        </div>
+
+        <div class="camp-places-keyword-form">
+            <img class="new-img" src="{{ asset('img/new.svg') }}" alt="new" width="80" height="80" />
+            <div class="form-content">
+                <div class="form-group">
+                    <camp-place-select-box-for-search
+                            :items="{{ $campPlaces }}"
+                    />
+                </div>
+            </div>
         </div>
 
         <a href="https://camplog.in/takeshi" rel="nofollow" target="_blank">
-            <img class="sample-img" src="{{ asset('img/img-new01.jpg') }}" alt="Sample" width="auto" height="auto" />
+            <img class="sample-img" src="{{ asset('img/img-02.svg') }}" alt="Sample" width="auto" height="auto" />
         </a>
 
         <div class="link-content">

@@ -3,6 +3,7 @@
 namespace App\Repositories\CampPlace;
 
 use App\Models\CampPlace;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Collection;
@@ -28,6 +29,28 @@ class CampPlaceRepository implements CampPlaceRepositoryInterface
     public function getAll(): Collection
     {
         return $this->campPlace->all();
+    }
+
+    /**
+     * @param array $condition
+     * @param int $perCount
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function getByConditionPaginate(array $condition, int $perCount = 10): LengthAwarePaginator
+    {
+        $query = $this->campPlace->query();
+
+        if (!empty($condition['name'])) {
+            $query->where('name', 'LIKE', "%{$condition['name']}%");
+        }
+
+        if (!empty($condition['address'])) {
+            $query->where('address', 'LIKE', "%{$condition['address']}%");
+        }
+
+        return $query
+            ->orderBy('name', 'desc')
+            ->paginate($perCount);
     }
 
     /**

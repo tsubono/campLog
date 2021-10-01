@@ -67,6 +67,12 @@ Route::get('/privacy-policy', 'PageController@privacyPolicy')->name('privacy-pol
 Route::get('/sitemap', [App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
 
 /**
+ * キャンプ場検索一覧・詳細
+ */
+Route::get('/camp-places', [App\Http\Controllers\CampPlaceController::class, 'index'])->name('camp-places.index');
+Route::get('/camp-places/{campPlace}', [App\Http\Controllers\CampPlaceController::class, 'show'])->name('camp-places.show');
+
+/**
  * プロフィール
  */
 Route::get('/{userName}', 'ProfileController@index')->name('profile.index');

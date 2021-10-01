@@ -1,0 +1,58 @@
+/*===============================
+	キャンプ場検索
+================================*/
+.camp-places {
+  padding-top: 5em;
+
+  input {
+    margin-top: 50px !important;
+  }
+
+  .form-label {
+    font-size: 20px !important;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .save-btn {
+    width: 80%;
+    margin: 30px auto;
+  }
+
+  .info-table {
+    border-collapse: collapse;
+    border: 1px solid $gray-dark;
+    margin-bottom: 30px;
+
+    td, th {
+      border-collapse: collapse;
+      border: 1px solid $gray-dark;
+      padding: 5px;
+    }
+  }
+
+  .review-list {
+    margin-bottom: 30px;
+
+    &__item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px auto;
+
+      .review-content {
+        border: 1px solid;
+        padding: 10px;
+        margin-left: 10px;
+        position: relative;
+
+        a {
+          position: absolute;
+          right: 20px;
+        }
+      }
+    }
+  }
+}

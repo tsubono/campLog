@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Mypage;
 
 use App\Http\Requests\CampScheduleRequest;
-use App\Http\Requests\ServiceRequest;
 use App\Models\CampSchedule;
 use App\Repositories\CampPlace\CampPlaceRepositoryInterface;
 use App\Repositories\CampSchedule\CampScheduleRepositoryInterface;

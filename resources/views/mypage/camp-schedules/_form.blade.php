@@ -30,6 +30,18 @@
 </div>
 
 <div class="form-group">
+    <textarea name="review">{{ old('review', $campSchedule->review) }}</textarea>
+    <label class="form-label" for="cancel_note">レビュー</label>
+    <p class="require">※ ここに入力されたレビュー情報は、キャンプ場詳細ページに記載されます</p>
+
+    @error('review')
+    <div class="text-error my-5">
+        <strong>{{ $message }}</strong>
+    </div>
+    @enderror
+</div>
+
+<div class="form-group">
     <textarea name="note">{{ old('note', $campSchedule->note) }}</textarea>
     <label class="form-label" for="cancel_note">備考</label>
 
