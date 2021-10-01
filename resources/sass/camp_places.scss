@@ -4,6 +4,10 @@
 .camp-places {
   padding-top: 5em;
 
+  @media (max-width: 480px) {
+    padding-top: 2em;
+  }
+
   input {
     margin-top: 50px !important;
   }
@@ -33,6 +37,15 @@
       border: 1px solid $gray-dark;
       padding: 5px;
     }
+
+    @media (max-width: 480px) {
+      width: 95%;
+      margin: 0 auto;
+
+      th {
+        width: 100px;
+      }
+    }
   }
 
   .review-list {
@@ -58,6 +71,22 @@
         a {
           position: absolute;
           right: 20px;
+        }
+      }
+    }
+
+    @media (max-width: 480px) {
+      width: 95%;
+      margin: 30px auto;
+
+      &__item {
+        img {
+          flex-basis: 10%;
+        }
+
+        .review-content {
+          font-size: 14px;
+          flex-basis: 90%;
         }
       }
     }
