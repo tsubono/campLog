@@ -569,6 +569,14 @@ footer {
   }
 }
 
+.pc-only {
+  display: block;
+}
+
+.sp-only {
+  display: none;
+}
+
 @media screen and (max-width: 1024px) {
   .container {
     max-width: 100%;
@@ -576,6 +584,14 @@ footer {
 }
 
 @media screen and (max-width: 480px) {
+  .pc-only {
+    display: none;
+  }
+
+  .sp-only {
+    display: block;
+  }
+
   footer {
     .links {
       justify-content: center;
