@@ -67,10 +67,12 @@
         margin-left: 10px;
         position: relative;
         flex-basis: 80%;
+        height: 100px;
 
         a {
           position: absolute;
           right: 20px;
+          bottom: 4px;
         }
       }
     }
@@ -87,6 +89,7 @@
         .review-content {
           font-size: 14px;
           flex-basis: 90%;
+          height: 100px;
 
           a {
             bottom: 4px;

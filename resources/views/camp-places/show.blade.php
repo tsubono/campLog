@@ -105,8 +105,8 @@
                 <div class="review-list__item">
                     <img src="{{ $campSchedule->review_image }}" alt="キャンプ場画像" width="130" />
                     <p class="review-content">
-                        <span class="pc-only">{{ Str::limit($campSchedule->review, 200) }}</span>
-                        <span class="sp-only">{{ Str::limit($campSchedule->review, 40) }}</span>
+                        <span class="pc-only">{{ Str::limit($campSchedule->review, 215) }}</span>
+                        <span class="sp-only">{{ Str::limit($campSchedule->review, 80) }}</span>
                         <a class="js-show-popup" href="#" onclick="return false;" data-id="reviewShowPopup-{{ $campSchedule->id }}">詳細こちら</a>
                     </p>
                 </div>
