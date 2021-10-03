@@ -280,6 +280,14 @@
         }
       }
 
+      .review-link {
+        @media screen and (max-width: 480px) {
+          display: block;
+          width: 100px;
+          margin-top: 10px;
+        }
+      }
+
       &__name {
         font-size: 17px;
 
@@ -294,6 +302,13 @@
         .flex {
           a {
             margin-right: 10px;
+          }
+          @media screen and (max-width: 480px) {
+            flex-direction: column;
+
+            a {
+              margin-bottom: 5px;
+            }
           }
         }
 
