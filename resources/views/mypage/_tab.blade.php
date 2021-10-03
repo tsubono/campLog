@@ -8,6 +8,11 @@
         キャンプ記録/予定管理
     </li>
 </ul>
+<div class="full-menu {{ request()->is('mypage/bookmarks') ? 'active' : '' }}">
+    <a href="{{ route('mypage.bookmarks.index') }}">
+        &nbsp; 保存済みキャンプ場リスト
+    </a>
+</div>
 
 @if (session('message'))
     <div class="flash-message">

@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -87,6 +88,7 @@ class LoginController extends Controller
                 'email' => $user->email,
                 'twitter_url' => "https://twitter.com/{$user->nickname}",
                 'email_verified_at' => now(),
+                'api_token' => Str::random(60),
             ]
         );
         Auth::login($registerUser);

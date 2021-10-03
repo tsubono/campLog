@@ -96,6 +96,10 @@ $md-checkbox-size: 1.25em;
       outline: none;
       width: 100%;
 
+      &.small {
+        height: 80px;
+      }
+
       &.is-invalid {
         border: 1px solid $red;
       }

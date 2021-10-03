@@ -14,23 +14,41 @@
   }
 }
 
-.profile-block {
-  width: 93%;
-  margin: 0 auto;
-  height: 130px;
+.mypage-header-content {
   background: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  margin: 15px 30px;
 
-  .user-info {
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
+  @media screen and (max-width: 480px) {
+    margin: 0 19px;
+  }
 
-    .btn {
-      width: 200px;
-      margin-top: 10px;
+  .profile-block {
+    width: 93%;
+    margin: 0 auto;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    .user-info {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+
+      .btn {
+        width: 200px;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .search-box {
+    width: 350px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+
+    @media screen and (max-width: 480px) {
+      width: 85%;
     }
   }
 }
@@ -89,6 +107,7 @@
         padding: 10px;
         line-height: 15px;
         font-weight: bold;
+        cursor: pointer;
       }
 
       .schedule-content {
@@ -213,6 +232,95 @@
             width: 45%;
           }
         }
+      }
+    }
+  }
+}
+
+/*===============================
+  ブックマーク
+================================*/
+.bookmark-section {
+  min-height: 500px;
+
+  .content {
+    padding: 10px;
+
+    @media screen and (max-width: 480px) {
+      margin-top: 15px;
+    }
+  }
+
+  .bookmark-list {
+    padding: 10px;
+
+    @media screen and (max-width: 480px) {
+      padding: 0;
+    }
+
+    .bookmark-item {
+      margin: 20px auto;
+      border: 1px solid;
+      position: relative;
+      padding: 20px 40px;
+      background: #fff;
+
+      @media screen and (max-width: 480px) {
+        padding: 47px 10px 0;
+      }
+
+      .handle {
+        cursor: pointer;
+        position: absolute;
+        left: 20px;
+        top: 25px;
+
+        @media screen and (max-width: 480px) {
+          top: 15px;
+        }
+      }
+
+      &__name {
+        font-size: 17px;
+
+        @media screen and (max-width: 480px) {
+          font-size: 15px;
+        }
+      }
+
+      &__info {
+        font-size: 15px;
+
+        .flex {
+          a {
+            margin-right: 10px;
+          }
+        }
+
+        @media screen and (max-width: 480px) {
+          font-size: 13px;
+        }
+      }
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .delete-btn {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        background: #CCCCCC;
+        color: #fff;
+        border-radius: 50%;
+        padding: 10px;
+        line-height: 15px;
+        font-weight: bold;
+        cursor: pointer;
       }
     }
   }

@@ -32,6 +32,11 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\AccessCode\AccessCodeRepositoryInterface::class,
             \App\Repositories\AccessCode\AccessCodeRepository::class
         );
+
+        $this->app->bind(
+            \App\Repositories\UserBookmark\UserBookmarkRepositoryInterface::class,
+            \App\Repositories\UserBookmark\UserBookmarkRepository::class
+        );
     }
 
     /**

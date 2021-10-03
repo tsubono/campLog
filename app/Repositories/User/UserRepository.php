@@ -149,6 +149,8 @@ class UserRepository implements UserRepositoryInterface
         try {
             $user = $this->user->findOrFail($id);
             $user->campSchedules()->delete();
+            $user->bookmarks()->delete();
+            $user->links()->delete();
             $user->delete();
 
             DB::commit();

@@ -17,7 +17,7 @@ Route::middleware('access-code-check')->group(function() {
     /**
      * 認証
      */
-    Auth::routes(['verify' => true]);
+    Auth::routes(['verify' => true, 'register' => false]);
     Route::get('/', 'Auth\RegisterController@showRegistrationForm')->name('register');
     Route::post('/', 'Auth\RegisterController@register');
 
@@ -42,6 +42,8 @@ Route::middleware('access-code-check')->group(function() {
         Route::post('/camp-places/import', 'CampPlaceController@postImport');
         Route::get('/access-code', 'AccessCodeController@index')->name('access-code.index');
         Route::put('/access-code/{access_code}', 'AccessCodeController@update')->name('access-code.update');
+        // ブックマーク一覧
+        Route::get('/bookmarks', 'BookmarkController@index')->name('bookmarks.index');
     });
 });
 
@@ -71,6 +73,8 @@ Route::get('/sitemap', [App\Http\Controllers\SitemapController::class, 'index'])
  */
 Route::get('/camp-places', [App\Http\Controllers\CampPlaceController::class, 'index'])->name('camp-places.index');
 Route::get('/camp-places/{campPlace}', [App\Http\Controllers\CampPlaceController::class, 'show'])->name('camp-places.show');
+Route::post('/camp-places/{campPlace}/add-bookmark', [App\Http\Controllers\CampPlaceController::class, 'addBookmark'])->name('camp-places.add-bookmark')->middleware(['auth', 'verified']);
+Route::post('/camp-places/{campPlace}/remove-bookmark', [App\Http\Controllers\CampPlaceController::class, 'removeBookmark'])->name('camp-places.remove-bookmark')->middleware(['auth', 'verified']);
 
 /**
  * プロフィール

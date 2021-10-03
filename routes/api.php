@@ -17,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('Api')->group(function () {
     Route::post('/uploadImage', 'FileController@uploadImage');
     Route::post('/uploadImages', 'FileController@uploadImages');
+
+    Route::middleware('auth:api')->group(function () {
+        Route::post('/user-bookmarks/update', 'UserBookmarkController@update')->name('user-bookmarks.update');
+        Route::post('/user-bookmarks/update-sort', 'UserBookmarkController@updateSort')->name('user-bookmarks.update-sort');
+        Route::post('/user-bookmarks/destroy', 'UserBookmarkController@destroy')->name('user-bookmarks.destroy');
+    });
 });

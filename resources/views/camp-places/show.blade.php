@@ -10,10 +10,24 @@
     <div class="camp-places">
         <h1>{{ $campPlace->name }} 口コミ</h1>
 
-{{--        <button class="btn warning-btn save-btn" type="submit">--}}
-{{--            <img src="{{ asset('img/bookmark.svg') }}" alt="保存" width="20" />--}}
-{{--            &nbsp;行きたいキャンプ場リストへ保存する--}}
-{{--        </button>--}}
+        @if (!$isBookmark)
+        <form method="post" action="{{ route('camp-places.add-bookmark', compact('campPlace')) }}">
+            @csrf
+            <button class="btn success-btn save-btn" type="submit">
+                <img src="{{ asset('img/add_bookmark.svg') }}" alt="保存" width="20" />
+                &nbsp;行きたいキャンプ場リストへ保存する
+            </button>
+        </form>
+        @else
+            <form method="post" action="{{ route('camp-places.remove-bookmark', compact('campPlace')) }}">
+                @csrf
+                <button class="btn danger-btn save-btn" type="submit">
+                    <img src="{{ asset('img/remove_bookmark.svg') }}" alt="保存" width="20" />
+                    &nbsp;行きたいキャンプ場リストの保存を解除
+                </button>
+            </form>
+        @endif
+
 
         <table class="info-table">
             <tbody>
@@ -115,7 +129,7 @@
         </div>
 
         <a class="btn primary-btn save-btn" href="{{ route('register') }}">
-            <img src="{{ asset('img/messenger_white.svg') }}" alt="口コミ一覧" width="20" />
+            <img src="{{ asset('img/messenger_white.svg') }}" alt="口コミを投稿する" width="20" />
             &nbsp;口コミを投稿する
         </a>
     </div>

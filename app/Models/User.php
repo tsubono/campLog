@@ -59,6 +59,14 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * @return HasMany
      */
+    public function bookmarks(): HasMany
+    {
+        return $this->hasMany(CampSchedule::class);
+    }
+
+    /**
+     * @return HasMany
+     */
     public function links(): HasMany
     {
         return $this->hasMany(UserLink::class);

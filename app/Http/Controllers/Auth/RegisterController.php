@@ -9,6 +9,7 @@ use App\Repositories\CampPlace\CampPlaceRepository;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
@@ -82,6 +83,7 @@ class RegisterController extends Controller
             'handle_name' => 'no name', // ハンドルネームはマイページで編集してもらう
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'api_token' => Str::random(60),
         ]);
     }
 }
