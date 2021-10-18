@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CampPlace;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -23,6 +24,13 @@ class SitemapController extends Controller
         $users = User::query()->orderBy('updated_at', 'desc')->get();
         foreach ($users as $user) {
             $sitemap->add(route('profile.index', ['userName' => $user->name]), $user->updated_at, '0.8', 'monthly');
+        }
+
+        // キャンプ場一覧・詳細
+        $sitemap->add(URL::to('/camp-places'), now(), '1.0', 'always');
+        $campPlaces = CampPlace::query()->get();
+        foreach ($campPlaces as $campPlace) {
+            $sitemap->add(route('camp-places.show', compact('campPlace')), $campPlace->updated_at, '0.8', 'monthly');
         }
 
         // 出力
