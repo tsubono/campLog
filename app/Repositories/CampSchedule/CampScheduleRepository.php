@@ -4,6 +4,7 @@ namespace App\Repositories\CampSchedule;
 
 use App\Models\CampSchedule;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
@@ -45,12 +46,33 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
     }
 
     /**
+     * @param int $userId
+     * @param ?int $offset
+     * @param ?int $limit
+     * @param ?bool $isAll = false
+     * @return Collection
+     */
+    public function getListByUserId(int $userId, ?int $offset = 0, ?int $limit = 10, ?bool $isAll = false): Collection
+    {
+        if ($isAll) {
+            return $this->campSchedule->query()
+            ->where('user_id', $userId)
+            ->get();
+        } else {
+            return $this->campSchedule->query()
+                ->where('user_id', $userId)
+                ->offset(intval($offset))
+                ->limit(intval($limit))
+                ->get();
+        }
+    }
+
+    /**
      * 1件取得する
      *
-     * @param int $id
-     * @retusn CampSchedule
+     * @param ?int $id
      */
-    public function getOne(int $id): CampSchedule
+    public function getOne(?int $id)
     {
         return $this->campSchedule->find($id);
     }

@@ -3,7 +3,7 @@
 namespace App\Repositories\UserBookmark;
 
 use App\Models\UserBookmark;
-use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -40,6 +40,28 @@ class UserBookmarkRepository implements UserBookmarkRepositoryInterface
     }
 
     /**
+     * @param int $userId
+     * @param ?int $offset
+     * @param ?int $limit
+     * @param ?bool $isAll = false
+     * @return Collection
+     */
+    public function getListByUserId(int $userId, ?int $offset = 0, ?int $limit = 10, ?bool $isAll = false): Collection
+    {
+        if ($isAll) {
+            return $this->userBookmark->query()
+                ->where('user_id', $userId)
+                ->get();
+        } else {
+            return $this->userBookmark->query()
+                ->where('user_id', $userId)
+                ->offset(intval($offset))
+                ->limit(intval($limit))
+                ->get();
+        }
+    }
+
+    /**
      * @param array $condition
      */
     public function findByCondition(array $condition)
@@ -63,9 +85,9 @@ class UserBookmarkRepository implements UserBookmarkRepositoryInterface
      * @param array $data
      * @throws \Exception
      */
-    public function store(array $data): void
+    public function store(array $data): UserBookmark
     {
-        $this->userBookmark->create($data);
+        return $this->userBookmark->create($data);
     }
 
     /**
@@ -75,10 +97,12 @@ class UserBookmarkRepository implements UserBookmarkRepositoryInterface
      * @param array $data
      * @throws \Exception
      */
-    public function update(int $id, array $data): void
+    public function update(int $id, array $data): UserBookmark
     {
         $userBookmark = $this->userBookmark->findOrFail($id);
         $userBookmark->update($data);
+
+        return $userBookmark;
     }
 
     /**

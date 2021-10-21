@@ -50,6 +50,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if($request->is('api/*')){
+            return response()->json([
+                'code' => 401,
+                'error_message' => 'APIトークンが不正です'
+            ]);
+        }
+
         return parent::render($request, $exception);
     }
 }

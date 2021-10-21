@@ -80,16 +80,15 @@ export default {
      */
     onClickDelete (index, bookmark) {
       let formData = new FormData()
-      formData.append('id', bookmark.id)
       let self = this.$data
 
-      fetch(`/api/user-bookmarks/destroy?api_token=${this.token}`, {
+      fetch(`/api/user-bookmarks/${bookmark.id}/destroy?api_token=${this.token}`, {
         method: 'POST',
         body: formData,
       }).then(function (response) {
         return response.clone().json()
       }).then(function (json) {
-        if (json.status === 'ok') {
+        if (json.code == 200) {
           self.bookmarks.splice(index, 1)
         }
       }).catch((error) => {
@@ -102,16 +101,15 @@ export default {
      */
     onInput (bookmark) {
       let formData = new FormData()
-      formData.append('id', bookmark.id)
       formData.append('memo', bookmark.memo)
 
-      fetch(`/api/user-bookmarks/update?api_token=${this.token}`, {
+      fetch(`/api/user-bookmarks/${bookmark.id}/update?api_token=${this.token}`, {
         method: 'POST',
         body: formData,
       }).then(function (response) {
         return response.clone().json()
       }).then(function (json) {
-        if (json.status === 'ok') {
+        if (json.code == 200) {
           //
         }
       }).catch((error) => {
@@ -128,7 +126,7 @@ export default {
       }).then(function (response) {
         return response.clone().json()
       }).then(function (json) {
-        if (json.status === 'ok') {
+        if (json.code == 200) {
           //
         }
       }).catch((error) => {

@@ -35,14 +35,52 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
+     * メールアドレスからユーザー情報を取得する
+     *
+     * @param string $email
+     * @return User|null
+     */
+    public function getByEmail(string $email)
+    {
+        return $this->user->where('email', $email)->first();
+    }
+
+    /**
+     * Twitterトークンからユーザー情報を取得する
+     *
+     * @param string $twitterToken
+     * @return User|null
+     */
+    public function getByTwitterToken(string $twitterToken)
+    {
+        return $this->user->where('twitter_token', $twitterToken)->first();
+    }
+
+    /**
+     * 登録する
+     *
+     * @param array $data
+     * @return User
+     */
+    public function store(array $data): User
+    {
+        try {
+            return $this->user->create($data);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            throw new \Exception($e);
+        }
+    }
+
+    /**
      * 更新する
      *
      * @param int $id
      * @param array $data
-     * @return void
+     * @return User
      * @throws \Exception
      */
-    public function update(int $id, array $data): void
+    public function update(int $id, array $data): User
     {
         DB::beginTransaction();
         try {
@@ -70,7 +108,7 @@ class UserRepository implements UserRepositoryInterface
                 if (empty($linkData['icon_path'])) {
                     $linkData['icon_path'] = '/img/url.png';
                 }
-                $targetLink = $this->userLink->find($linkData['id']);
+                $targetLink = $this->userLink->find($linkData['id'] ?? null);
 
                 if (!empty($targetLink)) {
                     $targetLink->update($linkData);
@@ -80,6 +118,8 @@ class UserRepository implements UserRepositoryInterface
             }
 
             DB::commit();
+
+            return $user;
 
         } catch (\Exception $e) {
             DB::rollback();

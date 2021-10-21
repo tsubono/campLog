@@ -22,6 +22,15 @@ class CampSchedule extends Model
     protected $dates = ['date'];
 
     /**
+     * @var array
+     */
+    protected $appends = [
+        'schedule_images',
+        'user',
+        'camp_place',
+    ];
+
+    /**
      * @return HasMany
      */
     public function images(): HasMany
@@ -43,6 +52,22 @@ class CampSchedule extends Model
     public function place(): BelongsTo
     {
         return $this->belongsTo(CampPlace::class, 'camp_place_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\HigherOrderBuilderProxy|mixed|null
+     */
+    public function getUserAttribute()
+    {
+        return $this->user()->first()->toArray();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\HigherOrderBuilderProxy|mixed|null
+     */
+    public function getCampPlaceAttribute()
+    {
+        return $this->place()->first()->toArray();
     }
 
     /**
@@ -70,6 +95,14 @@ class CampSchedule extends Model
     public function getEyeCatchImagePathAttribute(): string
     {
         return !empty($this->images[0]) ? str_replace("camp-schedule/", "camp-schedule/resized-", $this->images[0]->image_path) : asset('img/default-image.png');
+    }
+
+    /**
+     * @return array
+     */
+    public function getScheduleImagesAttribute(): array
+    {
+        return $this->images()->get()->toArray();
     }
 
     /**

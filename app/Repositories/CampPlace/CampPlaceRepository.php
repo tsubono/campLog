@@ -54,7 +54,35 @@ class CampPlaceRepository implements CampPlaceRepositoryInterface
     }
 
     /**
-     * 1件取得する
+     * @param ?int $offset
+     * @param ?int $limit
+     * @param ?bool $isAll = false
+     * @return Collection
+     */
+    public function getList(?int $offset = 0, ?int $limit = 10, ?bool $isAll = false): Collection
+    {
+        if ($isAll) {
+            return $this->campPlace->all();
+        } else {
+            return $this->campPlace
+                ->offset(intval($offset))
+                ->limit(intval($limit))
+                ->get();
+        }
+    }
+
+    /**
+     * idから1件取得する
+     *
+     * @param ?int $id
+     */
+    public function getOne(?int $id)
+    {
+        return $this->campPlace->find($id);
+    }
+
+    /**
+     * nameから1件取得する
      *
      * @param string $name
      */
