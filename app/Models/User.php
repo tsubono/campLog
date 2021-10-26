@@ -49,6 +49,15 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
+     * @var array
+     */
+    protected $appends = [
+        'camp_schedules',
+        'user_links',
+        'user_bookmarks',
+    ];
+
+    /**
      * @return HasMany
      */
     public function campSchedules(): HasMany
@@ -70,6 +79,30 @@ class User extends Authenticatable implements MustVerifyEmail
     public function links(): HasMany
     {
         return $this->hasMany(UserLink::class);
+    }
+
+    /**
+     * @return array
+     */
+    public function getCampSchedulesAttribute()
+    {
+        return $this->campSchedules()->get()->makeHidden(['user'])->toArray();
+    }
+
+    /**
+     * @return array
+     */
+    public function getUserLinksAttribute()
+    {
+        return $this->links()->get()->toArray();
+    }
+
+    /**
+     * @return array
+     */
+    public function getUserBookmarksAttribute()
+    {
+        return $this->bookmarks()->get()->toArray();
     }
 
     /**
