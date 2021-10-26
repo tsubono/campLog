@@ -86,7 +86,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function getCampSchedulesAttribute()
     {
-        return $this->campSchedules()->get()->makeHidden(['user'])->toArray();
+        return $this->campSchedules()->get()->makeHidden(['user_info'])->toArray();
     }
 
     /**
