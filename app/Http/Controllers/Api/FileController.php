@@ -16,10 +16,18 @@ class FileController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function uploadImage(Request $request) {
-        $dir = $request->get('dir');
-        $filename = now()->format('YmdHis').rand(1, 9).".".$request->file('img')->extension();
-        $path = $request->file('img')->storeAs($dir, $filename, 'public');
-        return response()->json(['status' => 'ok', 'path' => Storage::url($path)]);
+        try {
+            $dir = $request->get('dir');
+            $filename = now()->format('YmdHis').rand(1, 9).".".$request->file('img')->extension();
+            $path = $request->file('img')->storeAs($dir, $filename, 'public');
+            return response()->json(['status' => 'ok', 'path' => Storage::url($path), 'code' => 200]);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json([
+                'code' => 500,
+                'error_message' => $e->getMessage(),
+            ], 500, [], JSON_PRETTY_PRINT);
+        }
     }
 
     /**
@@ -55,10 +63,15 @@ class FileController extends Controller
                 );
                 $resizedImage->save(storage_path(). "/app/public/{$dir}/resized-{$filename}");
             }
+
+            return response()->json(['status' => 'ok', 'paths' => $paths, 'code' => 200]);
+
         } catch (\Exception $e) {
             Log::error($e->getMessage());
+            return response()->json([
+                'code' => 500,
+                'error_message' => $e->getMessage(),
+            ], 500, [], JSON_PRETTY_PRINT);
         }
-
-        return response()->json(['status' => 'ok', 'paths' => $paths]);
     }
 }
