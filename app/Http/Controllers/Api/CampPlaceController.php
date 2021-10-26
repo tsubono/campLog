@@ -28,7 +28,7 @@ class CampPlaceController extends Controller
      */
     public function getList(Request $request)
     {
-        $campPlaces = $this->campPlaceRepository->getList($request->offset ?? 0, $request->limit ?? 10, $request->is_all);
+        $campPlaces = $this->campPlaceRepository->getList($request->offset ?? 0, $request->limit ?? 10, $request->is_all, $request->keyword);
 
         return response()->json([
             'code' => 200,

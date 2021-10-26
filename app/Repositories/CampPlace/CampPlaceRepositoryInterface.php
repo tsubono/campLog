@@ -9,7 +9,7 @@ interface CampPlaceRepositoryInterface
 {
     public function getAll(): Collection;
     public function getByConditionPaginate(array $condition, int $perCount = 10): LengthAwarePaginator;
-    public function getList(?int $offset = 1, ?int $limit = 10, ?bool $isAll = false): Collection;
+    public function getList(?int $offset = 1, ?int $limit = 10, ?bool $isAll = false, ?string $keyword = null): Collection;
     public function getOne(?int $id);
     public function findByName(string $name);
     public function store(array $data): void;

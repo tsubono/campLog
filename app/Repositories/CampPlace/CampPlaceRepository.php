@@ -57,18 +57,35 @@ class CampPlaceRepository implements CampPlaceRepositoryInterface
      * @param ?int $offset
      * @param ?int $limit
      * @param ?bool $isAll = false
+     * @param ?string $keyword = null
      * @return Collection
      */
-    public function getList(?int $offset = 0, ?int $limit = 10, ?bool $isAll = false): Collection
+    public function getList(?int $offset = 0, ?int $limit = 10, ?bool $isAll = false, ?string $keyword = null): Collection
     {
         if ($isAll) {
-            return $this->campPlace->all();
+            if (!is_null($keyword)) {
+                $campPlaces = $this->campPlace->query()
+                    ->where('name', 'LIKE', "%$keyword%")
+                    ->get();
+            } else {
+                $campPlaces = $this->campPlace->all();
+            }
         } else {
-            return $this->campPlace
-                ->offset(intval($offset))
-                ->limit(intval($limit))
-                ->get();
+            if (!is_null($keyword)) {
+                $campPlaces = $this->campPlace->query()
+                    ->where('name', 'LIKE', "%$keyword%")
+                    ->offset(intval($offset))
+                    ->limit(intval($limit))
+                    ->get();
+            } else {
+                $campPlaces = $this->campPlace
+                    ->offset(intval($offset))
+                    ->limit(intval($limit))
+                    ->get();
+            }
         }
+
+        return $campPlaces;
     }
 
     /**
