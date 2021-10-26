@@ -8,7 +8,7 @@
 <h2 style="display: none">{{ $campPlace->name }} 口コミ</h2>
 <section>
     <div class="camp-places">
-        <h1>{{ $campPlace->name }} 口コミ</h1>
+        <h1>{{ $campPlace->name }}</h1>
 
         @if (!$isBookmark)
         <form method="post" action="{{ route('camp-places.add-bookmark', compact('campPlace')) }}">
@@ -117,12 +117,17 @@
         <div class="review-list">
             @foreach ($campPlace->camp_schedules_has_review as $campSchedule)
                 <div class="review-list__item">
-                    <img src="{{ $campSchedule->review_image }}" alt="キャンプ場画像" width="130" />
-                    <p class="review-content">
-                        <span class="pc-only">{{ Str::limit($campSchedule->review, 215) }}</span>
-                        <span class="sp-only">{{ Str::limit($campSchedule->review, 80) }}</span>
-                        <a class="js-show-popup" href="#" onclick="return false;" data-id="reviewShowPopup-{{ $campSchedule->id }}">詳細こちら</a>
-                    </p>
+                    <img src="{{ str_replace("camp-schedule/", "camp-schedule/resized-", $campSchedule->review_image) }}" alt="キャンプ場画像" class="js-modal-image js-image-{{ $campSchedule->id }} place-img" data-id="{{ $campSchedule->id }}" />
+                    <div class="review-content">
+                        <div class="review-content__user">
+                            <img src="{{ $campSchedule->user->display_avatar_path }}" alt="アバター画像" class="avatar-img small" />
+                            &nbsp;<a href="{{ route('profile.index', ['userName' => $campSchedule->user->name]) }}">{{ $campSchedule->user->handle_name }}</a>
+                            <span class="date">行った月：{{ $campSchedule->date->format('Y年m月') }}</span>
+                        </div>
+                        <span class="pc-only mt-10">{{ Str::limit($campSchedule->review, 215) }}</span>
+                        <span class="sp-only mt-10">{{ Str::limit($campSchedule->review, 80) }}</span>
+                        <a class="js-show-popup show-link" href="#" onclick="return false;" data-id="reviewShowPopup-{{ $campSchedule->id }}">もっと見る</a>
+                    </div>
                 </div>
                 @include('components.modals.review-show', ['campSchedule' => $campSchedule])
             @endforeach
@@ -134,4 +139,8 @@
         </a>
     </div>
 </section>
+<div class="image-modal-bg">
+    <div class="image-content"></div>
+    <div class="image-modal-close">×</div>
+</div>
 @endsection

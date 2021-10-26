@@ -10,7 +10,7 @@
 </ul>
 <div class="full-menu {{ request()->is('mypage/bookmarks') ? 'active' : '' }}" onclick="location.href='{{ route('mypage.bookmarks.index') }}'">
     <a href="{{ route('mypage.bookmarks.index') }}">
-        &nbsp; 保存済みキャンプ場リスト
+        &nbsp; 保存済み行きたいキャンプ場リスト
     </a>
 </div>
 

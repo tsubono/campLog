@@ -2,10 +2,21 @@
   <div class="bookmark-list">
     <draggable v-model="bookmarks" :options="options" handle=".handle" @end="onSort">
       <div class="bookmark-item" v-for="(bookmark, index) in bookmarks" :key="index">
-        <i class="fas fa-ellipsis-v handle"></i>
-        <a class="delete-btn" @click="onClickDelete(index, bookmark)">
+        <i class="fas fa-ellipsis-v handle large"></i>
+        <a class="js-show-popup delete-btn" :data-id="`campScheduleDeletePopup-${index}`">
           ×
         </a>
+        <div class="popup js-popup" :id="`campScheduleDeletePopup-${index}`">
+          <div class="popup-bg js-popup-close"></div>
+          <div class="popup-content">
+            <h3>削除確認</h3>
+            <p class="my-10">この予定を本当に削除してもよろしいですか？</p>
+            <div class="popup-buttons">
+              <button type="submit" class="btn danger-btn" @click="onClickDelete(index, bookmark)">はい</button>
+              <a class="js-popup-close btn default-btn">いいえ</a>
+            </div>
+          </div>
+        </div>
         <div class="text-left">
           <a v-if="bookmark.place.url != null"
              :href="bookmark.place.url"
@@ -90,6 +101,10 @@ export default {
       }).then(function (json) {
         if (json.code == 200) {
           self.bookmarks.splice(index, 1)
+          const closes = document.querySelectorAll('.js-popup-close')
+          for (let i = 0; i < closes.length; ++i) {
+            closes[i].click()
+          }
         }
       }).catch((error) => {
         console.error('Error:', error)
@@ -136,3 +151,10 @@ export default {
   },
 }
 </script>
+
+<style>
+.handle.large {
+  z-index: 10;
+  font-size: 20px;
+}
+</style>

@@ -64,8 +64,11 @@
       justify-content: space-between;
       margin: 10px auto;
 
-      img {
-        flex-basis: 20%;
+      .place-img {
+        width: 200px;
+        height: auto;
+        object-fit: cover;
+        cursor: pointer;
       }
 
       .review-content {
@@ -74,9 +77,24 @@
         margin-left: 10px;
         position: relative;
         flex-basis: 80%;
-        height: 100px;
+        height: 200px;
 
-        a {
+        &__user {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+
+          .avatar-img {
+            width: 60px;
+            height: 60px;
+          }
+
+          .date {
+            margin-left: auto;
+          }
+        }
+
+        .show-link {
           position: absolute;
           right: 20px;
           bottom: 4px;
@@ -89,17 +107,29 @@
       margin: 30px auto;
 
       &__item {
-        img {
-          flex-basis: 10%;
+        .place-img {
+          width: 100px;
         }
 
         .review-content {
           font-size: 13px;
           flex-basis: 90%;
-          height: 100px;
+          height: 200px;
           padding: 10px 15px;
 
-          a {
+          &__user {
+            .avatar-img {
+              width: 40px;
+              height: 40px;
+            }
+
+            .date {
+              margin-left: auto;
+            }
+          }
+
+
+          .show-link {
             bottom: 5px;
           }
         }

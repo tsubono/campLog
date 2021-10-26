@@ -31,8 +31,8 @@
 
 <div class="form-group">
     <textarea name="review">{{ old('review', $campSchedule->review) }}</textarea>
-    <label class="form-label" for="cancel_note">レビュー</label>
-    <p class="require">※ 記録・予定のステータスが「公開」の場合、<br>ここに入力されたレビュー情報はキャンプ場口コミページに掲載されます <br></p>
+    <label class="form-label" for="cancel_note">口コミ</label>
+    <p class="require">※ 記録・予定のステータスが「公開」の場合、<br>ここに入力された口コミ情報はキャンプ場口コミページに掲載されます <br></p>
 
     @error('review')
     <div class="text-error my-5">
@@ -43,7 +43,7 @@
 
 <div class="form-group">
     <textarea name="note">{{ old('note', $campSchedule->note) }}</textarea>
-    <label class="form-label" for="cancel_note">備考</label>
+    <label class="form-label" for="cancel_note">メモ</label>
 
     @error('note')
     <div class="text-error my-5">
