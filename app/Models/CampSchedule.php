@@ -26,7 +26,7 @@ class CampSchedule extends Model
      */
     protected $appends = [
         'schedule_images',
-        'user',
+        'user_info',
         'camp_place',
     ];
 
@@ -57,7 +57,7 @@ class CampSchedule extends Model
     /**
      * @return \Illuminate\Database\Eloquent\HigherOrderBuilderProxy|mixed|null
      */
-    public function getUserAttribute()
+    public function getUserInfoAttribute()
     {
         return $this->user()->first()->toArray();
     }
