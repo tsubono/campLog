@@ -5,7 +5,6 @@
 @extends('layouts.app')
 
 @section('content')
-<h2 style="display: none">{{ $campPlace->name }} 口コミ</h2>
 <section>
     <div class="camp-places">
         <h1>{{ $campPlace->name }}</h1>
@@ -115,6 +114,7 @@
         </table>
 
         <div class="review-list">
+            <h2 class="text-center">{{ $campPlace->name }} 口コミ</h2>
             @foreach ($campPlace->camp_schedules_has_review as $campSchedule)
                 <div class="review-list__item">
                     <img src="{{ str_replace("camp-schedule/", "camp-schedule/resized-", $campSchedule->review_image) }}" alt="キャンプ場画像" class="js-modal-image js-image-{{ $campSchedule->id }} place-img" data-id="{{ $campSchedule->id }}" />
@@ -133,7 +133,7 @@
             @endforeach
         </div>
 
-        <a class="btn primary-btn save-btn" href="{{ route('register') }}">
+        <a class="btn primary-btn save-btn" href="{{ route('mypage.camp-schedules.create') }}">
             <img src="{{ asset('img/messenger_white.svg') }}" alt="口コミを投稿する" width="20" />
             &nbsp;口コミを投稿する
         </a>

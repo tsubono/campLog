@@ -2,10 +2,10 @@
 	キャンプ場検索
 ================================*/
 .camp-places {
-  padding-top: 5em;
+  padding-top: 3em;
 
   @media (max-width: 480px) {
-    padding-top: 2em;
+    padding-top: 1em;
     width: 98%;
     margin: 0 auto;
   }
@@ -57,6 +57,11 @@
 
   .review-list {
     margin-bottom: 30px;
+
+    h2 {
+      font-size: 19px;
+      margin: 50px 0 20px;
+    }
 
     &__item {
       display: flex;
