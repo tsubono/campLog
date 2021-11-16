@@ -68,6 +68,20 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
     }
 
     /**
+     * @param int $userId
+     * @param int $paginationCount
+     * @return LengthAwarePaginator
+     */
+    public function getPaginateByUserId(int $userId, int $paginationCount = 15): LengthAwarePaginator
+    {
+        return $this->campSchedule->query()
+            ->where('is_public', true)
+            ->where('user_id', $userId)
+            ->orderBy('date', 'desc')
+            ->paginate($paginationCount);
+    }
+
+    /**
      * 1件取得する
      *
      * @param ?int $id

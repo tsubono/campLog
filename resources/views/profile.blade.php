@@ -108,14 +108,14 @@
         @endforeach
         </div>
     </div>
-    <div class="camp-schedules">
+    <div class="camp-schedules" id="campSchedules">
         <ul class="tab-menu">
             <li class="js-tab-item tab-item type-grid active">GRID</li>
             <li class="js-tab-item tab-item type-list">LIST</li>
         </ul>
         <div class="grid-tab-content tab-content show">
             <div class="list">
-                @foreach ($user->campSchedulesDesc as $campSchedule)
+                @foreach ($campSchedules as $campSchedule)
                     <div class="item js-show-popup" data-id="campScheduleShowPopup-{{ $campSchedule->id }}">
                         @include('components.modals.camp-schedule-show', ['campSchedule' => $campSchedule])
                         <img class="eye-catch" src="{{ $campSchedule->eye_catch_image_path }}" alt="アイキャッチ画像" width="auto" height="auto" />
@@ -125,10 +125,13 @@
                     </div>
                 @endforeach
             </div>
+            <div class="camp-schedule-pagination">
+                {{ $campSchedules->fragment('campSchedules')->links() }}
+            </div>
         </div>
         <div class="list-tab-content tab-content">
             <ul class="list">
-                @foreach ($user->campSchedulesDesc as $campSchedule)
+                @foreach ($campSchedules as $campSchedule)
                     <li class="item {{ Carbon\Carbon::parse($campSchedule->date)->isFuture() ? 'is-future' : '' }}">
                         <p class="date">{{ $campSchedule->date->format('Y-m-d') }}</p>
                         <p class="title">
@@ -159,6 +162,9 @@
                     </li>
                 @endforeach
             </ul>
+            <div class="camp-schedule-pagination">
+                {{ $campSchedules->fragment('campSchedules')->appends(['type' => 'list'])->links() }}
+            </div>
         </div>
     </div>
 </section>
@@ -200,6 +206,10 @@ $(function() {
             });
           }
         });
+      }
+
+      if ({{ request()->type === 'list' }}) {
+        document.querySelector('.js-tab-item.type-list').click()
       }
     })();
 })

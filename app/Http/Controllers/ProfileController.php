@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\CampSchedule\CampScheduleRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface;
 
 class ProfileController extends Controller
 {
     private UserRepositoryInterface $userRepository;
+    private CampScheduleRepositoryInterface $campScheduleRepository;
 
     /**
      * ProfileController constructor.
      *
      * @param UserRepositoryInterface $userRepository
+     * @param CampScheduleRepositoryInterface $campScheduleRepository
      */
-    public function __construct(UserRepositoryInterface $userRepository)
+    public function __construct(UserRepositoryInterface $userRepository, CampScheduleRepositoryInterface $campScheduleRepository)
     {
         $this->userRepository = $userRepository;
+        $this->campScheduleRepository = $campScheduleRepository;
     }
 
     /**
@@ -35,6 +39,8 @@ class ProfileController extends Controller
             $this->userRepository->update($user->id, ['access_count' => $user->access_count + 1]);
         }
 
-        return view('profile', compact('user'));
+        $campSchedules = $this->campScheduleRepository->getPaginateByUserId($user->id);
+
+        return view('profile', compact('user', 'campSchedules'));
     }
 }
