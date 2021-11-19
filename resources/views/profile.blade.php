@@ -208,7 +208,7 @@ $(function() {
         });
       }
 
-      if ({{ request()->type === 'list' }}) {
+      if ("{{ request()->type }}" ===  'list') {
         document.querySelector('.js-tab-item.type-list').click()
       }
     })();
