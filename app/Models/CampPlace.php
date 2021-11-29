@@ -16,11 +16,26 @@ class CampPlace extends Model
     protected $guarded = ['id'];
 
     /**
+     * @var array
+     */
+    protected $appends = [
+        'camp_schedule_reviews',
+    ];
+
+    /**
      * @return HasMany
      */
     public function campSchedules(): HasMany
     {
         return $this->hasMany(CampSchedule::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function userBookmarks(): HasMany
+    {
+        return $this->hasMany(UserBookmark::class);
     }
 
     /**
@@ -32,5 +47,18 @@ class CampPlace extends Model
             ->where('is_public', true)
             ->whereNotNull('review')
             ->get();
+    }
+
+    /**
+     * @return array
+     */
+    public function getCampScheduleReviewsAttribute()
+    {
+        return $this->campSchedules()
+            ->where('is_public', true)
+            ->whereNotNull('review')
+            ->get()
+            ->makeHidden(['camp_place', 'user_info', 'schedule_images'])
+            ->toArray();
     }
 }

@@ -86,9 +86,9 @@
                         <div class="card-data">
                             <span>{{ $summaryData['campPlaceCount'] }}</span>
                             <span class="unit place">
-                <span>箇</span>
-                <span>所</span>
-              </span>
+                                <span>箇</span>
+                                <span>所</span>
+                            </span>
                         </div>
                     </div>
                     <div class="monthly-list">
