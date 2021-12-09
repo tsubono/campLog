@@ -58,6 +58,7 @@ class CampPlace extends Model
             ->where('is_public', true)
             ->whereNotNull('review')
             ->get()
+            ->append(['review_image'])
             ->makeHidden(['camp_place', 'user_info', 'schedule_images'])
             ->toArray();
     }
