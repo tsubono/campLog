@@ -61,7 +61,7 @@ class UserBookmarkController extends Controller
                 'sort' => count($userBookmarks) + 1,
             ]);
 
-            return response()->json(['code' => '200', 'userBookmark' => $userBookmark], 200, [], JSON_PRETTY_PRINT);
+            return response()->json(['code' => 200, 'userBookmark' => $userBookmark], 200, [], JSON_PRETTY_PRINT);
 
         } catch (\Exception $e) {
             return response()->json([
@@ -83,7 +83,7 @@ class UserBookmarkController extends Controller
         try {
             $userBookmark = $this->userBookmarkRepository->update($id, $request->except(['id', 'user_id']));
 
-            return response()->json(['code' => '200', 'userBookmark' => $userBookmark], 200, [], JSON_PRETTY_PRINT);
+            return response()->json(['code' => 200, 'userBookmark' => $userBookmark], 200, [], JSON_PRETTY_PRINT);
 
         } catch (\Exception $e) {
             return response()->json([
@@ -104,7 +104,7 @@ class UserBookmarkController extends Controller
         try {
             $this->userBookmarkRepository->updateSort(json_decode($request->get('bookmarks')));
 
-            return response()->json(['code' => '200'], 200, [], JSON_PRETTY_PRINT);
+            return response()->json(['code' => 200], 200, [], JSON_PRETTY_PRINT);
         } catch (\Exception $e) {
             return response()->json([
                 'code' => 500,
@@ -124,7 +124,7 @@ class UserBookmarkController extends Controller
         try {
             $this->userBookmarkRepository->destroy($id);
 
-            return response()->json(['code' => '200'], 200, [], JSON_PRETTY_PRINT);
+            return response()->json(['code' => 200], 200, [], JSON_PRETTY_PRINT);
         } catch (\Exception $e) {
             return response()->json([
                 'code' => 500,
