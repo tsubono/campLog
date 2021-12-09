@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\UserUpdateRequest;
+use App\Models\User;
 use App\Repositories\User\UserRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -33,6 +34,19 @@ class UserController extends Controller
         return response()->json([
             'code' => 200,
             'user' => $request->user(),
+        ], 200, [], JSON_PRETTY_PRINT);
+    }
+
+    /**
+     * @param string $userName
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getByUserName(string $userName)
+    {
+        $user = $this->userRepository->getByUserName($userName);
+        return response()->json([
+            'code' => 200,
+            'user' => $user,
         ], 200, [], JSON_PRETTY_PRINT);
     }
 

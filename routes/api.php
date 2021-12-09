@@ -33,6 +33,7 @@ Route::namespace('Api')->group(function () {
 
         // ユーザー関連
         Route::post('/users/get', 'UserController@get');
+        Route::post('/users/{name}/get', 'UserController@getByUserName');
         Route::post('/users/update', 'UserController@update');
         Route::post('/users/destroy', 'UserController@destroy');
 
