@@ -17,6 +17,7 @@ class FileController extends Controller
      */
     public function uploadImage(Request $request) {
         try {
+            Log::info($request->all());
             $dir = $request->get('dir');
             $filename = now()->format('YmdHis').rand(1, 9).".".$request->file('img')->extension();
             $path = $request->file('img')->storeAs($dir, $filename, 'public');
@@ -37,6 +38,7 @@ class FileController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function uploadImages(Request $request) {
+        Log::info($request->all());
         $dir = $request->get('dir');
         $paths = [];
         Log::info($request->file('imgList'));
