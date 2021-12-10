@@ -24,6 +24,15 @@ class UserRepository implements UserRepositoryInterface
     }
 
     /**
+     * @param int $id
+     * @return mixed
+     */
+    public function getOne(int $id)
+    {
+        return $this->user->find($id);
+    }
+
+    /**
      * ユーザー名からユーザー情報を取得する
      *
      * @param string $userName

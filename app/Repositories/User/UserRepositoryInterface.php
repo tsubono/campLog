@@ -6,6 +6,7 @@ use App\Models\User;
 
 interface UserRepositoryInterface
 {
+    public function getOne(int $id);
     public function getByUserName(string $userName);
     public function getByEmail(string $email);
     public function getByTwitterToken(string $twitterToken);

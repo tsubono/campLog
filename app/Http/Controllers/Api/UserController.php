@@ -38,12 +38,12 @@ class UserController extends Controller
     }
 
     /**
-     * @param string $userName
+     * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getByUserName(string $userName)
+    public function getById(int $id)
     {
-        $user = $this->userRepository->getByUserName($userName);
+        $user = $this->userRepository->getOne($id);
         return response()->json([
             'code' => 200,
             'user' => $user,
