@@ -95,10 +95,14 @@ class UserRepository implements UserRepositoryInterface
         try {
             $user = $this->user->findOrFail($id);
 
+            Log::info($id);
+            Log::info($data);
             foreach ($data['links'] ?? [] as $index => $linkData) {
                 $data['links'][$index]['sort'] = $index + 1;
             }
+            Log::info('1');
             $data = $this->_setStaticLinks($data);
+            Log::info('2');
 
             $user->update($data);
 
@@ -111,6 +115,7 @@ class UserRepository implements UserRepositoryInterface
                     )
                     ->delete();
             }
+            Log::info('3');
 
             foreach ($data['links'] ?? [] as $linkData) {
                 $linkData['user_id'] = $id;
@@ -125,6 +130,7 @@ class UserRepository implements UserRepositoryInterface
                     $this->userLink->create($linkData);
                 }
             }
+            Log::info('4');
 
             DB::commit();
 
