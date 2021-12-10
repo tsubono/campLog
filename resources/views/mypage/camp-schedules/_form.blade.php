@@ -60,7 +60,7 @@
 
 <div class="form-check-group">
     <label class="radio-item form-label">
-        <input type="radio" name="is_public" value=""
+        <input type="radio" name="is_public" value="0"
             {{ old('is_public', $campSchedule->is_public) != 1 ? 'checked' : '' }}>
         <span>非公開</span>
     </label>

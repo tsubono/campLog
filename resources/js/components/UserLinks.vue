@@ -43,7 +43,7 @@
                       :id="`link${index}IsPublic`"
                       type="checkbox"
                       :name="`links[${index}][is_public]`"
-                      value=""
+                      value="0"
                       :checked="link.is_public != 1"
                   />
                   <label

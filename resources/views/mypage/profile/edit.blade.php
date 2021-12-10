@@ -119,7 +119,7 @@
                         </div>
                         <div class="form-check-group is-public">
                             <input type="hidden" name="is_public_gender" value="1" />
-                            <input id="is_public_gender" type="checkbox" name="is_public_gender" value=""
+                            <input id="is_public_gender" type="checkbox" name="is_public_gender" value="0"
                                 {{ old('is_public_gender', $user->is_public_gender) != 1 ? 'checked' : '' }}/>
                             <label class="form-check-label" for="is_public_gender">非公開にする</label>
                         </div>
@@ -130,7 +130,7 @@
                             <label class="form-label" for="age">年齢</label>
                             <div class="form-check-group is-public">
                                 <input type="hidden" name="is_public_age" value="1" />
-                                <input id="is_public_age" type="checkbox" name="is_public_age" value=""
+                                <input id="is_public_age" type="checkbox" name="is_public_age" value="0"
                                     {{ old('is_public_age', $user->is_public_age) != 1 ? 'checked' : '' }}/>
                                 <label class="form-check-label" for="is_public_age">非公開にする</label>
                             </div>
@@ -156,7 +156,7 @@
                             <div class="form-check-group is-public">
                                 <input type="hidden" name="is_public_camp_history" value="1"/>
                                 <input id="is_public_camp_history" type="checkbox" name="is_public_camp_history"
-                                       value=""
+                                       value="0"
                                     {{ old('is_public_camp_history', $user->is_public_camp_history) != 1 ? 'checked' : '' }}/>
                                 <label class="form-check-label" for="is_public_camp_history">非公開にする</label>
                             </div>
@@ -168,7 +168,7 @@
                             <label class="form-label" for="location">拠点</label>
                             <div class="form-check-group is-public">
                                 <input type="hidden" name="is_public_location" value="1" />
-                                <input id="is_public_location" type="checkbox" name="is_public_location" value=""
+                                <input id="is_public_location" type="checkbox" name="is_public_location" value="0"
                                     {{ old('is_public_location', $user->is_public_location) != 1 ? 'checked' : '' }}/>
                                 <label class="form-check-label" for="is_public_location">非公開にする</label>
                             </div>
@@ -179,7 +179,7 @@
                             <label class="form-label" for="introduction">自己紹介</label>
                             <div class="form-check-group is-public">
                                 <input type="hidden" name="is_public_introduction" value="1" />
-                                <input id="is_public_introduction" type="checkbox" name="is_public_introduction" value=""
+                                <input id="is_public_introduction" type="checkbox" name="is_public_introduction" value="0"
                                     {{ old('is_public_introduction', $user->is_public_introduction) != 1 ? 'checked' : '' }}/>
                                 <label class="form-check-label" for="is_public_introduction">非公開にする</label>
                             </div>
