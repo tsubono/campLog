@@ -52,8 +52,8 @@ class Handler extends ExceptionHandler
     {
         if($request->is('api/*')){
             return response()->json([
-                'code' => 401,
-                'error_message' => 'APIトークンが不正です'
+                'code' => $exception->getCode(),
+                'error_message' => $exception->getMessage()
             ]);
         }
 
