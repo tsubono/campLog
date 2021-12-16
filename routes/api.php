@@ -23,7 +23,12 @@ Route::namespace('Api')->group(function () {
     Route::post('/login/twitter', 'LoginController@loginByTwitter');
     Route::post('/register', 'RegisterController@register');
 
-    Route::middleware('auth:api')->group(function () {
+    Route::middleware(['auth:api'])->group(function () {
+        // メール認証再送
+        Route::post('/verify/resend', 'RegisterController@resendVerify');
+        // トークンリフレッシュ
+        Route::post('/refresh/token', 'LoginController@refreshToken');
+
         // 行きたいリスト
         Route::post('/user-bookmarks/get-list', 'UserBookmarkController@getList');
         Route::post('/user-bookmarks/store', 'UserBookmarkController@store');
@@ -47,7 +52,5 @@ Route::namespace('Api')->group(function () {
         Route::post('/camp-schedules/store', 'CampScheduleController@store');
         Route::post('/camp-schedules/{id}/update', 'CampScheduleController@update');
         Route::post('/camp-schedules/{id}/destroy', 'CampScheduleController@destroy');
-
-        Route::post('/refresh/token', 'LoginController@refreshToken');
     });
 });

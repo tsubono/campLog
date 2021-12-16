@@ -7,6 +7,7 @@ use App\Http\Requests\Api\UserUpdateRequest;
 use App\Models\User;
 use App\Repositories\User\UserRepositoryInterface;
 use Carbon\Carbon;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -20,8 +21,7 @@ class UserController extends Controller
      */
     public function __construct(
         UserRepositoryInterface $userRepository
-    )
-    {
+    ) {
         $this->userRepository = $userRepository;
     }
 
@@ -31,6 +31,10 @@ class UserController extends Controller
      */
     public function get(Request $request)
     {
+        if ($request->user() instanceof MustVerifyEmail && !$request->user()->hasVerifiedEmail()) {
+            return response()->json(['code' => 403, 'error_message' => 'メール認証が完了していません'], 403, [], JSON_PRETTY_PRINT);
+        }
+
         return response()->json([
             'code' => 200,
             'user' => $request->user(),
@@ -56,6 +60,10 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request)
     {
+        if ($request->user() instanceof MustVerifyEmail && !$request->user()->hasVerifiedEmail()) {
+            return response()->json(['code' => 403, 'error_message' => 'メール認証が完了していません'], 403, [], JSON_PRETTY_PRINT);
+        }
+
         try {
             $data = $request->except(['id', 'api_token', 'admin_flg', 'access_count']);
             if (!empty($data)) {
@@ -87,6 +95,10 @@ class UserController extends Controller
      */
     public function destroy(Request $request)
     {
+        if ($request->user() instanceof MustVerifyEmail && !$request->user()->hasVerifiedEmail()) {
+            return response()->json(['code' => 403, 'error_message' => 'メール認証が完了していません'], 403, [], JSON_PRETTY_PRINT);
+        }
+
         try {
             $this->userRepository->destroy($request->user()->id);
 

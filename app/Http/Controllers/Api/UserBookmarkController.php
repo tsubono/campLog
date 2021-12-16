@@ -8,6 +8,7 @@ use App\Http\Requests\Api\UserBookmarkStoreRequest;
 use App\Http\Requests\Api\UserBookmarkUpdateRequest;
 use App\Models\CampPlace;
 use App\Repositories\UserBookmark\UserBookmarkRepositoryInterface;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -33,6 +34,10 @@ class UserBookmarkController extends Controller
      */
     public function getList(Request $request)
     {
+        if ($request->user() instanceof MustVerifyEmail && !$request->user()->hasVerifiedEmail()) {
+            return response()->json(['code' => 403, 'error_message' => 'メール認証が完了していません'], 403, [], JSON_PRETTY_PRINT);
+        }
+
         $userBookmarks = $this->userBookmarkRepository->getListByUserId(
             $request->user()->id,
             $request->offset ?? 0,
@@ -54,6 +59,10 @@ class UserBookmarkController extends Controller
      */
     public function store(UserBookmarkStoreRequest $request)
     {
+        if ($request->user() instanceof MustVerifyEmail && !$request->user()->hasVerifiedEmail()) {
+            return response()->json(['code' => 403, 'error_message' => 'メール認証が完了していません'], 403, [], JSON_PRETTY_PRINT);
+        }
+
         try {
             $userBookmarks = $this->userBookmarkRepository->getByCondition(['user_id' => $request->user()->id]);
             $userBookmark = $this->userBookmarkRepository->store($request->all() + [
@@ -80,6 +89,10 @@ class UserBookmarkController extends Controller
      */
     public function update(int $id, UserBookmarkUpdateRequest $request)
     {
+        if ($request->user() instanceof MustVerifyEmail && !$request->user()->hasVerifiedEmail()) {
+            return response()->json(['code' => 403, 'error_message' => 'メール認証が完了していません'], 403, [], JSON_PRETTY_PRINT);
+        }
+
         try {
             $userBookmark = $this->userBookmarkRepository->update($id, $request->except(['id', 'user_id']));
 
@@ -101,6 +114,10 @@ class UserBookmarkController extends Controller
      */
     public function updateSort(Request $request)
     {
+        if ($request->user() instanceof MustVerifyEmail && !$request->user()->hasVerifiedEmail()) {
+            return response()->json(['code' => 403, 'error_message' => 'メール認証が完了していません'], 403, [], JSON_PRETTY_PRINT);
+        }
+
         try {
             $this->userBookmarkRepository->updateSort(json_decode($request->get('bookmarks')));
 
@@ -116,11 +133,16 @@ class UserBookmarkController extends Controller
     /**
      * ブックマーク削除
      *
+     * @param Request $request
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function destroy(int $id)
+    public function destroy(int $id, Request $request)
     {
+        if ($request->user() instanceof MustVerifyEmail && !$request->user()->hasVerifiedEmail()) {
+            return response()->json(['code' => 403, 'error_message' => 'メール認証が完了していません'], 403, [], JSON_PRETTY_PRINT);
+        }
+
         try {
             $this->userBookmarkRepository->destroy($id);
 
