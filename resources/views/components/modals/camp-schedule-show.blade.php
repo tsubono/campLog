@@ -122,13 +122,13 @@
                 @endif
                 @if (!empty($campSchedule->review))
                     <div class="show-item">
-                        <label>レビュー</label>
+                        <label>口コミ</label>
                         <div class="item-value">
                             {!! nl2br($campSchedule->review) !!}
                         </div>
                     </div>
                 @endif
-                @if (!empty($campSchedule->note))
+                @if (!empty($campSchedule->note) && $campSchedule->is_public_note)
                     <div class="show-item">
                         <label>備考</label>
                         <div class="item-value">

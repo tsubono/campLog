@@ -42,6 +42,10 @@
       border-collapse: collapse;
       border: 1px solid $gray-dark;
       padding: 5px;
+
+      a {
+        word-break: break-all;
+      }
     }
 
     @media (max-width: 480px) {

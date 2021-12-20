@@ -44,8 +44,26 @@
 <div class="form-group">
     <textarea name="note">{{ old('note', $campSchedule->note) }}</textarea>
     <label class="form-label" for="cancel_note">メモ</label>
-
     @error('note')
+    <div class="text-error my-5">
+        <strong>{{ $message }}</strong>
+    </div>
+    @enderror
+</div>
+
+<div class="form-check-group ml-10 mt-0">
+    <label class="radio-item form-label">
+        <input type="radio" name="is_public_note" value="1"
+                {{ old('is_public_note', $campSchedule->is_public_note) == 1 ? 'checked' : '' }}>
+        <span>表示</span>
+    </label>
+    <label class="radio-item form-label">
+        <input type="radio" name="is_public_note" value="0"
+                {{ old('is_public_note', $campSchedule->is_public_note) != 1 ? 'checked' : '' }}>
+        <span>非表示</span>
+    </label>
+
+    @error('is_public_note')
     <div class="text-error my-5">
         <strong>{{ $message }}</strong>
     </div>
