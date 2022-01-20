@@ -130,7 +130,7 @@
                 @endif
                 @if (!empty($campSchedule->note) && $campSchedule->is_public_note)
                     <div class="show-item">
-                        <label>備考</label>
+                        <label>メモ</label>
                         <div class="item-value">
                             {!! nl2br($campSchedule->note_with_link) !!}
                         </div>

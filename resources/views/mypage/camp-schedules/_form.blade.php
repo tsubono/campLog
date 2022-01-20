@@ -52,15 +52,16 @@
 </div>
 
 <div class="form-check-group ml-10 mt-0">
-    <label class="radio-item form-label">
-        <input type="radio" name="is_public_note" value="1"
-                {{ old('is_public_note', $campSchedule->is_public_note) == 1 ? 'checked' : '' }}>
-        <span>表示</span>
-    </label>
+    <p class="small-txt text-gray">プロフィールページに</p>
     <label class="radio-item form-label">
         <input type="radio" name="is_public_note" value="0"
                 {{ old('is_public_note', $campSchedule->is_public_note) != 1 ? 'checked' : '' }}>
         <span>非表示</span>
+    </label>
+    <label class="radio-item form-label">
+        <input type="radio" name="is_public_note" value="1"
+                {{ old('is_public_note', $campSchedule->is_public_note) == 1 ? 'checked' : '' }}>
+        <span>表示</span>
     </label>
 
     @error('is_public_note')
@@ -79,12 +80,12 @@
 <div class="form-check-group">
     <label class="radio-item form-label">
         <input type="radio" name="is_public" value="0"
-            {{ old('is_public', $campSchedule->is_public) != 1 ? 'checked' : '' }}>
+            {{ old('is_public', (!empty($campSchedule->id) ? $campSchedule->is_public : 1)) != 1 ? 'checked' : '' }}>
         <span>非公開</span>
     </label>
     <label class="radio-item form-label">
         <input type="radio" name="is_public" value="1"
-            {{ old('is_public', $campSchedule->is_public) == 1 ? 'checked' : '' }}>
+            {{ old('is_public', (!empty($campSchedule->id) ? $campSchedule->is_public : 1)) == 1 ? 'checked' : '' }}>
         <span>公開</span>
     </label>
 </div>

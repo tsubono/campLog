@@ -12,7 +12,7 @@
                 <p class="drag-drop-info">ここにファイルをドロップ</p>
                 <p>または</p>
                 <label class="file-select-btn">
-                    ファイルを選択
+                    画像を選択
                     <input type="file" class="drop__input" style="display:none;"
                            v-on:change="onDrop" multiple>
                 </label>

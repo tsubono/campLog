@@ -41,8 +41,8 @@ class CampScheduleStoreRequest extends FormRequest
         return [
             'camp_place_id' => 'キャンプ場',
             'date' => '日付',
-            'review' => 'レビュー',
-            'note' => '備考',
+            'review' => '口コミ',
+            'note' => 'メモ',
         ];
     }
 

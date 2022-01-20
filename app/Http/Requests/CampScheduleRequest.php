@@ -37,7 +37,7 @@ class CampScheduleRequest extends FormRequest
 			'camp_place_id' => 'キャンプ場',
 			'date' => '日付',
 			'review' => '口コミ',
-			'note' => '備考',
+			'note' => 'メモ',
         ];
     }
 }
