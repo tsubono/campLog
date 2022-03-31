@@ -24,8 +24,8 @@
                data-size="large"
                data-text="{{ session('shareTitle') }}
 
-#キャンログ
-#キャンプ記録
+#二ャンログ
+#二ャンコ記録
 ">
                 @if (session('shareIsPast'))
                     記録をシェアする

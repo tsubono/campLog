@@ -34,14 +34,24 @@
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.13.0/css/all.css"
           integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
 
-    <!-- OGP -->
-    <meta property="og:type" content="article"/>
-    <meta property="og:title" content="キャンログ"/>
-    <meta property="og:description" content="キャンプの記録＆予定管理ツール｢キャンログ｣"/>
-    <meta property="og:site_name" content="キャンログ"/>
-    <meta property="og:url" content="{{ url()->current() }}" />
-    <meta property="og:image" content="{{ secure_asset('img/ogp-img.jpg') }}"/>
-    <meta name="twitter:card" content="summary_large_image"/>
+    @if ((!is_null(request()->route()) ? request()->route()->getName() : '') === 'profile.index')
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="ニャンログ"/>
+        <meta property="og:description" content="キャンプの記録＆予定管理ツール｢ニャンログ｣"/>
+        <meta property="og:site_name" content="ニャンログ"/>
+        <meta property="og:url" content="{{ url()->current() }}" />
+        <meta property="og:image" content="{{ secure_asset('img/nyanlog-ogp.jpg') }}"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+    @else
+        <!-- OGP -->
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="キャンログ"/>
+        <meta property="og:description" content="キャンプの記録＆予定管理ツール｢キャンログ｣"/>
+        <meta property="og:site_name" content="キャンログ"/>
+        <meta property="og:url" content="{{ url()->current() }}" />
+        <meta property="og:image" content="{{ secure_asset('img/ogp-img.jpg') }}"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+    @endif
 
     @if (config('app.env') === 'production')
         <!-- Global site tag (gtag.js) - Google Analytics -->
