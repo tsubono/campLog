@@ -50,7 +50,7 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm(CampPlaceRepository $campPlaceRepository)
     {
-        $campPlaces = $campPlaceRepository->getAll();
+        $campPlaces = $campPlaceRepository->getForSelectBox();
 
         return view('auth.register', compact('campPlaces'));
     }

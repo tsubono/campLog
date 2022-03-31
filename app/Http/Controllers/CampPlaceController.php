@@ -33,7 +33,7 @@ class CampPlaceController extends Controller
      */
     public function index()
     {
-        $campPlaces = $this->campPlaceRepository->getAll();
+        $campPlaces = $this->campPlaceRepository->getForSelectBox();
 
         return view('camp-places.index', compact('campPlaces'));
     }

@@ -16,7 +16,7 @@
             <div class="form-content h-auto search-box">
                 <div class="form-group">
                     <camp-place-select-box-for-search
-                            :items="{{ \App\Models\CampPlace::all() }}"
+                            :items="{{ \App\Models\CampPlace::get()->makeHidden(['camp_schedule_reviews']) }}"
                     />
                 </div>
             </div>

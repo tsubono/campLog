@@ -32,6 +32,18 @@ class CampPlaceRepository implements CampPlaceRepositoryInterface
     }
 
     /**
+     * 全件取得する (検索用)
+     *
+     * @return Collection
+     */
+    public function getForSelectBox(): Collection
+    {
+        return $this->campPlace->query()
+            ->get()
+            ->makeHidden(['camp_schedule_reviews']);
+    }
+
+    /**
      * @param array $condition
      * @param int $perCount
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator

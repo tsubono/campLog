@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 interface CampPlaceRepositoryInterface
 {
     public function getAll(): Collection;
+    public function getForSelectBox(): Collection;
     public function getByConditionPaginate(array $condition, int $perCount = 10): LengthAwarePaginator;
     public function getList(?int $offset = 1, ?int $limit = 10, ?bool $isAll = false, ?string $keyword = null): Collection;
     public function getOne(?int $id);
