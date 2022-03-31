@@ -37,7 +37,7 @@
     @if ((!is_null(request()->route()) ? request()->route()->getName() : '') === 'profile.index')
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="ニャンログ"/>
-        <meta property="og:description" content="キャンプの記録＆予定管理ツール｢ニャンログ｣"/>
+        <meta property="og:description" content="ニャンコの記録＆予定管理ツール｢ニャンログ｣"/>
         <meta property="og:site_name" content="ニャンログ"/>
         <meta property="og:url" content="{{ url()->current() }}" />
         <meta property="og:image" content="{{ secure_asset('img/nyanlog-ogp.jpg') }}"/>
