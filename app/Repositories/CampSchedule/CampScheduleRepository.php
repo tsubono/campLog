@@ -109,6 +109,11 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
             if (isset($data['images'])) {
                 foreach ($data['images'] as $index => $image) {
                     if (!empty($image)) {
+                        // 画像回転
+                        $rotate = (int)$data['rotates'][$index] ?? 0;
+                        if ($rotate !== 0) {
+                            $this->rotateImage($image, -$rotate);
+                        }
                         $campSchedule->images()->create([
                             'image_path' => $image,
                             'sort' => $index
