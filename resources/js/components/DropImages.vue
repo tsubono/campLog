@@ -226,6 +226,7 @@
                 width: 100%;
                 padding: 5px;
                 text-align: center;
+                display: none;
             }
         }
     }
