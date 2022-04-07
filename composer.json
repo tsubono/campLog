@@ -21,7 +21,8 @@
         "laravel/ui": "2.*",
         "laravelium/sitemap": "7.*",
         "simplesoftwareio/simple-qrcode": "^4.1",
-      "ext-json": "*"
+      "ext-json": "*",
+      "ext-gd": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

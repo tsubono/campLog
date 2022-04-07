@@ -48,7 +48,7 @@ class CampScheduleController extends Controller
     public function create()
     {
         $campSchedule = new CampSchedule();
-        $campPlaces = $this->campPlaceRepository->getAll();
+        $campPlaces = $this->campPlaceRepository->getForSelectBox();
         return view('mypage.camp-schedules.create', compact('campSchedule', 'campPlaces'));
     }
 
@@ -75,7 +75,7 @@ class CampScheduleController extends Controller
      */
     public function edit(CampSchedule $campSchedule)
     {
-        $campPlaces = $this->campPlaceRepository->getAll();
+        $campPlaces = $this->campPlaceRepository->getForSelectBox();
 
         return view('mypage.camp-schedules.edit', compact('campSchedule', 'campPlaces'));
     }

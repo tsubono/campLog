@@ -7,6 +7,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class CampScheduleRepository
@@ -154,6 +155,12 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
             if (isset($data['images'])) {
                 foreach ($data['images'] as $index => $image) {
                     if (!empty($image)) {
+                        // 画像回転
+                        $rotate = (int)$data['rotates'][$index] ?? 0;
+                        if ($rotate !== 0) {
+                           $this->rotateImage($image, -$rotate);
+                        }
+                        // 画像をDBに保存 or 更新
                         if (!in_array($image, $savedImagePaths)) {
                             $campSchedule->images()->create([
                                 'image_path' => $image,
@@ -177,6 +184,35 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
             DB::rollback();
             Log::error($e->getMessage());
             throw new \Exception($e);
+        }
+    }
+
+    /**
+     * 画像を回転する
+     *
+     * @param $image
+     * @param $rotate
+     */
+    private function rotateImage($image, $rotate)
+    {
+        $imgName = basename($image);
+        $extensions = pathinfo($image)['extension'];
+
+        // 通常画像
+        $imagePath = storage_path(). "/app/public/uploaded/camp-schedule/{$imgName}";
+        $source = imagecreatefromjpeg($imagePath);
+        $rotated = imagerotate($source, $rotate, 0);
+        // リサイズされた画像
+        $imagePathResized = storage_path(). "/app/public/uploaded/camp-schedule/resized-{$imgName}";
+        $sourceResized = imagecreatefromjpeg($imagePathResized);
+        $rotatedResized = imagerotate($sourceResized, $rotate, 0);
+
+        if($extensions == "jpeg" || $extensions == "jpg"){
+            imagejpeg($rotated, $imagePath);
+            imagejpeg($rotatedResized, $imagePathResized);
+        }elseif($extensions == "png"){
+            imagepng($rotated, $imagePath);
+            imagepng($rotatedResized, $imagePathResized);
         }
     }
 

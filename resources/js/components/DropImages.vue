@@ -21,9 +21,17 @@
         <br>
         <div class="image-list">
             <div v-for="(imgData, index) in imgDatas" class="image-item">
-                <img alt="プレビュー画像" v-bind:src="imgData.replace('camp-schedule/', 'camp-schedule/resized-')" class="preview" width="auto" height="auto">
+                <img alt="プレビュー画像"
+                     :src="imgData.replace('camp-schedule/', 'camp-schedule/resized-') + '?' + Math.random()"
+                     :style="styles[index]"
+                     class="preview"
+                     width="auto"
+                     height="auto"
+                />
                 <input type="hidden" :name="name" :value="imgData"/>
+                <input type="hidden" name="rotates[]" :value="imgRotates[index]"/>
                 <a v-on:click="onDelete(index)" class="delete-btn">×</a>
+                <a v-on:click="onRotate(index)" class="rotate-btn">回転する</a>
             </div>
         </div>
         <div v-if="msg" class="error-txt">
@@ -43,12 +51,17 @@
                 'imgDatas': [],
                 'isDrag': null,
                 'isLoading': false,
+                'imgRotates': [],
+                'styles': [],
             }
         },
         created: function () {
             this.host = window.location.host;
             if (this.images) {
                 this.imgDatas = JSON.parse(this.images);
+                for (let i = 0; i < this.imgDatas.length; i++) {
+                  this.imgRotates[i] = 0
+                }
             }
         },
         methods: {
@@ -117,7 +130,15 @@
             },
             onDelete (index) {
                 this.imgDatas.splice(index, 1);
-            }
+            },
+            onRotate (index) {
+              let rotate = 90
+              if (this.imgRotates[index] !== undefined) {
+                rotate += this.imgRotates[index]
+              }
+              this.$set(this.imgRotates, index, rotate)
+              this.$set(this.styles, index, { transform: `rotate(${rotate}deg)` })
+            },
         }
     }
 </script>
@@ -193,6 +214,18 @@
                 width: 40px;
                 height: 40px;
                 border-radius: 50%;
+            }
+
+            .rotate-btn {
+                cursor: pointer;
+                background: #5c6066;
+                color: #fff;
+                font-size: .8rem;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                padding: 5px;
+                text-align: center;
             }
         }
     }
