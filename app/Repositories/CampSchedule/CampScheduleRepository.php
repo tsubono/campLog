@@ -212,22 +212,23 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
         // キャッシュ対策でファイル名を変える
         $renamedImagePath = storage_path() . "/app/public/uploaded/camp-schedule/{$renamedImageName}";
         rename($imagePath, $renamedImagePath);
-        // 回転させる
-        $rotated = imagerotate(imagecreatefromjpeg($renamedImagePath), $rotate, 0);
+
 
         // リサイズされた画像
         $imagePathResized = storage_path() . "/app/public/uploaded/camp-schedule/resized-{$imgName}";
         // キャッシュ対策でファイル名を変える
         $renamedImagePathResized = storage_path() . "/app/public/uploaded/camp-schedule/resized-{$renamedImageName}";
         rename($imagePathResized, $renamedImagePathResized);
-        // 回転させる
-        $rotatedResized = imagerotate(imagecreatefromjpeg($renamedImagePathResized), $rotate, 0);
 
-        // 保存
+        // 回転させて保存する
         if ($extensions == "jpeg" || $extensions == "jpg") {
+            $rotated = imagerotate(imagecreatefromjpeg($renamedImagePath), $rotate, 0);
+            $rotatedResized = imagerotate(imagecreatefromjpeg($renamedImagePathResized), $rotate, 0);
             imagejpeg($rotated, $renamedImagePath);
             imagejpeg($rotatedResized, $renamedImagePathResized);
         } elseif ($extensions == "png") {
+            $rotated = imagerotate(imagecreatefrompng($renamedImagePath), $rotate, 0);
+            $rotatedResized = imagerotate(imagecreatefrompng($renamedImagePathResized), $rotate, 0);
             imagepng($rotated, $renamedImagePath);
             imagepng($rotatedResized, $renamedImagePathResized);
         }
