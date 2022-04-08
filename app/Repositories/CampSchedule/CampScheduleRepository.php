@@ -18,7 +18,8 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
 {
     private CampSchedule $campSchedule;
 
-    public function __construct(CampSchedule $campSchedule) {
+    public function __construct(CampSchedule $campSchedule)
+    {
         $this->campSchedule = $campSchedule;
     }
 
@@ -37,8 +38,8 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
             $query->where('user_id', $condition['user_id']);
         }
         if (!empty($condition['keyword'])) {
-            $query->where(function($query) use ($condition) {
-                $query->where('title', 'LIKE',  "%{$condition['keyword']}%");
+            $query->where(function ($query) use ($condition) {
+                $query->where('title', 'LIKE', "%{$condition['keyword']}%");
                 $query->orWhere('content', 'LIKE', "%{$condition['keyword']}%");
             });
         }
@@ -57,8 +58,8 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
     {
         if ($isAll) {
             return $this->campSchedule->query()
-            ->where('user_id', $userId)
-            ->get();
+                ->where('user_id', $userId)
+                ->get();
         } else {
             return $this->campSchedule->query()
                 ->where('user_id', $userId)
@@ -112,7 +113,7 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
                         // 画像回転
                         $rotate = (int)$data['rotates'][$index] ?? 0;
                         if ($rotate !== 0) {
-                            $this->rotateImage($image, -$rotate);
+                            $image = $this->rotateImage($image, -$rotate);
                         }
                         $campSchedule->images()->create([
                             'image_path' => $image,
@@ -162,18 +163,19 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
                     if (!empty($image)) {
                         // 画像回転
                         $rotate = (int)$data['rotates'][$index] ?? 0;
+                        $rotateImage = null;
                         if ($rotate !== 0) {
-                           $this->rotateImage($image, -$rotate);
+                            $rotateImage = $this->rotateImage($image, -$rotate);
                         }
                         // 画像をDBに保存 or 更新
                         if (!in_array($image, $savedImagePaths)) {
                             $campSchedule->images()->create([
-                                'image_path' => $image,
+                                'image_path' => !is_null($rotateImage) ? $rotateImage : $image,
                                 'sort' => $index
                             ]);
                         } else {
                             $campSchedule->images()->where('image_path', $image)->update([
-                                'image_path' => $image,
+                                'image_path' => !is_null($rotateImage) ? $rotateImage : $image,
                                 'sort' => $index
                             ]);
                         }
@@ -197,28 +199,54 @@ class CampScheduleRepository implements CampScheduleRepositoryInterface
      *
      * @param $image
      * @param $rotate
+     * @return string
      */
     private function rotateImage($image, $rotate)
     {
         $imgName = basename($image);
+        $renamedImageName = $this->makeRandStr(3). $imgName;
         $extensions = pathinfo($image)['extension'];
 
         // 通常画像
-        $imagePath = storage_path(). "/app/public/uploaded/camp-schedule/{$imgName}";
-        $source = imagecreatefromjpeg($imagePath);
-        $rotated = imagerotate($source, $rotate, 0);
-        // リサイズされた画像
-        $imagePathResized = storage_path(). "/app/public/uploaded/camp-schedule/resized-{$imgName}";
-        $sourceResized = imagecreatefromjpeg($imagePathResized);
-        $rotatedResized = imagerotate($sourceResized, $rotate, 0);
+        $imagePath = storage_path() . "/app/public/uploaded/camp-schedule/{$imgName}";
+        // キャッシュ対策でファイル名を変える
+        $renamedImagePath = storage_path() . "/app/public/uploaded/camp-schedule/{$renamedImageName}";
+        rename($imagePath, $renamedImagePath);
+        // 回転させる
+        $rotated = imagerotate(imagecreatefromjpeg($renamedImagePath), $rotate, 0);
 
-        if($extensions == "jpeg" || $extensions == "jpg"){
-            imagejpeg($rotated, $imagePath);
-            imagejpeg($rotatedResized, $imagePathResized);
-        }elseif($extensions == "png"){
-            imagepng($rotated, $imagePath);
-            imagepng($rotatedResized, $imagePathResized);
+        // リサイズされた画像
+        $imagePathResized = storage_path() . "/app/public/uploaded/camp-schedule/resized-{$imgName}";
+        // キャッシュ対策でファイル名を変える
+        $renamedImagePathResized = storage_path() . "/app/public/uploaded/camp-schedule/resized-{$renamedImageName}";
+        rename($imagePathResized, $renamedImagePathResized);
+        // 回転させる
+        $rotatedResized = imagerotate(imagecreatefromjpeg($renamedImagePathResized), $rotate, 0);
+
+        // 保存
+        if ($extensions == "jpeg" || $extensions == "jpg") {
+            imagejpeg($rotated, $renamedImagePath);
+            imagejpeg($rotatedResized, $renamedImagePathResized);
+        } elseif ($extensions == "png") {
+            imagepng($rotated, $renamedImagePath);
+            imagepng($rotatedResized, $renamedImagePathResized);
         }
+
+        return "/storage/uploaded/camp-schedule/{$renamedImageName}";
+    }
+
+    /**
+     * @param $length
+     * @return string
+     */
+    private function makeRandStr($length)
+    {
+        $str = array_merge(range('a', 'z'), range('0', '9'), range('A', 'Z'));
+        $r_str = null;
+        for ($i = 0; $i < $length; $i++) {
+            $r_str .= $str[rand(0, count($str) - 1)];
+        }
+        return $r_str;
     }
 
     /**
