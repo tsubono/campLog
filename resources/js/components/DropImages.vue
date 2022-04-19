@@ -31,7 +31,9 @@
                 <input type="hidden" :name="name" :value="imgData"/>
                 <input type="hidden" name="rotates[]" :value="imgRotates[index]"/>
                 <a v-on:click="onDelete(index)" class="delete-btn">×</a>
-                <a v-on:click="onRotate(index)" class="rotate-btn">回転する</a>
+                <a v-on:click="onRotate(index)" class="rotate-btn">
+                  <img src="/img/icon_rotate.svg" alt="回転" />
+                </a>
             </div>
         </div>
         <div v-if="msg" class="error-txt">
@@ -191,7 +193,7 @@
         flex-wrap: wrap;
 
         .image-item {
-            margin: 5px 15px;
+            margin: 10px 15px;
             position: relative;
 
             img {
@@ -224,8 +226,12 @@
                 display: flex;
                 justify-content: center;
                 width: 100%;
-                padding: 5px;
                 text-align: center;
+
+                img {
+                  width: 30px;
+                  height: 30px;
+                }
             }
         }
     }

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <style>
+      .a {
+        fill: none;
+        stroke: #fff;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <title>1075_rl_h</title>
+  <g>
+    <g>
+      <g>
+        <path class="a" d="M37,24.2v4.13a3.8,3.8,0,0,1-3.74,3.86H11"/>
+        <polyline class="a" points="16.28 27.39 11 32.19 16.28 37"/>
+      </g>
+      <polyline class="a" points="31.72 20.61 37 15.81 31.72 11"/>
+    </g>
+    <path class="a" d="M11,23.8V19.67a3.8,3.8,0,0,1,3.74-3.86H37"/>
+  </g>
+</svg>
