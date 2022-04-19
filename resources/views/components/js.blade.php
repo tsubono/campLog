@@ -55,7 +55,7 @@
     /**
      * 画像モーダル
      */
-    $('.js-modal-image').click(function (event) {
+    $(document).on('click', '.js-modal-image', function (event) {
       event.stopPropagation()
       // 左右コントロールのdisabled更新
       toggleDisabled($(this))
