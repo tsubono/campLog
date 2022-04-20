@@ -89,6 +89,9 @@ export default {
      */
     textBoxClicked () {
       this.isShowList = !this.isShowList
+      if (this.isShowList) {
+        this.$nextTick(() => this.$refs.filterTextBox.focus())
+      }
     },
     /**
      * 選択肢一覧をクリック時
