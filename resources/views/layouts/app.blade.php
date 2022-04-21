@@ -70,7 +70,7 @@
                 {{ session('status') }}
             </div>
         @endif
-        <img src="{{ asset('img/head-logo.svg') }}" alt="ロゴ" class="logo-img"/>
+        <img src="{{ asset('img/head-logo.svg?2022') }}" alt="ロゴ" class="logo-img"/>
         @yield('content')
     </div>
 @else
