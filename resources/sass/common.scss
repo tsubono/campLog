@@ -78,6 +78,8 @@ ul {
   padding: 10px 5px;
 
   img {
+    width: 80%;
+
     @media screen and (max-width: 480px) {
       width: 190px;
     }

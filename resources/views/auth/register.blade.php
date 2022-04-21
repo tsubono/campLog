@@ -7,7 +7,8 @@
 @section('content')
     <section class="top-section">
         <div class="top-content">
-            <img class="bg-image" src="{{ asset('img/top.svg') }}" alt="背景画像" width="auto" height="auto" />
+            <img class="bg-image" src="{{ asset('img/top.jpg') }}" alt="背景画像" width="auto" height="auto" />
+            <img class="bg-image-logo" src="{{ asset('img/logo-white.svg') }}" alt="背景画像ロゴ"  />
             <div class="buttons">
                 <a href="#register" class="btn register-btn">無料登録</a>
                 <a href="{{ route('login') }}" class="login-link">ログインはこちら</a>
@@ -19,7 +20,7 @@
                 <h1 class="heading">キャンプの記録をカンタンに管理！</h1>
                 <h2 class="heading-h2">宿泊記録やこれからの予定まで<br />無料で管理してキャンプライフを楽しもう！</h2>
             </div>
-            <img class="about-img" src="{{ asset('img/img-01.svg') }}" alt="About" width="auto" height="auto" />
+            <img class="about-img" src="{{ asset('img/img-01.jpg') }}" alt="About" width="auto" height="auto" />
         </div>
 
         <div class="camp-places-keyword-form">
@@ -34,7 +35,7 @@
         </div>
 
         <a href="https://camplog.in/takeshi" rel="nofollow" target="_blank">
-            <img class="sample-img" src="{{ asset('img/img-02.svg') }}" alt="Sample" width="auto" height="auto" />
+            <img class="sample-img" src="{{ asset('img/img-02.jpg') }}" alt="Sample" width="auto" height="auto" />
         </a>
 
         <div class="link-content">

@@ -9,11 +9,24 @@
 
   .top-content {
     position: relative;
+    display: flex;
+    justify-content: center;
 
     .bg-image {
       width: 100%;
       height: auto;
       object-fit: cover;
+    }
+
+    .bg-image-logo {
+      position: absolute;
+      top: 250px;
+      width: 400px;
+
+      @media screen and (max-width: 480px) {
+        top: 100px;
+        width: 280px;
+      }
     }
 
     .buttons {
@@ -127,13 +140,13 @@
     }
 
     .about-img {
-      width: 100%;
+      max-width: 100%;
       margin: 10px auto;
     }
   }
 
   .sample-img {
-    width: 100%;
+    max-width: 100%;
     cursor: pointer;
   }
 
