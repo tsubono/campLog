@@ -26,8 +26,8 @@ class CampScheduleRequest extends FormRequest
         return [
             'camp_place_id' => 'required',
             'date' => 'required|date',
-            'review' => 'max:3000',
-            'note' => 'max:3000',
+            'review' => 'nullable|max:3000',
+            'note' => 'nullable|max:3000',
         ];
     }
 

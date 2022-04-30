@@ -133,7 +133,7 @@
             @endforeach
         </div>
 
-        <a class="btn primary-btn save-btn" href="{{ route('mypage.camp-schedules.create') }}">
+        <a class="btn primary-btn save-btn" href="{{ route('mypage.camp-schedules.create') }}?campPlaceId={{ $campPlace->id }}&campPlaceName={{ $campPlace->name }}">
             <img src="{{ asset('img/messenger_white.svg') }}" alt="口コミを投稿する" width="20" />
             &nbsp;口コミを投稿する
         </a>
