@@ -42,7 +42,7 @@
                     @if ($link['is_public'] && !empty($link['url']))
                         <a class="sns-item" href="{{ $link['url'] }}" target="_blank" rel="noopener">
                             <img alt="アイコン" src="{{ $link['icon_path'] }}" class="icon" width="auto" height="auto">
-                            <span>{{ $link['name'] }}</span>
+                            @if (!is_null($link['name']))<span>{{ $link['name'] }}</span>@endif
                         </a>
                    @endif
                 @endforeach

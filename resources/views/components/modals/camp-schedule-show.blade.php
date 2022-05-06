@@ -42,12 +42,14 @@
                         {{ $campSchedule->number_of_stay_text }}
                     </div>
                 </div>
-                <div class="show-item">
-                    <label>人数</label>
-                    <div class="item-value">
-                        {{ $campSchedule->number_of_people }}人
+                @if (!empty($campSchedule->number_of_people))
+                    <div class="show-item">
+                        <label>人数</label>
+                        <div class="item-value">
+                            {{ $campSchedule->number_of_people }}人
+                        </div>
                     </div>
-                </div>
+                @endif
                 @if (!empty($campSchedule->place->address))
                     <div class="show-item">
                         <label>住所</label>
