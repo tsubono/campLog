@@ -1,3 +1,8 @@
+<a href="https://sotolist-magazine.com/camlog-sotolist?utm_source=camlog&utm_medium=banner&utm_campaign=collabo"
+   target="_blank"
+   class="mypage-banner-area">
+    <img src="{{ asset('img/banner/banner1.jpeg') }}" alt="キャンログ×ソトリストコラボキャンペーン">
+</a>
 <ul class="tab-menu">
     <li class="tab-item type-person {{ request()->is('mypage/profile') ? 'active' : '' }}"
         onclick="location.href='{{ route('mypage.profile.edit') }}'">
