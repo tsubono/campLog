@@ -1,7 +1,7 @@
 <a href="https://explaza.notion.site/6-20-500-2c035d238e9540f2a20cba956ff11818"
    target="_blank"
    class="mypage-banner-area">
-    <img src="{{ asset('img/banner/banner2.jpeg') }}" alt="500円分ギフト券がもらえるコラボキャンペーン">
+    <img src="{{ asset('img/banner/banner2.JPG') }}" alt="500円分ギフト券がもらえるコラボキャンペーン">
 </a>
 <ul class="tab-menu">
     <li class="tab-item type-person {{ request()->is('mypage/profile') ? 'active' : '' }}"
