@@ -114,6 +114,7 @@ class CampScheduleController extends Controller
             }
             session()->flash('showSharePopup', true);
             session()->flash('shareTitle', $shareTitle);
+            session()->flash('campScheduleId', $campSchedule->id);
         }
     }
 

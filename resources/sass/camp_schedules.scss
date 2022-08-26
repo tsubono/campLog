@@ -1,0 +1,48 @@
+/*===============================
+	キャンプ場詳細
+================================*/
+.camp-schedules-content {
+  padding: 1em;
+  border: 1px solid lightgray;
+
+  .camp-schedule-show {
+    .camp-schedule-show-wrapper {
+      overflow: hidden;
+
+      .camp-schedule-show {
+        max-height: 100%;
+
+        .show-item {
+          margin: 10px;
+
+          label {
+            color: $gray-dark;
+            font-size: .9rem;
+            padding: 5px;
+          }
+
+          .item-value {
+            font-weight: bold;
+            word-break: break-all;
+
+            &.images {
+              display: flex;
+              justify-content: start;
+              overflow-x: scroll;
+
+              img {
+                width: 100px;
+                height: 100px;
+                margin: 5px;
+                object-fit: cover;
+                cursor: pointer;
+                min-width: 100px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

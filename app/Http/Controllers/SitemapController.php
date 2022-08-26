@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CampPlace;
+use App\Models\CampSchedule;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -31,6 +32,12 @@ class SitemapController extends Controller
         $campPlaces = CampPlace::query()->get();
         foreach ($campPlaces as $campPlace) {
             $sitemap->add(route('camp-places.show', compact('campPlace')), $campPlace->updated_at, '0.8', 'monthly');
+        }
+
+        // キャンプ記録詳細
+        $campSchedules = CampSchedule::query()->where('is_public', true)->get();
+        foreach ($campSchedules as $campSchedule) {
+            $sitemap->add(route('camp-schedules.show', compact('campSchedule')), $campSchedule->updated_at, '0.8', 'monthly');
         }
 
         // 出力

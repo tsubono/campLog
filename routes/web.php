@@ -80,3 +80,7 @@ Route::post('/camp-places/{campPlace}/remove-bookmark', [App\Http\Controllers\Ca
  * プロフィール
  */
 Route::get('/{userName}', 'ProfileController@index')->name('profile.index');
+/**
+ * キャンプ記録詳細
+ */
+Route::get('/camp-schedules/{campSchedule}', [App\Http\Controllers\CampScheduleController::class, 'show'])->name('camp-schedules.show');

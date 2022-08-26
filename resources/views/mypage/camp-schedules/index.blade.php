@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="buttons">
-                            <a class="btn default-btn content-part js-show-popup" data-id="campScheduleShowPopup-{{ $campSchedule->id }}">詳細</a>
+                            <a class="btn default-btn content-part" href="{{ route('camp-schedules.show', compact('campSchedule')) }}" target="_blank">詳細</a>
                             @include('components.modals.camp-schedule-show', ['campSchedule' => $campSchedule])
                             <div class="flex-column content-part">
                                 <a class="btn gray-btn" href="{{ route('mypage.camp-schedules.edit', ['camp_schedule' => $campSchedule]) }}">編集</a>
