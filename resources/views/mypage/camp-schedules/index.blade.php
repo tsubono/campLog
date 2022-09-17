@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="buttons">
-                            <a class="btn default-btn content-part" href="{{ route('camp-schedules.show', compact('campSchedule')) }}" target="_blank">詳細</a>
+                            <a class="btn default-btn content-part" href="{{ route('camp-schedules.show', compact('campSchedule')) }}">詳細</a>
                             <div class="flex-column content-part">
                                 <a class="btn gray-btn" href="{{ route('mypage.camp-schedules.edit', ['camp_schedule' => $campSchedule]) }}">編集</a>
                             </div>

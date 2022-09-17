@@ -116,7 +116,7 @@
         <div class="grid-tab-content tab-content show">
             <div class="list">
                 @foreach ($campSchedules as $campSchedule)
-                    <div class="item" data-id="campScheduleShowPopup-{{ $campSchedule->id }}" onclick="window.open('{{ route('camp-schedules.show', compact('campSchedule')) }}', '_blank')">
+                    <div class="item" data-id="campScheduleShowPopup-{{ $campSchedule->id }}" onclick="location.href='{{ route('camp-schedules.show', compact('campSchedule')) }}'">
                         @include('components.modals.camp-schedule-show', ['campSchedule' => $campSchedule])
                         <img class="eye-catch" src="{{ $campSchedule->eye_catch_image_path }}" alt="アイキャッチ画像" width="auto" height="auto" />
                         <div class="date {{ Carbon\Carbon::parse($campSchedule->date)->isFuture() ? 'is-future' : '' }}">
