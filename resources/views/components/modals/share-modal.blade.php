@@ -20,7 +20,7 @@
                target="_blank"
                rel="nofollow noopener"
                class="twitter-share-button item mx-10"
-               data-url="{{ route('camp-schedules.show', ['campSchedule' => session('campScheduleId')]) }}"
+               data-url="{{ route('profile.index', ['userName' => auth()->user()->name]) }}"
                data-size="large"
                data-text="{{ session('shareTitle') }}
 
