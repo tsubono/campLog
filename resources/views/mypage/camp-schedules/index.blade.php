@@ -50,7 +50,9 @@
     </section>
 @endsection
 
-@include('components.modals.share-modal')
+@if (session('campScheduleId'))
+    @include('components.modals.share-modal')
+@endif
 
 @section('js')
     <script>
