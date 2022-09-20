@@ -1,8 +1,8 @@
-<a href="https://bit.ly/TOKYOISLAND_camplog"
-   target="_blank"
-   class="mypage-banner-area">
-    <img src="{{ asset('img/banner/banner3.jpg') }}" alt="「TOKYO ISLAND」キャンプ券プレゼントキャンペーン応募フォーム">
-</a>
+{{--<a href="https://bit.ly/TOKYOISLAND_camplog"--}}
+{{--   target="_blank"--}}
+{{--   class="mypage-banner-area">--}}
+{{--    <img src="{{ asset('img/banner/banner3.jpg') }}" alt="「TOKYO ISLAND」キャンプ券プレゼントキャンペーン応募フォーム">--}}
+{{--</a>--}}
 <ul class="tab-menu">
     <li class="tab-item type-person {{ request()->is('mypage/profile') ? 'active' : '' }}"
         onclick="location.href='{{ route('mypage.profile.edit') }}'">
